@@ -33,7 +33,7 @@ export default function ScrollCta() {
       });
   });
   return (
-    <div ref={cta} class="absolute bottom-[4rem] lg:bottom-[6rem]">
+    <div ref={cta} class="absolute bottom-[-3rem] lg:bottom-[-6rem]">
       <Image
         className=" z-10"
         src="/scroll-cta.png"
