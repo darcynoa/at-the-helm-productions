@@ -33,9 +33,9 @@ export default function ScrollCta() {
       });
   });
   return (
-    <div ref={cta} class="relative">
+    <div ref={cta} class="absolute bottom-[4rem] lg:bottom-[6rem]">
       <Image
-        className="relative z-10"
+        className=" z-10"
         src="/scroll-cta.png"
         alt="Scroll Image that calls the user to scroll"
         width={146}
@@ -43,7 +43,7 @@ export default function ScrollCta() {
       />
       <div
         ref={light}
-        className="rounded-full w-[131px] aspect-square bg-radial from-cyan to-transparent absolute top-[0.5rem] left-[0.5rem] blur-lg"
+        className="rounded-full w-[131px] aspect-square bg-radial from-cyan to-transparent fixed top-[0.5rem] left-[0.5rem] blur-lg"
       ></div>
     </div>
   );
