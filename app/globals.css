@@ -7,5 +7,6 @@
   --color-orange: #c07124;
   --color-pink: #d58993;
   --color-purple: #8063f2;
-  --font-sans: var(--font-monty);
+
+  --font-sans: "Montserrat", "Arial", sans-serif;
 }

@@ -1,9 +1,10 @@
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Loading from "@/components/Loading";
+import Navigation from "@/components/Navigation";
 
 const monty = Montserrat({
-  variable: "--font-monty",
+  variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["900"],
 });
@@ -17,7 +18,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${monty.variable} antialiased bg-black`}>
-        <Loading />
+        {/* <Loading /> */}
+        <Navigation />
         {children}
       </body>
     </html>
