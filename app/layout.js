@@ -1,12 +1,18 @@
-import { Montserrat } from "next/font/google";
+import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import Loading from "@/components/Loading";
 import Navigation from "@/components/Navigation";
 
-const monty = Montserrat({
-  variable: "--font-montserrat",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["900"],
+  weight: ["400"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata = {
@@ -17,7 +23,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${monty.variable} antialiased bg-black`}>
+      <body
+        className={`${inter.variable} ${caveat.variable} antialiased bg-black`}
+      >
         {/* <Loading /> */}
         <Navigation />
         {children}
