@@ -2,6 +2,7 @@ import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import Loading from "@/components/Loading";
 import Navigation from "@/components/Navigation";
+import ScrollCta from "@/components/ScrollCta";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
         {/* <Loading /> */}
         <Navigation />
         {children}
+        <ScrollCta />
       </body>
     </html>
   );
