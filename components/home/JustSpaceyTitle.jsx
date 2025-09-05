@@ -19,7 +19,6 @@ export default function JustSpaceyTitle() {
         start: "top bottom",
         end: "bottom top",
         scrub: true,
-        markers: true,
       },
     });
     gsap.to([jsText.current, jsHeader.current], {
