@@ -1,5 +1,3 @@
-import ScrollCta from "../ScrollCta";
-
 export default function Hero() {
   return (
     <section className="relative w-full h-screen leading-[1] flex flex-col justify-center items-center bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] bg-cover bg-top -mb-[2rem] -mt-[1%] -z-20">

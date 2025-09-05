@@ -20,7 +20,6 @@ export default function Brief() {
         start: "top top",
         end: "bottom top",
         scrub: true,
-        // markers: true,
         pin: true,
       },
       opacity: 0.25,

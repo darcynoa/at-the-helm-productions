@@ -43,34 +43,31 @@ export default function ScrollCta() {
       });
 
     // First scroll-triggered scale up
-    gsap.to(cta.current, {
+    gsap.timeline().to(cta.current, {
       scale: 3,
       y: -500,
       ease: "linear",
       scrollTrigger: {
         trigger: ".testing123",
         scrub: 1,
-        start: "top bottom",
+        start: "top+=100px bottom",
         end: "center center",
       },
     });
+    // .to(cta.current, {
+    //   y: -1400,
+    //   ease: "power1.inOut",
+    //   scrollTrigger: {
+    //     trigger: ".testing123",
+    //     start: "center+=1px center",
+    //     end: "bottom top",
+    //     scrub: true,
+    //   },
+    // });
 
     // Second scroll-triggered scale down
-    gsap.fromTo(
-      cta.current,
-      { y: -500, scale: 3 },
-      {
-        scale: 3,
-        y: -1400,
-        ease: "linear",
-        scrollTrigger: {
-          trigger: ".testing123",
-          scrub: 1,
-          start: "center+=1px center",
-          end: "bottom top",
-        },
-      }
-    );
+
+    // Fade out the CTA text as user scrolls past a certain point
     gsap.to(ctaText.current, {
       opacity: 0,
       ease: "power1.inOut",
