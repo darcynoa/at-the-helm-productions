@@ -10,7 +10,7 @@ export default function Navigation() {
         height={49}
       />
       <Image
-        className="cursor-pointer"
+        className="cursor-pointer opacity-0"
         src="/menu.svg"
         alt="Menu Icon"
         width={12}

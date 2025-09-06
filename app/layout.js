@@ -3,6 +3,7 @@ import "./globals.css";
 import Loading from "@/components/Loading";
 import Navigation from "@/components/Navigation";
 import ScrollCta from "@/components/ScrollCta";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
         <Navigation />
         {children}
         <ScrollCta />
+        <Footer />
       </body>
     </html>
   );

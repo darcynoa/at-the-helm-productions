@@ -14,19 +14,21 @@ export default function JustSpaceyTitle() {
   useGSAP(() => {
     gsap.to(carousel.current, {
       x: -1800,
+      ease: "linear",
       scrollTrigger: {
         trigger: carousel.current,
-        start: "top bottom",
+        start: "top center",
         end: "bottom top",
         scrub: true,
       },
     });
     gsap.to([jsText.current, jsHeader.current], {
-      y: 750,
-      ease: "cubic-bezier(.79,.68,.39,.47)",
+      y: "66vh",
+      // ease: "cubic-bezier(.79,.68,.39,.47)",
+      ease: "power3.in",
       scrollTrigger: {
         trigger: jsBackground.current,
-        start: "top center",
+        start: "top center-=10vh",
         end: "center center",
         scrub: true,
       },
@@ -47,7 +49,7 @@ export default function JustSpaceyTitle() {
       </div>
       <p
         ref={jsText}
-        className="text-white font-sans text-[1.5rem] uppercase mix-blend-exclusion"
+        className="text-white font-sans text-[15px] lg:text-[1.5rem] uppercase mix-blend-exclusion"
       >
         Everyone had fun on this one
       </p>
@@ -63,6 +65,7 @@ export default function JustSpaceyTitle() {
         alt="I love this photo"
         width={1921}
         height={1080}
+        className="h-screen lg:h-auto"
       />
     </section>
   );
