@@ -57,7 +57,7 @@ export default function SneakPeek() {
           </p>
           <video
             ref={videoRef}
-            src="/trailer.mov"
+            src="https://wopjdcd9b6yaeiad.public.blob.vercel-storage.com/trailer.mov"
             className="w-screen lg:w-[75%]"
             controls
             autoPlay
