@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function JustSpaceyDescription() {
   return (
-    <section className="w-full text-white flex flex-col">
+    <section className="flex w-full flex-col text-white">
       {/* First row: 3 columns */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 place-items-center">
-        <p className="font-sans font-normal uppercase text-[15px] lg:text-[1.8rem] text-white self-start pt-[4rem]">
+      <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-3">
+        <p className="self-start pt-[4rem] font-sans text-[15px] font-normal text-white uppercase lg:text-[1.8rem]">
           logline
         </p>
         <Image
@@ -14,7 +14,7 @@ export default function JustSpaceyDescription() {
           width={406}
           height={540}
         />
-        <p className="font-sans font-normal uppercase text-[15px] lg:text-[1.8rem] text-white self-start pt-[4rem]">
+        <p className="self-start pt-[4rem] font-sans text-[15px] font-normal text-white uppercase lg:text-[1.8rem]">
           When an orderly mortician is forced to bring his recently suspended
           10-year-old daughter with raging ADHD to the morgue, they must work
           together to ensure that the resulting chaos does not see the light of
@@ -22,29 +22,29 @@ export default function JustSpaceyDescription() {
         </p>
       </div>
       <Image
-        src="/cookie-is-bored.png"
+        src="/cookie-is-bored.jpg"
         alt="I mean, you can't see it but Cookie is bored af"
         width={1920}
         height={924}
         className="w-full"
       />
       {/* Second row: 2 columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
+      <div className="grid grid-cols-1 place-items-center md:grid-cols-2">
         <Image
-          src="/body-drawers.png"
+          src="/body-drawers.jpg"
           alt="Nice looking body drawers, for no reason at all"
           width={960}
           height={863}
         />
-        <p className="w-[50%] font-sans font-normal uppercase text-[15px] lg:text-[1.8rem] text-white pt-[4rem] mix-blend-exclusion">
+        <p className="w-[50%] pt-[4rem] font-sans text-[15px] font-normal text-white uppercase mix-blend-exclusion lg:text-[1.8rem]">
           ADHD characters are rarely seen on screen – let alone is there any
           mention of the symptoms that can be an advantage rather than a
           constant pain.
         </p>
       </div>
       {/* Third row: 2 columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
-        <p className="w-[50%] font-sans font-normal uppercase text-[15px] lg:text-[1.8rem] text-white pt-[4rem] mix-blend-exclusion">
+      <div className="grid grid-cols-1 place-items-center md:grid-cols-2">
+        <p className="w-[50%] pt-[4rem] font-sans text-[15px] font-normal text-white uppercase mix-blend-exclusion lg:text-[1.8rem]">
           Just Spacey is a morgue-comedy short film that touches on the
           unexpected humor, chaos, and brilliance of thinking differently.
         </p>
