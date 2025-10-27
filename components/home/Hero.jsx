@@ -8,6 +8,7 @@ import { useRef } from "react";
 gsap.registerPlugin(DrawSVGPlugin, SplitText);
 
 export default function Hero() {
+  const hero = useRef(null);
   const wrapParty = useRef(null);
   const finalText = useRef(null);
   const line = useRef(null);
@@ -23,20 +24,15 @@ export default function Hero() {
     gsap.set(splitFinalText.lines, { autoAlpha: 0, y: 20 });
 
     const tl = gsap
-      .timeline()
-      .fromTo(
-        wrapParty.current,
-        {
-          autoAlpha: 0,
-          y: 50,
+      .timeline({
+        scrollTrigger: {
+          trigger: hero.current,
+          start: "top top+=1vh",
+          end: "bottom center",
+          pin: true,
+          scrub: 1,
         },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 1.5,
-          ease: "bounce.out",
-        },
-      )
+      })
       .fromTo(
         ".stroke-shape",
         {
@@ -74,10 +70,12 @@ export default function Hero() {
         duration: 1.5,
         ease: "expo.inOut",
       });
-    tl.play();
   });
   return (
-    <section className="relative -z-20 -mt-[1%] -mb-[2rem] flex h-screen w-full flex-col items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] bg-cover bg-top leading-[1]">
+    <section
+      ref={hero}
+      className="relative -z-20 -mt-[1%] -mb-[2rem] flex h-screen w-full flex-col items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] bg-cover bg-top leading-[1]"
+    >
       <h1 className="font-display flex items-center justify-center px-[2rem] pb-[4rem] text-center text-[5rem] leading-[1] font-black text-white uppercase drop-shadow-[0px_0px_34px_rgba(7,6,6,1)] lg:px-0 lg:text-[9.5rem]">
         When We&apos;re <br /> At The Helm
       </h1>
@@ -95,7 +93,10 @@ export default function Hero() {
         >
           You know there&apos;s gonna be a great wrap party
         </p>
-        <Test ref={line} className="absolute -top-[2rem] left-0 w-[100%]" />
+        <Test
+          ref={line}
+          className="absolute -top-[3rem] left-0 w-[100%] lg:-top-[2rem]"
+        />
       </div>
       <p
         ref={merryTime}
