@@ -46,6 +46,7 @@ export default function JustSpaceyDescription() {
           unexpected humor, chaos, and brilliance of thinking differently.
         </p>
         <Image
+          className="order-1 lg:order-2"
           src="/this-foot-is-stuck.png"
           alt="Don't mind us, just this foot being stuck"
           width={960}
