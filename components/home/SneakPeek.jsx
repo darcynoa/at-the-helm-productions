@@ -26,10 +26,10 @@ export default function SneakPeek() {
     }, 100);
   };
   return (
-    <section className="h-screen w-full flex justify-center items-center relative">
+    <section className="relative flex h-screen w-full items-center justify-center">
       {!isPlaying ? (
-        <div className="relative flex flex-col gap-[1rem] justify-center items-center">
-          <p className="absolute -top-[3rem] font-sans uppercase text-white text-[1rem]">
+        <div className="relative flex flex-col items-center justify-center gap-[1rem]">
+          <p className="absolute -top-[3rem] font-sans text-[1rem] text-white uppercase mix-blend-difference">
             Here's a sneak peek!
           </p>
           <Image
@@ -40,7 +40,7 @@ export default function SneakPeek() {
             className="w-screen lg:w-[75%]"
           />
           <button
-            className="absolute inset-0 flex justify-center items-center cursor-pointer"
+            className="absolute inset-0 flex cursor-pointer items-center justify-center"
             onClick={handlePlay}
             aria-label="Play Trailer"
           >
@@ -51,8 +51,8 @@ export default function SneakPeek() {
           </button>
         </div>
       ) : (
-        <div className="relative flex flex-col gap-[1rem] justify-center items-center">
-          <p className="absolute -top-[4rem] font-sans uppercase text-white text-[1rem]">
+        <div className="relative flex flex-col items-center justify-center gap-[1rem]">
+          <p className="absolute -top-[4rem] font-sans text-[1rem] text-white uppercase">
             Here's a sneak peek!
           </p>
           <video
