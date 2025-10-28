@@ -1,21 +1,24 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navigation() {
   return (
-    <nav className="w-full h-[5.5rem] flex justify-between items-center px-[2rem] lg:px-[4rem] z-50 absolute top-0 left-0 bg-black">
+    <nav className="absolute top-0 left-0 z-50 flex h-[5.5rem] w-full items-center justify-between bg-black px-[2rem] lg:px-[4rem]">
       <Image
         src="/logo.svg"
         alt="At The Helm Company Logo"
         width={78}
         height={49}
       />
-      <Image
-        className="cursor-pointer opacity-0"
-        src="/menu.svg"
-        alt="Menu Icon"
-        width={12}
-        height={12}
-      />
+      <Link href="mailto:info@atthehelmproductions.com" target="_blank">
+        <Image
+          className="cursor-pointer"
+          src="/email-icon.svg"
+          alt="Email Icon"
+          width={24}
+          height={24}
+        />
+      </Link>
     </nav>
   );
 }
