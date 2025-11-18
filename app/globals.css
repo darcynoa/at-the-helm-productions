@@ -5,6 +5,13 @@
   font-display: swap;
   src: url("./fonts/zing-rust-base.otf") format("opentype");
 }
+@font-face {
+  font-family: "Zuume Rough";
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("./fonts/zuume-rough-bold.otf") format("opentype");
+}
 
 @import "tailwindcss";
 
@@ -18,5 +25,10 @@
 
   --font-sans: "Inter", "Arial", sans-serif;
   --font-display: "Zing Rust Demo", "Arial", sans-serif;
+  --font-spacey: "Zuume Rough", "Arial", sans-serif;
   --font-handwriting: "Caveat", "Arial", sans-serif;
+}
+
+.clip-path-circle {
+  clip-path: circle(2.5% at 50% 14%);
 }

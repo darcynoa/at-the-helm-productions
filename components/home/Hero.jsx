@@ -1,9 +1,9 @@
-import Test from "../Test";
+import HeroLine from "../HeroLine";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import SplitText from "gsap/SplitText";
-import { useRef } from "react";
 
 gsap.registerPlugin(DrawSVGPlugin, SplitText);
 
@@ -28,21 +28,21 @@ export default function Hero() {
         scrollTrigger: {
           trigger: hero.current,
           start: "top top+=1vh",
-          end: "bottom center",
+          end: "+=4000",
           pin: true,
           scrub: 1,
         },
       })
       .fromTo(
-        ".stroke-shape",
+        ".heroline-stroke-shape",
         {
           drawSVG: "0%",
           strokeWidth: 4,
         },
         {
           drawSVG: "100%",
-          duration: 1.3,
-          ease: "expo.inOut",
+          duration: 3,
+          ease: "linear",
         },
       )
       .to(
@@ -74,9 +74,9 @@ export default function Hero() {
   return (
     <section
       ref={hero}
-      className="relative -z-20 -mt-[1%] -mb-[2rem] flex h-screen w-full flex-col items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] bg-cover bg-top leading-[1]"
+      className="relative -z-20 -mt-[1%] -mb-[2rem] flex h-screen w-full flex-col items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_25%,rgba(7,6,6,0)_50%,rgba(7,6,6,1)_75%),url(/home-hero.png)] bg-size-[200%] bg-position-[center_right_10%] bg-no-repeat leading-[1] lg:bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] lg:bg-size-[auto] lg:bg-top"
     >
-      <h1 className="font-display flex items-center justify-center px-[2rem] pb-[4rem] text-center text-[5rem] leading-[1] font-black text-white uppercase drop-shadow-[0px_0px_34px_rgba(7,6,6,1)] lg:px-0 lg:text-[9.5rem]">
+      <h1 className="font-display px-[2rem] pt-[10rem] pb-[2rem] text-center text-[4rem] leading-[1] font-black text-white uppercase drop-shadow-[0px_0px_34px_rgba(7,6,6,1)] lg:px-0 lg:pt-0 lg:text-[9.5rem]">
         When We&apos;re <br /> At The Helm
       </h1>
       <div className="relative flex flex-col">
@@ -93,14 +93,14 @@ export default function Hero() {
         >
           You know there&apos;s gonna be a great wrap party
         </p>
-        <Test
+        <HeroLine
           ref={line}
           className="absolute -top-[3rem] left-0 w-[100%] lg:-top-[2rem]"
         />
       </div>
       <p
         ref={merryTime}
-        className="font-handwriting rotate-12 pl-[40%] text-[15px] text-white drop-shadow-[0px_0px_24px_rgba(7,6,6,1)] lg:text-[1.8rem]"
+        className="font-handwriting rotate-12 pl-[45%] text-[15px] text-white drop-shadow-[0px_0px_24px_rgba(7,6,6,1)] lg:text-[1.8rem]"
       >
         and have a merry time doing it!
       </p>

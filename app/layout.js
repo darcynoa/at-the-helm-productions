@@ -2,8 +2,9 @@ import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import Loading from "@/components/Loading";
 import Navigation from "@/components/Navigation";
-import ScrollCta from "@/components/ScrollCta";
+import ScrollCta from "@/components/LightBall";
 import Footer from "@/components/Footer";
+import Cursor from "@/components/Cursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,12 +27,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${caveat.variable} antialiased bg-black`}
+        className={`${inter.variable} ${caveat.variable} bg-black antialiased`}
       >
         {/* <Loading /> */}
         <Navigation />
+        <Cursor />
         {children}
-        <ScrollCta />
         <Footer />
       </body>
     </html>
