@@ -30,15 +30,15 @@ export default function JustSpaceyCardStack() {
     const mm = gsap.matchMedia();
 
     mm.add("(max-width: 767px)", () => {
-      // const pin = ScrollTrigger.create({
-      //   trigger: bottomCard.current,
-      //   start: "bottom+=1000px center-=33px",
-      //   end: "+=600px",
-      //   pin: true,
-      //   markers: true,
-      //   pinSpacing: false,
-      //   pinType: "fixed",
-      // });
+      const pin = ScrollTrigger.create({
+        trigger: bottomCard.current,
+        start: "bottom+=1000px top+=326px",
+        end: "+=500px",
+        pin: true,
+        markers: true,
+        pinSpacing: false,
+        pinType: "fixed",
+      });
 
       gsap
         .timeline({
@@ -85,9 +85,9 @@ export default function JustSpaceyCardStack() {
           "+=0.1",
         );
 
-      // return () => {
-      //   pin.kill();
-      // };
+      return () => {
+        pin.kill();
+      };
     });
 
     mm.add("(min-width: 768px)", () => {
@@ -164,7 +164,7 @@ export default function JustSpaceyCardStack() {
         </div>
         <div
           ref={bottomCard}
-          className="z-3 flex h-[110vh] w-full items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,0.3)_0%,rgba(7,6,6,0.3)_40%),url('/just-spacey-bottom-card.jpg')] bg-cover bg-center lg:h-screen"
+          className="relative z-3 flex h-[110vh] w-full items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,0.3)_0%,rgba(7,6,6,0.3)_40%),url('/just-spacey-bottom-card.jpg')] bg-cover bg-center lg:h-screen"
         >
           <div
             ref={middleOverlay}

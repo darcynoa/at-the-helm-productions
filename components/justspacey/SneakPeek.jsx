@@ -12,77 +12,68 @@ export default function SneakPeek() {
   const playButtonRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // useGSAP(() => {
-  //   const mm = gsap.matchMedia();
+  useGSAP(() => {
+    const mm = gsap.matchMedia();
+    gsap.set(trailerImageRef.current, { scale: 0.3 });
+    gsap.set(playButtonRef.current, { opacity: 0 });
 
-  //   mm.add(
-  //     // mobile
-  //     "(max-width: 767px)",
-  //     () => {
-  //       const tl = gsap.timeline({
-  //         scrollTrigger: {
-  //           trigger: containerRef.current,
-  //           start: "top center-=33px",
-  //           end: "+=400px",
-  //           scrub: 1,
-  //           pin: true,
-  //           // markers: true,
-  //         },
-  //       });
+    mm.add(
+      // mobile
+      "(max-width: 767px)",
+      () => {
+        const tl = gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top-=64px top+=326px",
+              end: "+=500px",
+              scrub: true,
+              pin: true,
+              markers: true,
+            },
+          })
+          .to(trailerImageRef.current, {
+            scale: 1,
+            ease: "power2.inOut",
+          })
+          .to(
+            playButtonRef.current,
+            {
+              opacity: 1,
+              ease: "linear",
+            },
+            "-=0.5",
+          );
+      },
+    );
 
-  //       // animate both scale and height on mobile
-  //       tl.fromTo(
-  //         trailerImageRef.current,
-  //         {
-  //           scale: 0.2,
-  //         },
-  //         {
-  //           scale: 1,
-  //           ease: "power2.inOut",
-  //         },
-  //       ).to(
-  //         playButtonRef.current,
-  //         {
-  //           opacity: 1,
-  //           ease: "linear",
-  //         },
-  //         "-=0.2",
-  //       );
-  //     },
-  //   );
-
-  //   // desktop/tablet: only scale
-  //   mm.add("(min-width: 768px)", () => {
-  //     const tl = gsap.timeline({
-  //       scrollTrigger: {
-  //         trigger: containerRef.current,
-  //         start: "top top+=20vh",
-  //         end: "+=500px",
-  //         scrub: 1,
-  //         pin: true,
-  //       },
-  //     });
-
-  //     tl.to(trailerImageRef.current, {
-  //       scale: 1,
-  //       ease: "power2.inOut",
-  //     }).to(
-  //       playButtonRef.current,
-  //       {
-  //         opacity: 1,
-  //         ease: "linear",
-  //       },
-  //       "-=0.5",
-  //     );
-
-  //     return () => {
-  //       tl.scrollTrigger && tl.scrollTrigger.kill();
-  //       tl.kill();
-  //     };
-  //   });
-  //   // overall cleanup for matchMedia when useGSAP unmounts
-  //   return () => mm.revert();
-  // });
+    // desktop/tablet: only scale
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "+=500px",
+            scrub: true,
+            pin: true,
+            markers: true,
+          },
+        })
+        .to(trailerImageRef.current, {
+          scale: 1,
+          ease: "power2.inOut",
+        })
+        .to(
+          playButtonRef.current,
+          {
+            opacity: 1,
+            ease: "linear",
+          },
+          "-=0.5",
+        );
+    });
+  });
 
   const handlePlay = async () => {
     setIsPlaying(true);
@@ -107,16 +98,16 @@ export default function SneakPeek() {
   return (
     <section
       ref={containerRef}
-      className="relative mt-[4rem] flex h-[45vh] w-full items-start justify-center lg:mt-0 lg:h-screen"
+      className="mt-[4rem] flex h-[60vh] w-full items-start justify-center lg:mt-0 lg:h-screen"
     >
       {!isPlaying ? (
-        <div className="relative flex flex-col items-center justify-center gap-[1rem]">
-          <p className="font-handwriting text-cyan text-[1.3rem] uppercase mix-blend-difference lg:text-[3rem]">
+        <div className="flex flex-col items-center justify-center">
+          <p className="font-handwriting text-cyan pt-[2rem] text-[1.3rem] uppercase mix-blend-difference lg:pt-[6rem] lg:text-[3rem]">
             Here's a sneak peek!
           </p>
           <div
             ref={trailerImageRef}
-            className="flex w-screen items-center justify-center py-[4rem] lg:py-[10rem]"
+            className="relative flex w-screen items-center justify-center py-[4rem] lg:py-[5rem]"
           >
             <Image
               src="/trailer-thumbnail.png"
@@ -131,18 +122,18 @@ export default function SneakPeek() {
                 }
               }}
             />
+            <button
+              className="absolute inset-0 top-[4rem] z-10 flex origin-top scale-75 cursor-pointer items-center justify-center lg:top-0 lg:scale-100"
+              onClick={handlePlay}
+              aria-label="Play Trailer"
+              ref={playButtonRef}
+            >
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" />
+                <polygon points="32,25 60,40 32,55" fill="#fff" />
+              </svg>
+            </button>
           </div>
-          <button
-            className="absolute inset-0 top-[4rem] flex cursor-pointer items-center justify-center opacity-0 lg:top-0"
-            onClick={handlePlay}
-            aria-label="Play Trailer"
-            ref={playButtonRef}
-          >
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-              <circle cx="40" cy="40" r="38" fill="rgba(0,0,0,0.5)" />
-              <polygon points="32,25 60,40 32,55" fill="#fff" />
-            </svg>
-          </button>
         </div>
       ) : (
         <div className="relative flex flex-col items-center justify-center gap-[1rem]">

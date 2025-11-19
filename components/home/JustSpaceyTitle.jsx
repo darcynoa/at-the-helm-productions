@@ -14,17 +14,14 @@ export default function JustSpaceyTitle() {
   const jsHeader = useRef(null);
   const jsBackground = useRef(null);
   const sectionRef = useRef(null);
-  const timelineRef = useRef(null);
   const viewButton = useRef(null);
   const [isPressed, setIsPressed] = useState(false);
 
   const handleTouchStart = (e) => {
-    console.log("pressed with touch start", e);
     setIsPressed(true);
   };
 
   const handleTouchEnd = (e) => {
-    console.log("pressed with touch end", e);
     setIsPressed(false);
   };
 
