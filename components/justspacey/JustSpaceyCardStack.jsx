@@ -38,6 +38,7 @@ export default function JustSpaceyCardStack() {
         markers: true,
         pinSpacing: false,
         pinType: "fixed",
+        pinReparent: true,
       });
 
       gsap
