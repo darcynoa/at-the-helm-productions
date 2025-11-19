@@ -23,11 +23,12 @@ export default function Navigation() {
 
   useGSAP(() => {
     const menuElement = document.getElementById("menu");
-    const menuItems = menuElement.querySelectorAll(".menu-item");
+    const menuItems = gsap.utils.toArray("#menu a");
+    // console.log(menuItems);
     const open = document.getElementById("menuOpen");
     const close = document.getElementById("menuClose");
     gsap.set(menuElement, { yPercent: -100 });
-    gsap.set(menuItems, { y: -20, opacity: 0 });
+    gsap.set(menuItems, { opacity: 0 });
 
     tl.current = gsap
       .timeline({
@@ -42,7 +43,6 @@ export default function Navigation() {
       .to(
         menuItems,
         {
-          y: 0,
           opacity: 1,
           stagger: 0.1,
           duration: 0.6,
