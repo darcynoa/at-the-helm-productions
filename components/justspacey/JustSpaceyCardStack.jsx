@@ -85,11 +85,9 @@ export default function JustSpaceyCardStack() {
           "+=0.1",
         );
 
-      return () => {
-        pin.kill();
-        tl.scrollTrigger && tl.scrollTrigger.kill();
-        tl.kill();
-      };
+      // return () => {
+      //   pin.kill();
+      // };
     });
 
     mm.add("(min-width: 768px)", () => {
@@ -137,11 +135,6 @@ export default function JustSpaceyCardStack() {
           },
           "+=0.1",
         );
-
-      return () => {
-        tl.scrollTrigger && tl.scrollTrigger.kill();
-        tl.kill();
-      };
     });
     return () => mm.revert();
   });

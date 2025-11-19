@@ -12,79 +12,77 @@ export default function SneakPeek() {
   const playButtonRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  useGSAP(() => {
-    const mm = gsap.matchMedia();
+  // useGSAP(() => {
+  //   const mm = gsap.matchMedia();
 
-    mm.add(
-      // mobile
-      "(max-width: 767px)",
-      () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top center-=33px",
-            end: "+=400px",
-            scrub: 1,
-            pin: true,
-            // markers: true,
-            pinSpacing: true,
-            pinType: "fixed",
-          },
-        });
+  //   mm.add(
+  //     // mobile
+  //     "(max-width: 767px)",
+  //     () => {
+  //       const tl = gsap.timeline({
+  //         scrollTrigger: {
+  //           trigger: containerRef.current,
+  //           start: "top center-=33px",
+  //           end: "+=400px",
+  //           scrub: 1,
+  //           pin: true,
+  //           // markers: true,
+  //         },
+  //       });
 
-        // animate both scale and height on mobile
-        tl.fromTo(
-          trailerImageRef.current,
-          {
-            scale: 0.2,
-          },
-          {
-            scale: 1,
-            ease: "power2.inOut",
-          },
-        ).to(
-          playButtonRef.current,
-          {
-            opacity: 1,
-            ease: "linear",
-          },
-          "-=0.2",
-        );
-      },
-    );
+  //       // animate both scale and height on mobile
+  //       tl.fromTo(
+  //         trailerImageRef.current,
+  //         {
+  //           scale: 0.2,
+  //         },
+  //         {
+  //           scale: 1,
+  //           ease: "power2.inOut",
+  //         },
+  //       ).to(
+  //         playButtonRef.current,
+  //         {
+  //           opacity: 1,
+  //           ease: "linear",
+  //         },
+  //         "-=0.2",
+  //       );
+  //     },
+  //   );
 
-    // desktop/tablet: only scale
-    mm.add("(min-width: 768px)", () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top+=20vh",
-          end: "+=500px",
-          scrub: 1,
-          pin: true,
-        },
-      });
+  //   // desktop/tablet: only scale
+  //   mm.add("(min-width: 768px)", () => {
+  //     const tl = gsap.timeline({
+  //       scrollTrigger: {
+  //         trigger: containerRef.current,
+  //         start: "top top+=20vh",
+  //         end: "+=500px",
+  //         scrub: 1,
+  //         pin: true,
+  //       },
+  //     });
 
-      tl.to(trailerImageRef.current, {
-        scale: 1,
-        ease: "power2.inOut",
-      }).to(
-        playButtonRef.current,
-        {
-          opacity: 1,
-          ease: "linear",
-        },
-        "-=0.5",
-      );
+  //     tl.to(trailerImageRef.current, {
+  //       scale: 1,
+  //       ease: "power2.inOut",
+  //     }).to(
+  //       playButtonRef.current,
+  //       {
+  //         opacity: 1,
+  //         ease: "linear",
+  //       },
+  //       "-=0.5",
+  //     );
 
-      return () => {
-        tl.scrollTrigger && tl.scrollTrigger.kill();
-        tl.kill();
-      };
-    });
-    // overall cleanup for matchMedia when useGSAP unmounts
-    return () => mm.revert();
-  });
+  //     return () => {
+  //       tl.scrollTrigger && tl.scrollTrigger.kill();
+  //       tl.kill();
+  //     };
+  //   });
+  //   // overall cleanup for matchMedia when useGSAP unmounts
+  //   return () => mm.revert();
+  // });
 
   const handlePlay = async () => {
     setIsPlaying(true);
@@ -126,7 +124,7 @@ export default function SneakPeek() {
               width={1240}
               height={519}
               className="h-auto max-w-full object-contain"
-              onLoadingComplete={() => {
+              onLoad={() => {
                 // ensure ScrollTrigger measure is correct after image loads
                 if (typeof window !== "undefined" && window.ScrollTrigger) {
                   window.ScrollTrigger && window.ScrollTrigger.refresh();
