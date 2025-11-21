@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import LightBall from "../LightBall";
+import LightBall from "./LightBall";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -27,6 +27,7 @@ export default function Contact() {
   });
   return (
     <section
+      id="contact"
       ref={container}
       className="relative mt-[4rem] mb-[6rem] flex h-auto flex-col items-center justify-center gap-[4rem] lg:h-screen"
     >
