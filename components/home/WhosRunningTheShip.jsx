@@ -23,8 +23,9 @@ export default function WhosRunningTheShip() {
           scrollTrigger: {
             trigger: circleRef.current,
             start: "top center+=200px",
-            end: "+=300px",
+            end: "+=480px",
             scrub: 1,
+            markers: true,
           },
         })
         .to(circleRef.current, {
@@ -70,7 +71,7 @@ export default function WhosRunningTheShip() {
           scrollTrigger: {
             trigger: circleRef.current,
             start: "center-=400px center",
-            end: "+=400px",
+            end: "+=350px",
             scrub: 1,
           },
         })
@@ -242,7 +243,7 @@ export default function WhosRunningTheShip() {
   const emerging = useRef(null);
   return (
     <section ref={container} className="mt-[3rem] w-full lg:mt-[15rem]">
-      <h1 className="font-display text-center text-[5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:text-[9.5rem] lg:leading-normal">
+      <h1 className="font-display pb-[2rem] text-center text-[3.5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:pb-0 lg:text-[9.5rem] lg:leading-normal">
         Who's running the ship?
       </h1>
       <div
@@ -251,7 +252,7 @@ export default function WhosRunningTheShip() {
       >
         <h2
           ref={helmer}
-          className="font-display text-center text-[4rem] leading-[1.2] font-black text-white uppercase lg:text-[7rem] lg:leading-normal"
+          className="font-display px-[1rem] text-center text-[3rem] leading-[1.2] font-black text-white uppercase lg:px-0 lg:text-[7rem] lg:leading-normal"
         >
           Anna Helmer At The Helm
         </h2>
