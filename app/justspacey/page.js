@@ -1,13 +1,13 @@
 import Contact from "@/components/Contact";
 import AuthenticLocations from "@/components/justspacey/AuthenticLocations";
 import JustSpaceyCardStack from "@/components/justspacey/JustSpaceyCardStack";
-import JustSpaceyIntro from "@/components/justspacey/JustSpaceyIntro";
+import JustSpaceyHero from "@/components/justspacey/JustSpaceyHero";
 import SneakPeek from "@/components/justspacey/SneakPeek";
 
 export default function JustSpacey() {
   return (
     <div>
-      <JustSpaceyIntro />
+      <JustSpaceyHero />
       <JustSpaceyCardStack />
       <SneakPeek />
       <AuthenticLocations />

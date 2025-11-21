@@ -8,18 +8,20 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-export default function JustSpaceyLogline() {
+export default function JustSpaceyHero() {
   const container = useRef(null);
   const text = useRef(null);
   const header = useRef(null);
+  const displayWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+  const fadeInDuration = displayWidth > 767 ? 1 : 2;
   useGSAP(() => {
     gsap
       .timeline({ delay: 0.9 })
       .to(container.current, {
         backgroundImage:
           "linear-gradient(to bottom, rgba(7,6,6,0.5) 0%, rgba(7,6,6,0.5) 100%), url(/just-spacey-logline.JPG)",
-        duration: 1,
-        ease: "power2.out",
+        duration: fadeInDuration,
+        ease: "power2.inOut",
       })
       .to(header.current, {
         opacity: 0,
