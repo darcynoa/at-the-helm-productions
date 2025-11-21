@@ -1,4 +1,4 @@
-import Contact from "@/components/home/Contact";
+import Contact from "@/components/Contact";
 import AuthenticLocations from "@/components/justspacey/AuthenticLocations";
 import JustSpaceyCardStack from "@/components/justspacey/JustSpaceyCardStack";
 import JustSpaceyIntro from "@/components/justspacey/JustSpaceyIntro";

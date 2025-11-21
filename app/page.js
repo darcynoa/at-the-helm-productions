@@ -7,7 +7,7 @@ import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import WhatIsAtTheHelm from "@/components/home/WhatsAtTheHelm";
 import JustSpaceyTitle from "@/components/home/JustSpaceyTitle";
-import Contact from "@/components/home/Contact";
+import Contact from "@/components/Contact";
 import WhosRunningTheShip from "@/components/home/WhosRunningTheShip";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
