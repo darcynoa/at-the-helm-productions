@@ -71,13 +71,14 @@ export default function JustSpaceyTitle() {
 
     mm.add("(min-width: 1024px)", () => {
       gsap.from([jsText.current, jsHeader.current], {
-        y: "-68vh",
+        y: "-80vh",
         ease: "power3.in",
         scrollTrigger: {
           trigger: jsBackground.current,
-          start: "top center-=10vh",
-          end: "center center",
+          start: "top center",
+          end: "center center+=10%",
           scrub: 1,
+          // markers: true,
         },
       });
     });
