@@ -29,7 +29,7 @@ export default function SneakPeek() {
               end: "+=500px",
               scrub: true,
               pin: true,
-              markers: true,
+              // markers: true,
             },
           })
           .to(trailerImageRef.current, {
@@ -57,7 +57,7 @@ export default function SneakPeek() {
             end: "+=500px",
             scrub: true,
             pin: true,
-            markers: true,
+            // markers: true,
           },
         })
         .to(trailerImageRef.current, {
