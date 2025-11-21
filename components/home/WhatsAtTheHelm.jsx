@@ -55,7 +55,7 @@ export default function WhatIsAtTheHelm() {
           scrollTrigger: {
             trigger: container.current,
             start: "top center-=180px",
-            end: "+=2000px",
+            end: "+=1000px",
             scrub: true,
             pin: true,
           },
