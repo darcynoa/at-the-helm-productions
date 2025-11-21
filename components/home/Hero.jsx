@@ -23,12 +23,17 @@ export default function Hero() {
 
     gsap.set(splitFinalText.lines, { autoAlpha: 0, y: 20 });
 
+    const displayWidth = window.innerWidth;
+    const overallDuration = displayWidth < 768 ? "+=2000" : "+=4000";
+    const scribbleDuration = displayWidth < 768 ? 1 : 3;
+    console.log("scribbleDuration:", scribbleDuration);
+
     const tl = gsap
       .timeline({
         scrollTrigger: {
           trigger: hero.current,
           start: "top top+=1vh",
-          end: "+=4000",
+          end: overallDuration,
           pin: true,
           scrub: 1,
         },
@@ -41,7 +46,7 @@ export default function Hero() {
         },
         {
           drawSVG: "100%",
-          duration: 3,
+          duration: scribbleDuration,
           ease: "linear",
         },
       )
