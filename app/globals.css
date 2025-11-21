@@ -33,3 +33,26 @@
 .clip-path-circle {
   clip-path: circle(2.5% at 50% 14%);
 }
+
+.mix-blend-btn {
+  position: relative; /* ensures ::before is positioned to the button */
+  isolation: isolate; /* keeps blending contained so only the pseudo-element mixes with what's behind */
+}
+
+/* blended background layer */
+.mix-blend-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  border-radius: 9999px; /* match the rounded-[5rem] */
+  background: rgb(255, 255, 255); /* tweak color/gradient as needed */
+  mix-blend-mode: difference; /* or whatever blend you want */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* keep content above the pseudo-element */
+.mix-blend-btn > * {
+  position: relative;
+  z-index: 1;
+}

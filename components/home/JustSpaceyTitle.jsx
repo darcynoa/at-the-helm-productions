@@ -17,11 +17,11 @@ export default function JustSpaceyTitle() {
   const viewButton = useRef(null);
   const [isPressed, setIsPressed] = useState(false);
 
-  const handleTouchStart = (e) => {
+  const handleTouchStart = () => {
     setIsPressed(true);
   };
 
-  const handleTouchEnd = (e) => {
+  const handleTouchEnd = () => {
     setIsPressed(false);
   };
 
@@ -116,7 +116,7 @@ export default function JustSpaceyTitle() {
 
         {/* overlay centered on image; pointer-events-none allows clicks to pass to the link,
             but make the header itself pointer-events-auto so it's clickable */}
-        <div className="pointer-events-none absolute inset-0 top-[20%] flex flex-col items-center justify-center text-white">
+        <div className="pointer-events-none absolute inset-0 top-[01%] flex flex-col items-center justify-center text-white lg:top-[20%]">
           <p
             ref={jsText}
             className="font-sans text-[15px] uppercase mix-blend-exclusion lg:text-[1.5rem]"
@@ -131,7 +131,7 @@ export default function JustSpaceyTitle() {
           </h1>
           <div
             className={
-              "font-display absolute bottom-[38%] text-[1rem] text-black transition-all duration-300 lg:hidden " +
+              "font-display absolute bottom-[calc(30%_+_11px)] text-[1rem] text-black transition-all duration-300 lg:hidden " +
               (isPressed ? "tracking-[0.16em]" : "tracking-[0.04em]")
             }
           >
@@ -141,7 +141,7 @@ export default function JustSpaceyTitle() {
           <Link
             href="/justspacey"
             className={
-              "font-display pointer-events-auto relative z-[10] flex h-[3rem] w-[6rem] rounded-[5rem] bg-white text-[1rem] uppercase mix-blend-exclusion transition-all lg:hidden " +
+              "font-display pointer-events-auto absolute bottom-[30%] isolate z-[10] flex h-[3rem] w-[6rem] items-center justify-center rounded-[5rem] bg-white text-[1rem] uppercase mix-blend-difference transition-all lg:hidden " +
               (isPressed ? "scale-[1.15]" : "scale-[1]")
             }
             ref={viewButton}
@@ -150,7 +150,11 @@ export default function JustSpaceyTitle() {
             onTouchCancel={handleTouchCancel}
             onMouseDown={() => setIsPressed(true)}
             onMouseUp={() => setIsPressed(false)}
-          ></Link>
+          >
+            {/* <span className="font-display font-black text-white uppercase mix-blend-normal">
+              view
+            </span> */}
+          </Link>
         </div>
       </div>
     </section>
