@@ -12,11 +12,12 @@ gsap.registerPlugin(DrawSVGPlugin, SplitText);
 
 export default function WhosRunningTheShip() {
   useGSAP(() => {
-    gsap.set(emerging.current, { autoAlpha: 0, y: 220 });
     const mm = gsap.matchMedia();
     const roleItems = gsap.utils.toArray(roles.current.children);
 
     mm.add("(max-width: 767px)", () => {
+      gsap.set(emerging.current, { autoAlpha: 0, y: -15 });
+
       // Circle expansion animation
       gsap
         .timeline({
@@ -121,12 +122,14 @@ export default function WhosRunningTheShip() {
         .to(emerging.current, {
           y: 0,
           autoAlpha: 1,
-          duration: 0.3,
+          duration: 0.8,
           ease: "power2.out",
         });
     });
 
     mm.add("(min-width: 768px)", () => {
+      gsap.set(emerging.current, { autoAlpha: 0, y: 25 });
+
       // Circle expansion animation
       gsap
         .timeline({
@@ -230,7 +233,7 @@ export default function WhosRunningTheShip() {
         .to(emerging.current, {
           y: 0,
           autoAlpha: 1,
-          duration: 0.3,
+          duration: 0.8,
           ease: "power2.out",
         });
     });
@@ -275,16 +278,17 @@ export default function WhosRunningTheShip() {
           <h4 className="w-fit font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
             Production Assistant
           </h4>
-          <h4 className="w-fit font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
-            Broke <span className="hidden">Emerging</span> Filmmaker
+          <h4 className="relative w-fit font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
+            Broke{" "}
+            <span
+              ref={emerging}
+              className="font-handwriting text-cyan absolute bottom-[40px] left-0 -rotate-6 text-[1rem] opacity-0 lg:-bottom-[40px] lg:w-fit lg:text-[2rem] [@media(519px_<_width_<_64rem)]:bottom-[24px]"
+            >
+              Emerging
+            </span>{" "}
+            Filmmaker
+            <HelmerLine className="absolute -top-[14px] -left-[12px] w-[80%] lg:top-0 lg:-left-[37px] lg:w-auto" />
           </h4>
-          <HelmerLine className="absolute right-[9%] bottom-[8%] w-[25%] lg:right-[18.5%] lg:bottom-0 lg:w-auto" />
-          <p
-            ref={emerging}
-            className="font-handwriting text-cyan absolute right-[13%] bottom-[44%] -rotate-6 text-[1.5rem] opacity-0 lg:right-[20%] lg:bottom-[-45%] lg:w-fit lg:text-[3rem]"
-          >
-            Emerging
-          </p>
         </div>
       </div>
     </section>
