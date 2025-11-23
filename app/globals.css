@@ -56,3 +56,33 @@
   position: relative;
   z-index: 1;
 }
+
+.object-fit-video {
+  container-type: size;
+
+  /* cut off overflowing video */
+  overflow: hidden;
+}
+
+.object-fit-video > iframe {
+  position: absolute;
+  /* keep video centered both vertically and horizontally */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  height: 100%;
+
+  /* force aspect ratio based on parent container */
+  @container (min-aspect-ratio: 16/9) {
+    height: 53.44cqw; /* 1.871:1 */ /* 56.25cqw in 16:9 */
+  }
+
+  @container (max-aspect-ratio: 16/9) {
+    width: 187.1cqh; /* 1.871:1 */ /* 177.78cqh in 16:9 */
+  }
+
+  /* prevent interaction */
+  pointer-events: none;
+}

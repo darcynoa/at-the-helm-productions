@@ -98,15 +98,20 @@ export default function AuthenticLocations() {
           ref={middleOverlay}
           className="absolute top-0 left-0 z-4 h-screen w-full bg-[linear-gradient(to_bottom,rgba(7,6,6,0.7)_0%,rgba(7,6,6,0.7)_100%)]"
         ></div>
-        <div ref={videoContainerRef} className="relative z-3 overflow-hidden">
-          <iframe
-            src="https://player.vimeo.com/video/1136329521?h=2a9ec0ab28&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1&amp;controls=0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            className="h-screen origin-center scale-600 object-cover lg:h-screen lg:w-full lg:origin-top lg:scale-120"
-            title="B-roll1_trimmed"
-          ></iframe>
-          <script src="https://player.vimeo.com/api/player.js"></script>
+        <div
+          ref={videoContainerRef}
+          className="relative z-3 h-screen w-screen overflow-hidden"
+        >
+          <div className="object-fit-video absolute inset-0 h-full w-full overflow-hidden">
+            <iframe
+              src="https://player.vimeo.com/video/1136329521?h=2a9ec0ab28&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1&amp;controls=0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="pointer-events-none"
+              title="B-roll1_trimmed"
+            ></iframe>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+          </div>
           <div className="absolute top-0 left-0 z-[2] flex h-full w-full flex-col justify-between gap-[8rem] pt-[10rem] pb-[5rem]">
             <h2
               ref={locationName}
