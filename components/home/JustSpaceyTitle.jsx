@@ -77,7 +77,7 @@ export default function JustSpaceyTitle() {
           trigger: jsBackground.current,
           start: "top center-=100px",
           end: "center center+=100px",
-          scrub: 1.15,
+          scrub: 1,
           // markers: true,
         },
       });
