@@ -61,7 +61,6 @@ export default function AuthenticLocations() {
 
   return (
     <section ref={sectionRef}>
-      {/* //NOTE: smaller */}
       <h1 className="font-display pb-[4rem] text-center text-[4rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:text-[9.5rem]">
         Authentic <br /> Locations & Props
       </h1>
@@ -76,8 +75,8 @@ export default function AuthenticLocations() {
           >
             Pet Passages
           </h2>
-          <div className="flex items-center justify-between px-[0.5rem] lg:px-[5rem]">
-            <h4 className="w-1/3 font-sans text-[0.95rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
+          <div className="flex flex-col items-start justify-between gap-[1rem] px-[0.5rem] lg:flex-row lg:items-center lg:gap-0 lg:px-[5rem]">
+            <h4 className="w-1/2 font-sans text-[0.95rem] leading-[1.2] text-white uppercase lg:w-1/3 lg:text-[2.5rem]">
               Thanks to the kind and generous folks at Pet Passages – Livonia,
               we were able to film at a{" "}
               <span className="font-handwriting text-cyan text-[1rem] lg:text-[length:inherit]">
@@ -100,9 +99,9 @@ export default function AuthenticLocations() {
         ></div>
         <div
           ref={videoContainerRef}
-          className="relative z-3 h-screen w-screen overflow-hidden"
+          className="relative z-3 h-screen w-full overflow-hidden"
         >
-          <div className="object-fit-video absolute inset-0 h-full w-full overflow-hidden">
+          <div className="object-fit-video absolute inset-0 h-full w-full overflow-hidden lg:origin-top lg:scale-140">
             <iframe
               src="https://player.vimeo.com/video/1136329521?h=2a9ec0ab28&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1&amp;controls=0"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
@@ -119,8 +118,8 @@ export default function AuthenticLocations() {
             >
               Anatomy of Death Museum
             </h2>
-            <div className="flex items-center justify-between px-[0.5rem] lg:px-[5rem]">
-              <h4 className="w-1/3 font-sans text-[0.95rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
+            <div className="flex flex-col items-start justify-between gap-[1rem] px-[0.5rem] lg:flex-row lg:items-center lg:gap-0 lg:px-[5rem]">
+              <h4 className="w-1/2 font-sans text-[0.95rem] leading-[1.2] text-white uppercase lg:w-1/3 lg:text-[2.5rem]">
                 Thanks to the incredible Museum owner, we had access to{" "}
                 <span className="font-handwriting text-cyan text-[1rem] lg:text-[length:inherit]">
                   authentic embalming tools and set pieces.
