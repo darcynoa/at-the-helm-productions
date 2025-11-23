@@ -25,7 +25,7 @@ export default function SneakPeek() {
           .timeline({
             scrollTrigger: {
               trigger: containerRef.current,
-              start: "top-=64px top+=326px",
+              start: "top-=64px top+=220px",
               end: "+=500px",
               scrub: true,
               pin: true,
