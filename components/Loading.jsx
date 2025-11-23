@@ -1,29 +1,60 @@
 "use client";
 
-import WheelSVG from "./WheelSVG";
-import WheelThreeQuarterSVG from "./WheelThreeQuarterSVG";
-import { useState, useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import DecorativeWave from "./DecorativeWave";
-import Logo from "./Logo";
-import TheHelmMask from "./TheHelmMask";
+import { Flip } from "gsap/Flip";
+
+gsap.registerPlugin(Flip);
+
 import LoadingSVGGroup from "./LoadingSVGGroup";
 
 export default function Loading() {
+  const [shouldRenderLoader, setShouldRenderLoader] = useState(false);
+
   const loadingBar = useRef(null);
   const loadingValue = useRef(null);
   const loadingBarContainer = useRef(null);
-  const fullLogo = useRef(null);
+  const loaderLogoRef = useRef(null);
+  const loader = useRef(null);
 
   // The Querying of the SVG parts
   const fullWheel = "#fullWheel";
   const threeQuarterWheel = "#threeQuarterWheel";
+  const atTextWave = "#atTextWave";
+  const bigWave = "#bigWave";
+  const theHelmText = "#theHelmText";
+  const productionsWaveMask = "#productionWaveMask";
+
+  useEffect(() => {
+    const hasVisited = sessionStorage.getItem("hasVisited");
+
+    if (hasVisited) {
+      // Hide loader immediately
+      loader.current?.classList.add("skip-loader");
+
+      // Make the nav logo visible immediately
+      const navLogo = document.getElementById("navLogo");
+      console.log("this is runnning righttt???");
+      if (navLogo) navLogo.style.opacity = 1;
+
+      const menu = document.getElementById("menuSvg");
+      if (menu) menu.style.opacity = 1;
+
+      return; // 🚀 Skip building timeline entirely
+    }
+
+    sessionStorage.setItem("hasVisited", "true");
+    setShouldRenderLoader(true);
+  }, []);
+
+  if (!shouldRenderLoader) return null;
 
   useGSAP(() => {
+    if (sessionStorage.getItem("hasVisited")) return;
     gsap.set(threeQuarterWheel, { opacity: 0, x: 209 });
-    gsap.set("#wave", { y: 100, x: 0, scaleX: -1 });
-    gsap.set("#testRect", { transformOrigin: "50% 50%" });
+    gsap.set("#menuSvg", { autoAlpha: 0 });
+
     const tl = gsap
       .timeline()
       .to(fullWheel, {
@@ -32,37 +63,95 @@ export default function Loading() {
         duration: 3,
         ease: "sine.inOut",
       })
+      .to(threeQuarterWheel, {
+        opacity: 1,
+        ease: "none",
+        duration: 0.001,
+      })
       .to(fullWheel, {
         opacity: 0,
         duration: 0.5,
         delay: 0.5,
       })
-      .to(
-        threeQuarterWheel,
-        {
-          opacity: 1,
-          ease: "none",
-        },
-        "<",
-      )
-      .to(
-        [loadingBar.current, loadingValue.current],
-        {
-          opacity: 0,
-          duration: 0.5,
-          ease: "sine.in",
-        },
-        "<",
-      )
       .to(threeQuarterWheel, {
         x: 0,
         duration: 1,
-        ease: "power2.inOut",
-      });
+        ease: "sine.inOut",
+      })
+      .to(
+        atTextWave,
+        {
+          y: -140,
+          x: 650,
+          duration: 1.4,
+          ease: "linear",
+        },
+        "<0.5",
+      )
+      .to(
+        bigWave,
+        {
+          x: 10,
+          y: 0,
+          duration: 1.4,
+          ease: "linear",
+        },
+        "-=0.1",
+      )
+      .to(theHelmText, {
+        opacity: 1,
+        ease: "none",
+        duration: 0.1,
+      })
+      .to(bigWave, {
+        y: 200,
+        duration: 1.4,
+        ease: "power4.in",
+      })
+      .to(productionsWaveMask, {
+        y: 70,
+        duration: 1.4,
+        ease: "power4.out",
+        onComplete: () => {
+          const loaderLogo = loaderLogoRef.current;
+          const navLogo = document.getElementById("navLogo");
+          const flipState = Flip.getState(loaderLogo);
+          // Move loader logo into nav logo's container
+          navLogo.parentNode.appendChild(loaderLogo);
+          Flip.from(flipState, {
+            duration: 1.2,
+            ease: "power3.inOut",
+            absolute: true, // keeps transforms consistent
+            onComplete() {
+              gsap.to(navLogo, {
+                opacity: 1,
+                duration: 0.4,
+                pointerEvents: "auto",
+              });
+              gsap.to(loaderLogo, { opacity: 0, duration: 0.4 });
+              gsap.to("#menuSvg", { autoAlpha: 1, duration: 0.4 });
+            },
+          });
+        },
+      })
+      .to([loadingBar.current, loadingValue.current], {
+        opacity: 0,
+        duration: 0.5,
+        ease: "sine.in",
+      })
+      .to(
+        loader.current,
+        {
+          yPercent: -100,
+          duration: 1,
+          ease: "power2.in",
+        },
+        "+=1.5",
+      );
 
     gsap.from(loadingBar.current, {
       scaleX: 0,
-      duration: 3,
+      duration: tl.duration() - 1,
       ease: "expo.inOut",
       onUpdate: () => {
         const scaleX = gsap.getProperty(loadingBar.current, "scaleX");
@@ -74,21 +163,15 @@ export default function Loading() {
     // tl.play();
   });
   return (
-    <div className="absolute top-0 left-0 flex h-screen w-full flex-col items-center justify-center gap-[8rem] bg-black">
-      {/* <div className="relative flex w-full items-center justify-center">
-        <DecorativeWave className="absolute left-[27.1%] scale-[31.8%]" />
-        <TheHelmMask className="absolute top-[16.5%] left-[39.1%]" />
-        <Logo
-          ref={fullLogo}
-          className="absolute left-[30.4%] hidden scale-[80%]"
-        />
-        <WheelThreeQuarterSVG
-          ref={svgWheel34}
-          className="absolute left-[37.25%] w-[11rem] opacity-0 lg:w-auto"
-        />
-        <WheelSVG ref={svgWheel} className="w-[11rem] lg:w-auto" />
-      </div> */}
-      <LoadingSVGGroup />
+    <div
+      ref={loader}
+      className="fixed top-0 left-0 z-[9997] flex h-screen w-screen flex-col items-center justify-end gap-[8rem] bg-black pb-[4rem]"
+    >
+      <LoadingSVGGroup
+        ref={loaderLogoRef}
+        className="absolute top-1/2 left-1/2 h-auto max-w-[946px] -translate-x-1/2 -translate-y-1/2"
+      />
+
       <div className="flex w-screen flex-col items-center gap-[1.5rem]">
         <div
           ref={loadingBarContainer}

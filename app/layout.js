@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${caveat.variable} bg-black antialiased`}
       >
-        {/* <Loading /> */}
+        <Loading />
         <Navigation />
         <Cursor />
         {children}

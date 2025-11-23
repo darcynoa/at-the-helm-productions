@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import Menu from "./Menu.jsx";
@@ -72,14 +71,22 @@ export default function Navigation() {
     <>
       <nav className="fixed top-0 left-0 z-[9998] flex h-[5.5rem] w-full items-center justify-between bg-black px-[2rem] lg:px-[4rem]">
         <Link href="/">
-          <Image
-            src="/logo.svg"
-            alt="At The Helm Company Logo"
-            width={78}
-            height={49}
-          />
+          <div
+            id="navBarWrapper"
+            className="relative flex h-[49px] w-[78px] items-center justify-center"
+          >
+            <img
+              id="navLogo"
+              src="/logo.svg"
+              alt="At The Helm Company Logo"
+              className="h-auto w-full opacity-0"
+              width={78}
+              height={49}
+            />
+          </div>
         </Link>
         <MenuSVG
+          id="menuSvg"
           onClick={toggleMenu}
           ref={menuButton}
           className="cursor-pointer"
