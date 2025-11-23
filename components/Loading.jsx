@@ -49,7 +49,7 @@ export default function Loading() {
   }, []);
 
   useGSAP(() => {
-    if (!shouldRenderLoader) return;
+    // if (!shouldRenderLoader) return;
 
     if (sessionStorage.getItem("hasVisited")) return;
     gsap.set(threeQuarterWheel, { opacity: 0, x: 209 });
