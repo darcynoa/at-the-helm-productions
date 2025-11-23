@@ -35,7 +35,6 @@ export default function Loading() {
 
       // Make the nav logo visible immediately
       const navLogo = document.getElementById("navLogo");
-      console.log("this is runnning righttt???");
       if (navLogo) navLogo.style.opacity = 1;
 
       const menu = document.getElementById("menuSvg");

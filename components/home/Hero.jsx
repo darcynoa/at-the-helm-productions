@@ -26,7 +26,6 @@ export default function Hero() {
     const displayWidth = window.innerWidth;
     const overallDuration = displayWidth < 768 ? "+=2000" : "+=4000";
     const scribbleDuration = displayWidth < 768 ? 1 : 3;
-    console.log("scribbleDuration:", scribbleDuration);
 
     const tl = gsap
       .timeline({
