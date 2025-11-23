@@ -37,6 +37,7 @@ export default function JustSpaceyCardStack() {
         pin: true,
         // markers: true,
         pinSpacing: false,
+        anticipatePin: true,
         pinType: "fixed",
         pinReparent: true,
       });

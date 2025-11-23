@@ -30,6 +30,8 @@ export default function WhatIsAtTheHelm() {
             end: "+=2000px",
             scrub: true,
             pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
           },
         })
         .from(split.words, {

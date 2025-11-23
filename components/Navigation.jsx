@@ -9,10 +9,18 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import MenuSVG from "./MenuSVG.jsx";
 import { MorphSVGPlugin } from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(SplitText, MorphSVGPlugin);
 
 export default function Navigation() {
+  useEffect(() => {
+    const handle = () => ScrollTrigger.refresh();
+    window.addEventListener("load", handle);
+
+    return () => window.removeEventListener("load", handle);
+  }, []);
+
   const menuButton = useRef(null);
   const tl = useRef(null);
   const [menuOpen, setmenuOpen] = useState(false);
@@ -62,7 +70,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 z-[9999] flex h-[5.5rem] w-full items-center justify-between bg-black px-[2rem] lg:px-[4rem]">
+      <nav className="fixed top-0 left-0 z-[9998] flex h-[5.5rem] w-full items-center justify-between bg-black px-[2rem] lg:px-[4rem]">
         <Link href="/">
           <Image
             src="/logo.svg"

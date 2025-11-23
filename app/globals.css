@@ -30,6 +30,11 @@
   --font-handwriting: "Caveat", "Arial", sans-serif;
 }
 
+html,
+body {
+  overscroll-behavior: none;
+}
+
 .clip-path-circle {
   clip-path: circle(2.5% at 50% 14%);
 }

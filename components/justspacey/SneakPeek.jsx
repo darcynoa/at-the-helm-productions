@@ -29,6 +29,8 @@ export default function SneakPeek() {
               end: "+=500px",
               scrub: true,
               pin: true,
+              anticipatePin: 1,
+              pinSpacing: true,
               // markers: true,
             },
           })
