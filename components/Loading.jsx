@@ -10,14 +10,13 @@ gsap.registerPlugin(Flip);
 import LoadingSVGGroup from "./LoadingSVGGroup";
 
 export default function Loading() {
-  const [shouldRenderLoader, setShouldRenderLoader] = useState(false);
-
+  
   const loadingBar = useRef(null);
   const loadingValue = useRef(null);
   const loadingBarContainer = useRef(null);
   const loaderLogoRef = useRef(null);
   const loader = useRef(null);
-
+  
   // The Querying of the SVG parts
   const fullWheel = "#fullWheel";
   const threeQuarterWheel = "#threeQuarterWheel";
@@ -25,17 +24,18 @@ export default function Loading() {
   const bigWave = "#bigWave";
   const theHelmText = "#theHelmText";
   const productionsWaveMask = "#productionWaveMask";
+  
+  const [shouldRenderLoader, setShouldRenderLoader] = useState(false);
 
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("hasVisited");
 
     if (hasVisited) {
-      // Hide loader immediately
-      loader.current?.classList.add("skip-loader");
+      // Set render loader to false
+      setShouldRenderLoader(false);
 
       // Make the nav logo visible immediately
       const navLogo = document.getElementById("navLogo");
-      console.log("this is runnning righttt???");
       if (navLogo) navLogo.style.opacity = 1;
 
       const menu = document.getElementById("menuSvg");
@@ -48,9 +48,9 @@ export default function Loading() {
     setShouldRenderLoader(true);
   }, []);
 
-  if (!shouldRenderLoader) return null;
-
   useGSAP(() => {
+    if (!shouldRenderLoader) return;
+
     if (sessionStorage.getItem("hasVisited")) return;
     gsap.set(threeQuarterWheel, { opacity: 0, x: 209 });
     gsap.set("#menuSvg", { autoAlpha: 0 });
@@ -162,9 +162,11 @@ export default function Loading() {
 
     // tl.play();
   });
+
   return (
     <div
       ref={loader}
+      style={{ display: shouldRenderLoader ? "flex" : "none" }}
       className="fixed top-0 left-0 z-[9997] flex h-screen w-screen flex-col items-center justify-end gap-[8rem] bg-black pb-[4rem]"
     >
       <LoadingSVGGroup
