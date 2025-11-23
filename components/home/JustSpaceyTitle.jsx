@@ -35,8 +35,7 @@ export default function JustSpaceyTitle() {
       const pin = ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "center+=27.5% top",
-        // match this to the pinned animation distance (e.g. "+=600px") or tune as needed
-        end: "+=2000px",
+        end: "+=1000px",
         pin: true,
         pinSpacing: false,
         pinType: "fixed",
@@ -58,13 +57,14 @@ export default function JustSpaceyTitle() {
 
     mm.add("(min-width: 768px)", () => {
       gsap.to(carousel.current, {
-        xPercent: -200,
+        xPercent: -150,
         ease: "linear",
         scrollTrigger: {
           trigger: carousel.current,
-          start: "bottom bottom",
-          end: "+=1500px",
+          start: "bottom+=50px bottom",
+          end: "+=2000px",
           scrub: 1.3,
+          markers: true,
         },
       });
     });
@@ -72,12 +72,12 @@ export default function JustSpaceyTitle() {
     mm.add("(min-width: 1024px)", () => {
       gsap.from([jsText.current, jsHeader.current], {
         y: "-80vh",
-        ease: "power3.in",
+        ease: "expo.in",
         scrollTrigger: {
           trigger: jsBackground.current,
-          start: "top center",
-          end: "center center+=10%",
-          scrub: 1,
+          start: "top center-=100px",
+          end: "center center+=100px",
+          scrub: 1.15,
           // markers: true,
         },
       });
