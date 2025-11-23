@@ -68,7 +68,7 @@ export default function JustSpaceyHero() {
         Just spacey
       </h1>
       <h3
-        className="z-50 w-[70%] text-center font-sans text-[1rem] leading-[1.2] text-white uppercase opacity-0 lg:text-center lg:text-[3.5rem]"
+        className="z-50 w-[70%] text-center font-sans text-[1rem] leading-[1.2] text-white uppercase opacity-0 lg:text-center lg:text-[3rem]"
         ref={text}
       >
         When an orderly mortician is forced to bring his recently suspended
