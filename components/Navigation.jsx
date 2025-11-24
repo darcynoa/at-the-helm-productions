@@ -34,7 +34,6 @@ export default function Navigation() {
     // console.log(menuItems);
     const open = document.getElementById("menuOpen");
     const close = document.getElementById("menuClose");
-    gsap.set(menuElement, { yPercent: -100 });
     gsap.set(menuItems, { opacity: 0 });
 
     tl.current = gsap
@@ -42,7 +41,7 @@ export default function Navigation() {
         paused: true,
       })
       .to(menuElement, {
-        yPercent: 0,
+        yPercent: 100,
         duration: 1,
         ease: "power2.out",
       })
