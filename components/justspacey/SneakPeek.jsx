@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SneakPeek() {
   const containerRef = useRef(null);
@@ -13,6 +14,8 @@ export default function SneakPeek() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useGSAP(() => {
+    ScrollTrigger.normalizeScroll(true);
+
     const mm = gsap.matchMedia();
     gsap.set(trailerImageRef.current, { scale: 0.3 });
     gsap.set(playButtonRef.current, { opacity: 0 });
@@ -31,7 +34,6 @@ export default function SneakPeek() {
               pin: true,
               anticipatePin: 1.5,
               pinSpacing: true,
-              // markers: true,
             },
           })
           .to(trailerImageRef.current, {
@@ -59,7 +61,6 @@ export default function SneakPeek() {
             end: "+=500px",
             scrub: true,
             pin: true,
-            // markers: true,
           },
         })
         .to(trailerImageRef.current, {
@@ -116,7 +117,7 @@ export default function SneakPeek() {
               alt="Trailer Thumbnail"
               width={2940}
               height={1232}
-              className="h-auto max-w-full object-contain lg:max-w-1/2"
+              className="h-auto max-w-full object-contain lg:max-w-3/4"
               onLoad={() => {
                 // ensure ScrollTrigger measure is correct after image loads
                 if (typeof window !== "undefined" && window.ScrollTrigger) {
@@ -139,12 +140,12 @@ export default function SneakPeek() {
         </div>
       ) : (
         <div className="relative flex flex-col items-center justify-center gap-[1rem]">
-          <p className="font-sans text-[1rem] text-white uppercase">
+          <p className="font-handwriting text-cyan pt-[2rem] text-[1.3rem] uppercase mix-blend-difference lg:pt-[6rem] lg:text-[3rem]">
             Here's a sneak peek!
           </p>
           <iframe
             ref={videoRef}
-            src="https://player.vimeo.com/video/1135896162?h=b2eb03451a&amp;badge=0&amp;autoplay=1&amp;player_id=0&amp;app_id=58479"
+            src="https://player.vimeo.com/video/1139937148?h=cd6e16698e&amp;badge=0&amp;autoplay=1&amp;player_id=0&amp;app_id=58479"
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share;"
             referrerPolicy="strict-origin-when-cross-origin"
             style={{
