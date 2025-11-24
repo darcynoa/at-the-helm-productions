@@ -114,13 +114,13 @@ export default function JustSpaceyTitle() {
         {/* background image fills the container */}
         <CustomLink
           href={"/justspacey"}
-          className="pointer-events-none block h-full w-full lg:pointer-events-auto"
+          className="pointer-events-none block h-full w-full md:pointer-events-auto"
         >
           <Image
             src="/justspacey-hero.png"
             alt="Just Spacey Hero Background"
             fill
-            className="hidden object-cover lg:pointer-events-auto lg:block"
+            className="pointer-events-auto hidden object-cover lg:block"
           />
           <div className="h-screen w-full bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_-1%,rgba(7,6,6,0.5)_10%,rgba(7,6,6,0.1)_20%,rgba(7,6,6,0)_22%,rgba(7,6,6,0)_70%,rgba(7,6,6,0.25)_75%,rgba(7,6,6,0.65)_82%,rgba(7,6,6,1)_92%),url(/just-spacey-title-mobile.JPG)] bg-cover bg-[15%]"></div>
         </CustomLink>
