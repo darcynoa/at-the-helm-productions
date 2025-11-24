@@ -6,12 +6,12 @@ import SneakPeek from "@/components/justspacey/SneakPeek";
 
 export default function JustSpacey() {
   return (
-    <div>
+    <>
       <JustSpaceyHero />
       <JustSpaceyCardStack />
       <SneakPeek />
       <AuthenticLocations />
       <Contact />
-    </div>
+    </>
   );
 }

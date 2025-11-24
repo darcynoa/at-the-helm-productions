@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
@@ -10,6 +11,7 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 
 export default function JustSpaceyHero() {
   const container = useRef(null);
+  const overlay = useRef(null);
   const text = useRef(null);
   const header = useRef(null);
   const displayWidth = typeof window !== "undefined" ? window.innerWidth : 0;
@@ -17,9 +19,8 @@ export default function JustSpaceyHero() {
   useGSAP(() => {
     gsap
       .timeline({ delay: 0.9 })
-      .to(container.current, {
-        backgroundImage:
-          "linear-gradient(to bottom, rgba(7,6,6,0.5) 0%, rgba(7,6,6,0.5) 100%), url(/just-spacey-logline.JPG)",
+      .to(overlay.current, {
+        opacity: 0.5,
         duration: fadeInDuration,
         ease: "power2.inOut",
       })
@@ -59,10 +60,21 @@ export default function JustSpaceyHero() {
   return (
     <section
       ref={container}
-      className="relative mb-0 flex h-lvh w-full flex-col items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_0%,rgba(7,6,6,1)_100%),url(/just-spacey-logline.JPG)] bg-size-[175%] bg-position-[45%] bg-no-repeat lg:mb-[8rem] lg:bg-cover"
+      className="relative mb-0 flex h-lvh w-full flex-col items-center justify-center lg:mb-[8rem]"
     >
+      <Image
+        ref={overlay}
+        src="/just-spacey-logline.JPG"
+        alt="The main picture of the logline"
+        width={2048}
+        height={1365}
+        className="absolute inset-0 h-full w-[100%] origin-center scale-185 object-contain object-[45%] opacity-0 lg:w-full lg:object-cover lg:object-center"
+      />
+      {/* top dark overlay (initially solid, then fades out) */}
+      <div className="absolute inset-0 bg-[rgba(7,6,6,1)] opacity-25"></div>
       <h1
         ref={header}
+        style={{ viewTransitionName: "just-spacey" }}
         className="font-spacey absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-[5rem] font-black tracking-[0.04em] text-white uppercase mix-blend-exclusion hover:cursor-pointer lg:text-[9.5rem]"
       >
         Just spacey
