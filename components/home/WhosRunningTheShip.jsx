@@ -181,7 +181,7 @@ export default function WhosRunningTheShip() {
           scrollTrigger: {
             trigger: circleRef.current,
             start: "center-=200px center",
-            end: "+=300px",
+            end: "+=170px",
             scrub: 1.5,
           },
         })
@@ -262,22 +262,22 @@ export default function WhosRunningTheShip() {
           ref={roles}
           className="relative grid grid-cols-3 place-items-center gap-[2rem]"
         >
-          <h4 className="w-fit font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
+          <h4 className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
             Producer
           </h4>
-          <h4 className="w-fit font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
+          <h4 className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
             Writer
           </h4>
-          <h4 className="w-fit font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
+          <h4 className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
             Director
           </h4>
-          <h4 className="w-fit font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
+          <h4 className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
             2nd AD
           </h4>
-          <h4 className="w-fit font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
+          <h4 className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
             Production Assistant
           </h4>
-          <h4 className="relative w-fit font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
+          <h4 className="relative w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
             Broke{" "}
             <span
               ref={emerging}
