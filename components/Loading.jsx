@@ -10,13 +10,12 @@ gsap.registerPlugin(Flip);
 import LoadingSVGGroup from "./LoadingSVGGroup";
 
 export default function Loading() {
-  
   const loadingBar = useRef(null);
   const loadingValue = useRef(null);
   const loadingBarContainer = useRef(null);
   const loaderLogoRef = useRef(null);
   const loader = useRef(null);
-  
+
   // The Querying of the SVG parts
   const fullWheel = "#fullWheel";
   const threeQuarterWheel = "#threeQuarterWheel";
@@ -24,7 +23,7 @@ export default function Loading() {
   const bigWave = "#bigWave";
   const theHelmText = "#theHelmText";
   const productionsWaveMask = "#productionWaveMask";
-  
+
   const [shouldRenderLoader, setShouldRenderLoader] = useState(false);
 
   useEffect(() => {
@@ -58,10 +57,10 @@ export default function Loading() {
     const tl = gsap
       .timeline()
       .to(fullWheel, {
-        rotate: 1080,
+        rotate: 360,
         transformOrigin: "50% 50%",
-        duration: 3,
-        ease: "sine.inOut",
+        duration: 1,
+        ease: "sine.out",
       })
       .to(threeQuarterWheel, {
         opacity: 1,
@@ -101,7 +100,7 @@ export default function Loading() {
       .to(theHelmText, {
         opacity: 1,
         ease: "none",
-        duration: 0.1,
+        duration: 0.001,
       })
       .to(bigWave, {
         y: 200,
