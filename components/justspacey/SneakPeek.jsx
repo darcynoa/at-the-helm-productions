@@ -145,7 +145,7 @@ export default function SneakPeek() {
           </p>
           <iframe
             ref={videoRef}
-            src="https://player.vimeo.com/video/1139937148?h=cd6e16698e&amp;badge=0&amp;autoplay=0&amp;player_id=0&amp;app_id=58479"
+            src="https://player.vimeo.com/video/1140147918?h=d53108dfd6&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share;"
             referrerPolicy="strict-origin-when-cross-origin"
             style={{
