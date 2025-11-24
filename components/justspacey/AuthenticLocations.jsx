@@ -81,7 +81,7 @@ export default function AuthenticLocations() {
               <span className="font-handwriting text-cyan text-[1rem] lg:text-[length:inherit]">
                 Pet Passages – Livonia
               </span>
-              for bringing this dream to life.
+              &nbsp;for bringing this dream to life.
             </h4>
             <Link
               className="font-sans text-[15px] font-normal text-white uppercase mix-blend-exclusion transition-shadow duration-300 ease-in-out hover:drop-shadow-[4px_4px_14px_rgba(5,255,192,1)] lg:text-[1.8rem]"
