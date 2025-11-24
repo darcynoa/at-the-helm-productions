@@ -13,8 +13,6 @@ export default function SneakPeek() {
   const playButtonRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const displayWidth = window.innerWidth;
-
   useGSAP(() => {
     ScrollTrigger.normalizeScroll(true);
 
