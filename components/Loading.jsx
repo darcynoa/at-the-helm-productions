@@ -34,7 +34,7 @@ export default function Loading() {
         opacity: 0,
         duration: 0.3,
         delay: 1,
-        onComplete: () => cover.remove(),
+        onComplete: () => (cover.style.display = "none"),
       });
     }
   }, []);

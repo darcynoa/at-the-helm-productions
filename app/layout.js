@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
         <Loading />
         <div
           id="initialCover"
-          className="fixed inset-0 z-[9996] h-[500vh] w-screen bg-black"
+          className="pointer-events-none fixed inset-0 z-[9996] h-[500vh] w-screen bg-black"
         ></div>
         <Navigation />
         <Cursor />
