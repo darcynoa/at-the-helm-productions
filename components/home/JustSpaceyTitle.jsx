@@ -42,12 +42,12 @@ export default function JustSpaceyTitle() {
       });
 
       gsap.to(carousel.current, {
-        x: -600,
+        x: -1200,
         ease: "linear",
         scrollTrigger: {
           trigger: carousel.current,
-          start: "bottom+=50px bottom",
-          end: "+=1500px",
+          start: "bottom+=10px bottom",
+          end: "+=800px",
           scrub: 1.3,
         },
       });
@@ -61,7 +61,7 @@ export default function JustSpaceyTitle() {
 
     mm.add("(min-width: 768px)", () => {
       gsap.to(carousel.current, {
-        xPercent: -150,
+        x: -150,
         ease: "linear",
         scrollTrigger: {
           trigger: carousel.current,
@@ -124,7 +124,7 @@ export default function JustSpaceyTitle() {
           />
           <div className="block h-screen w-full object-cover lg:hidden">
             <Image
-              className="-z-10 w-full origin-center scale-120 object-cover object-[0%]"
+              className="w-full origin-center scale-120 object-cover object-[0%]"
               src="/just-spacey-title-mobile.JPG"
               alt="Rotated light from set"
               fill
