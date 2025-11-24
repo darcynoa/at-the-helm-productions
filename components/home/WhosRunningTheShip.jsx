@@ -297,7 +297,7 @@ export default function WhosRunningTheShip() {
               Emerging
             </span>{" "}
             Filmmaker
-            <HelmerLine className="absolute -top-[14px] -left-[12px] w-[80%] lg:top-0 lg:-left-[37px] lg:w-auto" />
+            <HelmerLine className="absolute -top-[14px] left-[10px] w-[80%] lg:top-0 lg:-left-[37px] lg:w-auto" />
           </h4>
         </div>
       </div>
