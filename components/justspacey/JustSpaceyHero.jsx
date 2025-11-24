@@ -68,13 +68,12 @@ export default function JustSpaceyHero() {
         alt="The main picture of the logline"
         width={2048}
         height={1365}
-        className="absolute inset-0 h-full w-[100%] origin-center scale-185 object-contain object-[45%] opacity-0 lg:w-full lg:scale-0 lg:object-cover lg:object-center"
+        className="absolute inset-0 h-full w-[100%] origin-center scale-185 object-contain object-[45%] opacity-0 lg:w-full lg:scale-none lg:object-cover lg:object-center"
       />
       {/* top dark overlay (initially solid, then fades out) */}
       <div className="absolute inset-0 bg-[rgba(7,6,6,1)] opacity-25"></div>
       <h1
         ref={header}
-        style={{ viewTransitionName: "just-spacey" }}
         className="font-spacey absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-[5rem] font-black tracking-[0.04em] text-white uppercase mix-blend-exclusion hover:cursor-pointer lg:text-[9.5rem]"
       >
         Just spacey
