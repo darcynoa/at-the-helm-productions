@@ -46,7 +46,7 @@ export default function JustSpaceyCardStack() {
           scrollTrigger: {
             trigger: container.current,
             start: "top top",
-            end: "+=2000px",
+            end: "+=1000px",
             scrub: 1,
             pin: true,
             anticipatePin: 1,
