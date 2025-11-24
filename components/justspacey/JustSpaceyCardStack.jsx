@@ -46,7 +46,7 @@ export default function JustSpaceyCardStack() {
           scrollTrigger: {
             trigger: container.current,
             start: "top top",
-            end: "+=1000px",
+            end: "+=2000px",
             scrub: 1,
             pin: true,
             anticipatePin: 1,
@@ -64,6 +64,7 @@ export default function JustSpaceyCardStack() {
           {
             yPercent: -100,
             ease: "linear",
+            duration: 1,
           },
           ">",
         )
@@ -72,6 +73,7 @@ export default function JustSpaceyCardStack() {
           {
             autoAlpha: 0,
             ease: "linear",
+            duration: 1,
           },
           "<",
         )
@@ -79,8 +81,8 @@ export default function JustSpaceyCardStack() {
           bottomCardSplit.words,
           {
             yPercent: 100,
-            stagger: 0.02,
-            duration: 0.2,
+            stagger: 0.05,
+            duration: 0.5,
             ease: "power2.out",
           },
           "+=0.1",
