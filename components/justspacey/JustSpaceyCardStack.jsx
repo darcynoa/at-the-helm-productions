@@ -35,7 +35,6 @@ export default function JustSpaceyCardStack() {
         start: "bottom+=1000px top+=220px",
         end: "+=500px",
         pin: true,
-        // markers: true,
         pinSpacing: false,
         anticipatePin: true,
         pinType: "fixed",
@@ -52,7 +51,6 @@ export default function JustSpaceyCardStack() {
             pin: true,
             anticipatePin: 1,
             invalidateOnRefresh: true,
-            markers: true,
           },
         })
         .from(topCardSplit.words, {

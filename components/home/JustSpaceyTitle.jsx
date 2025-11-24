@@ -64,7 +64,6 @@ export default function JustSpaceyTitle() {
           start: "bottom+=50px bottom",
           end: "+=2000px",
           scrub: 1.3,
-          markers: true,
         },
       });
     });
@@ -78,7 +77,6 @@ export default function JustSpaceyTitle() {
           start: "top center-=100px",
           end: "center center+=100px",
           scrub: 1,
-          // markers: true,
         },
       });
     });

@@ -2,7 +2,6 @@ import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import Loading from "@/components/Loading";
 import Navigation from "@/components/Navigation";
-import ScrollCta from "@/components/LightBall";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
 

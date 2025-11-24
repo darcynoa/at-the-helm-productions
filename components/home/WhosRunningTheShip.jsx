@@ -26,7 +26,6 @@ export default function WhosRunningTheShip() {
             start: "top center+=200px",
             end: "+=480px",
             scrub: 1,
-            // markers: true,
           },
         })
         .to(circleRef.current, {

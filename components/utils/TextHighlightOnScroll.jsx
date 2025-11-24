@@ -47,8 +47,6 @@ export default function TextHighlightOnScroll({
           end: `+=${speed * 1000}px`,
           scrub: true,
           pin: true,
-          // set markers: true while debugging to see start/end
-          markers: true,
           invalidateOnRefresh: true,
         },
       },

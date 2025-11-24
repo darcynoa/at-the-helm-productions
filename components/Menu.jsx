@@ -54,7 +54,7 @@ export default function Menu({ toggleMenu }) {
   return (
     <div
       id="menu"
-      className="fixed top-0 left-0 z-50 flex h-dvh w-screen bg-black pt-[8rem] text-white lg:px-[3.5rem]"
+      className="fixed top-0 left-0 z-50 flex h-dvh w-screen bg-black pt-[8rem] text-white lg:h-screen lg:px-[3.5rem]"
     >
       <div className="flex w-full flex-col items-center justify-center gap-4 lg:items-start lg:justify-start lg:gap-0">
         {menuItems.map((item, index) => {
@@ -83,7 +83,7 @@ export default function Menu({ toggleMenu }) {
               ></span>
               <h1
                 ref={heading}
-                className="menu-item font-display px-[2rem] text-center text-[4rem] leading-[1] font-black text-white uppercase mix-blend-difference lg:text-left lg:text-[9.5rem]"
+                className="menu-item font-display px-[2rem] text-center text-[4rem] leading-[1] font-black text-white uppercase mix-blend-difference lg:text-left lg:text-[7rem] 2xl:text-[9.5rem]"
               >
                 {item.title}
               </h1>
