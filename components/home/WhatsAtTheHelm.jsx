@@ -14,6 +14,7 @@ export default function WhatIsAtTheHelm() {
   const text = useRef(null);
   const light = useRef(null);
   useGSAP(() => {
+    ScrollTrigger.normalizeScroll(true);
     const split = new SplitText(text.current, {
       type: "words",
       wordsClass: "mix-blend-difference",
