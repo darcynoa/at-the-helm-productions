@@ -35,10 +35,6 @@ body {
   overscroll-behavior: none;
 }
 
-.skip-loader {
-  display: none !important;
-}
-
 .clip-path-circle {
   clip-path: circle(2.5% at 50% 14%);
 }
