@@ -62,10 +62,10 @@ export default function JustSpaceyCardStack() {
         .to(
           topCard.current,
           {
-            y: "-100vh",
-            ease: "power4.in",
+            yPercent: -100,
+            ease: "linear",
           },
-          ">1",
+          ">",
         )
         .to(
           middleOverlay.current,
