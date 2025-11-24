@@ -77,11 +77,11 @@ export default function AuthenticLocations() {
           </h2>
           <div className="flex flex-col items-start justify-between gap-[1rem] px-[0.5rem] lg:flex-row lg:items-center lg:gap-0 lg:px-[5rem]">
             <h4 className="w-1/2 font-sans text-[0.95rem] leading-[1.2] text-white uppercase lg:w-1/3 lg:text-[2.5rem]">
-              Thanks for the kind and generous folks at{" "}
+              Thanks to the kind and generous folks at{" "}
               <span className="font-handwriting text-cyan text-[1rem] lg:text-[length:inherit]">
                 Pet Passages – Livonia
               </span>
-              , for bringing this dream to life.
+              for bringing this dream to life.
             </h4>
             <Link
               className="font-sans text-[15px] font-normal text-white uppercase mix-blend-exclusion transition-shadow duration-300 ease-in-out hover:drop-shadow-[4px_4px_14px_rgba(5,255,192,1)] lg:text-[1.8rem]"
