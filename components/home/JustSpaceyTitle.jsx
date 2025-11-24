@@ -122,7 +122,15 @@ export default function JustSpaceyTitle() {
             fill
             className="pointer-events-auto hidden object-cover lg:block"
           />
-          <div className="h-screen w-full bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_-1%,rgba(7,6,6,0.5)_10%,rgba(7,6,6,0.1)_20%,rgba(7,6,6,0)_22%,rgba(7,6,6,0)_70%,rgba(7,6,6,0.25)_75%,rgba(7,6,6,0.65)_82%,rgba(7,6,6,1)_92%),url(/just-spacey-title-mobile.JPG)] bg-cover bg-[15%]"></div>
+          <div className="block h-screen w-full object-cover lg:hidden">
+            <Image
+              className="-z-10 w-full origin-center scale-120 object-cover object-[0%]"
+              src="/just-spacey-title-mobile.JPG"
+              alt="Rotated light from set"
+              fill
+            />
+            <div className="z-10 h-screen w-full bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_-1%,rgba(7,6,6,0.5)_10%,rgba(7,6,6,0)_20%,rgba(7,6,6,0)_70%,rgba(7,6,6,0.25)_75%,rgba(7,6,6,0.65)_82%,rgba(7,6,6,1)_92%)]"></div>
+          </div>
         </CustomLink>
 
         {/* overlay centered on image; pointer-events-none allows clicks to pass to the link,
