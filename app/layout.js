@@ -29,6 +29,10 @@ export default function RootLayout({ children }) {
         className={`${inter.variable} ${caveat.variable} bg-black antialiased`}
       >
         <Loading />
+        <div
+          id="initialCover"
+          className="fixed inset-0 z-[9996] h-[500vh] w-screen bg-black"
+        ></div>
         <Navigation />
         <Cursor />
         {children}

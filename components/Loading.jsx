@@ -17,6 +17,7 @@ export default function Loading() {
   const loader = useRef(null);
 
   // The Querying of the SVG parts
+
   const fullWheel = "#fullWheel";
   const threeQuarterWheel = "#threeQuarterWheel";
   const atTextWave = "#atTextWave";
@@ -25,6 +26,18 @@ export default function Loading() {
   const productionsWaveMask = "#productionWaveMask";
 
   const [shouldRenderLoader, setShouldRenderLoader] = useState(false);
+
+  useEffect(() => {
+    const cover = "#initialCover";
+    if (cover) {
+      gsap.to(cover, {
+        opacity: 0,
+        duration: 0.3,
+        delay: 1,
+        onComplete: () => cover.remove(),
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("hasVisited");
