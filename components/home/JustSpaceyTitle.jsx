@@ -42,7 +42,7 @@ export default function JustSpaceyTitle() {
       });
 
       gsap.to(carousel.current, {
-        xPercent: -600,
+        x: -600,
         ease: "linear",
         scrollTrigger: {
           trigger: carousel.current,
