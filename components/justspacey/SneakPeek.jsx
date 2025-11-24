@@ -11,7 +11,7 @@ export default function SneakPeek() {
   const videoRef = useRef(null);
   const trailerImageRef = useRef(null);
   const playButtonRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const displayWidth = window.innerWidth;
 

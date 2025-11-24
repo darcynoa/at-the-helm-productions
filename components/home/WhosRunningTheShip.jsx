@@ -7,8 +7,9 @@ import { useGSAP } from "@gsap/react";
 import HelmerLine from "../HelmerLine";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import SplitText from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(DrawSVGPlugin, SplitText);
+gsap.registerPlugin(DrawSVGPlugin, SplitText, ScrollTrigger);
 
 export default function WhosRunningTheShip() {
   useGSAP(() => {
@@ -124,6 +125,11 @@ export default function WhosRunningTheShip() {
           duration: 0.8,
           ease: "power2.out",
         });
+
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+        gsap.globalTimeline.clear();
+      };
     });
 
     mm.add("(min-width: 768px)", () => {
@@ -235,6 +241,11 @@ export default function WhosRunningTheShip() {
           duration: 0.8,
           ease: "power2.out",
         });
+
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+        gsap.globalTimeline.clear();
+      };
     });
   });
 

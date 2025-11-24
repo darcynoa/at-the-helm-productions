@@ -49,6 +49,11 @@ export default function WhatIsAtTheHelm() {
           },
           "<",
         );
+
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+        gsap.globalTimeline.clear();
+      };
     });
 
     mm.add("(max-width: 767px)", () => {
@@ -77,6 +82,11 @@ export default function WhatIsAtTheHelm() {
           },
           "<",
         );
+
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+        gsap.globalTimeline.clear();
+      };
     });
   });
   const container = useRef(null);
