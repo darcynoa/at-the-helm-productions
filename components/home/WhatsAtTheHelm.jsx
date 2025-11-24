@@ -31,7 +31,6 @@ export default function WhatIsAtTheHelm() {
             scrub: true,
             pin: true,
             pinSpacing: true,
-            anticipatePin: 1,
           },
         })
         .from(split.words, {
@@ -92,7 +91,7 @@ export default function WhatIsAtTheHelm() {
         className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
       />
       <div className="flex h-auto w-full flex-col items-center justify-center gap-[4.5rem] py-[0rem] lg:h-screen lg:gap-[5rem] lg:py-[5rem]">
-        <h1 className="font-display max-w-[375px] text-center text-[5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:max-w-full lg:text-[9.5rem] lg:leading-normal">
+        <h1 className="font-display max-w-[375px] text-center text-[5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:max-w-full lg:text-[7rem] lg:leading-normal 2xl:text-[9.5rem]">
           What's at the helm
         </h1>
         <h3
