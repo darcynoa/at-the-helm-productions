@@ -46,7 +46,7 @@ export default function JustSpaceyTitle() {
         ease: "linear",
         scrollTrigger: {
           trigger: carousel.current,
-          start: "bottom bottom",
+          start: "bottom+=50px bottom",
           end: "+=1500px",
           scrub: 1.3,
         },
