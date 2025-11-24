@@ -114,9 +114,9 @@ export default function SneakPeek() {
             <Image
               src="/trailer-thumbnail.png"
               alt="Trailer Thumbnail"
-              width={1240}
-              height={519}
-              className="h-auto max-w-full object-contain"
+              width={2940}
+              height={1232}
+              className="h-auto max-w-full object-contain lg:max-w-1/2"
               onLoad={() => {
                 // ensure ScrollTrigger measure is correct after image loads
                 if (typeof window !== "undefined" && window.ScrollTrigger) {

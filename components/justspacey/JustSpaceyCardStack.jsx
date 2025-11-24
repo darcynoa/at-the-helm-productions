@@ -52,6 +52,7 @@ export default function JustSpaceyCardStack() {
             pin: true,
             anticipatePin: 1,
             invalidateOnRefresh: true,
+            markers: true,
           },
         })
         .from(topCardSplit.words, {
