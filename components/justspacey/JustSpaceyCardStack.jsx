@@ -46,7 +46,7 @@ export default function JustSpaceyCardStack() {
           scrollTrigger: {
             trigger: container.current,
             start: "top top",
-            end: "+=2000px",
+            end: "+=1000px",
             scrub: 1,
             pin: true,
             anticipatePin: 1,
@@ -116,7 +116,7 @@ export default function JustSpaceyCardStack() {
             y: "-100vh",
             ease: "linear",
           },
-          ">",
+          ">1",
         )
         .to(
           middleOverlay.current,
@@ -156,7 +156,7 @@ export default function JustSpaceyCardStack() {
         >
           <h3
             ref={topCardText}
-            className="w-[70%] text-center font-sans text-[1.6rem] leading-[1.2] text-white uppercase lg:text-[3.5rem]"
+            className="w-[70%] text-center font-sans text-[1.5rem] leading-[1.2] text-white uppercase lg:text-[3.5rem]"
           >
             ADHD characters are rarely seen on screen – let alone is there any
             mention of the symptoms that can be an advantage rather than a
@@ -173,7 +173,7 @@ export default function JustSpaceyCardStack() {
           ></div>
           <h3
             ref={bottomCardText}
-            className="w-[70%] text-center font-sans text-[1.6rem] leading-[1.2] text-white uppercase lg:text-[3.5rem]"
+            className="w-[70%] text-center font-sans text-[1.5rem] leading-[1.2] text-white uppercase lg:text-[3.5rem]"
           >
             Just Spacey is a morgue-comedy short film that touches on the
             unexpected humor, chaos, and brilliance of thinking differently.
