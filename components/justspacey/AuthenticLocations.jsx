@@ -67,7 +67,7 @@ export default function AuthenticLocations() {
       <div ref={container} className="relative h-screen">
         <div
           ref={petBg}
-          className="absolute z-5 flex h-screen w-full flex-col justify-between gap-[8rem] bg-[url(/pet-passages.jpg)] bg-cover bg-center py-[5rem]"
+          className="absolute z-5 flex h-screen w-full flex-col justify-between gap-[8rem] bg-[url(/pet-passages.jpg)] bg-cover bg-position-[79%] py-[5rem] lg:bg-center"
         >
           <h2
             ref={locationName}
