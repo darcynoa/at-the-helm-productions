@@ -61,12 +61,12 @@ export default function JustSpaceyTitle() {
 
     mm.add("(min-width: 768px)", () => {
       gsap.to(carousel.current, {
-        x: -150,
+        x: -1600,
         ease: "linear",
         scrollTrigger: {
           trigger: carousel.current,
           start: "bottom+=50px bottom",
-          end: "+=2000px",
+          end: "+=1000px",
           scrub: 1.3,
         },
       });
@@ -74,7 +74,7 @@ export default function JustSpaceyTitle() {
 
     mm.add("(min-width: 1024px)", () => {
       gsap.from([jsText.current, jsHeader.current], {
-        y: "-80vh",
+        y: -700,
         ease: "expo.in",
         scrollTrigger: {
           trigger: jsBackground.current,
