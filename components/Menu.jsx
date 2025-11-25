@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import gsap from "gsap";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const menuItems = [
   {
@@ -35,21 +35,47 @@ export default function Menu({ toggleMenu, tl }) {
   headings.current = [];
 
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleOnClick = (e, item) => {
-    e.preventDefault();
     const href = item.href;
-
-    toggleMenu();
-    tl.current.timeScale(1).reverse();
-
     const isAnchor = href.startsWith("/#");
+    const targetId = isAnchor ? href.replace("/#", "") : null;
 
+    const isHome = pathname === "/";
+    console.log(router.pathname);
+
+    console.log("At home: ", isHome);
+
+    // CASE 1 — already on home AND it's an anchor (#about-us or #contact)
+    if (isHome && isAnchor) {
+      console.log("is home and anchor");
+      // Let the browser do normal anchor scroll
+      toggleMenu();
+      tl.current.timeScale(1).reverse();
+
+      // After menu closes, scroll to the element
+      tl.current.eventCallback("onReverseComplete", () => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      });
+
+      return; // IMPORTANT
+    }
+
+    // CASE 2 — coming FROM another page (e.g., Just Spacey)
     if (isAnchor) {
-      const targetId = href.replace("/#", "");
+      e.preventDefault();
+      console.log("is not home and anchor");
 
-      // Store target section so the home page knows where to scroll
+      // set flag so home page scrolls properly
       sessionStorage.setItem("scrollToSection", targetId);
+
+      toggleMenu();
+      tl.current.timeScale(1).reverse();
 
       tl.current.eventCallback("onReverseComplete", () => {
         router.push("/");
@@ -58,7 +84,11 @@ export default function Menu({ toggleMenu, tl }) {
       return;
     }
 
-    // Normal navigation
+    // CASE 3 — normal internal link
+    console.log("is normal");
+    e.preventDefault();
+    toggleMenu();
+    tl.current.timeScale(1).reverse();
     tl.current.eventCallback("onReverseComplete", () => {
       router.push(href);
     });
