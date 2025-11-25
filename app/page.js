@@ -22,6 +22,19 @@ export default function Home() {
     return () => window.removeEventListener("pointermove", activate);
   }, []);
 
+  // Ensure scroll position is at 0 and scrolltriggers adjust accordingly
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 20);
+
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 50);
+  }, []);
+
   return (
     <>
       <Hero />
