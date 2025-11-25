@@ -14,75 +14,81 @@ export default function WhatIsAtTheHelm() {
   const text = useRef(null);
   const light = useRef(null);
   useGSAP(() => {
-    const mm = gsap.matchMedia();
-    gsap.delayedCall(1, () => {
-      const split = new SplitText(text.current, {
-        type: "words",
-        wordsClass: "mix-blend-difference",
-      });
-
-      mm.add("(min-width: 768px)", () => {
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: container.current,
-              start: "top top",
-              end: "+=2000px",
-              scrub: true,
-              pin: true,
-              pinSpacing: true,
-              // markers: true,
-            },
-          })
-          .from(split.words, {
-            opacity: 0.25,
-            stagger: 0.25,
-            duration: 1,
-            ease: "power2.out",
-          })
-          .to(
-            light.current,
-            {
-              scale: 4,
-              duration: 4,
-              ease: "linear",
-            },
-            "<",
-          );
-        ScrollTrigger.refresh();
-      });
-
-      mm.add("(max-width: 767px)", () => {
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: container.current,
-              start: "top center-=180px",
-              end: "+=1000px",
-              scrub: true,
-              pin: true,
-              anticipatePin: true,
-            },
-          })
-          .from(split.words, {
-            opacity: 0.25,
-            stagger: 0.25,
-            duration: 1,
-            ease: "power2.out",
-          })
-          .to(
-            light.current,
-            {
-              scale: 2,
-              duration: 1,
-              ease: "linear",
-            },
-            "<",
-          );
-      });
-      ScrollTrigger.refresh();
+    ScrollTrigger.normalizeScroll(true);
+    const split = new SplitText(text.current, {
+      type: "words",
+      wordsClass: "mix-blend-difference",
     });
-    return () => mm.revert();
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top top",
+            end: "+=2000px",
+            scrub: true,
+            pin: true,
+            pinSpacing: true,
+          },
+        })
+        .from(split.words, {
+          opacity: 0.25,
+          stagger: 0.25,
+          duration: 1,
+          ease: "power2.out",
+        })
+        .to(
+          light.current,
+          {
+            scale: 4,
+            duration: 4,
+            ease: "linear",
+          },
+          "<",
+        );
+
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+        gsap.globalTimeline.clear();
+      };
+    });
+
+    mm.add("(max-width: 767px)", () => {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top center-=180px",
+            end: "+=1000px",
+            scrub: true,
+            pin: true,
+            anticipatePin: true,
+          },
+        })
+        .from(split.words, {
+          opacity: 0.25,
+          stagger: 0.25,
+          duration: 1,
+          ease: "power2.out",
+        })
+        .to(
+          light.current,
+          {
+            scale: 2,
+            duration: 1,
+            ease: "linear",
+          },
+          "<",
+        );
+
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+        gsap.globalTimeline.clear();
+      };
+    });
   });
   const container = useRef(null);
   const bracelet = useRef(null);
