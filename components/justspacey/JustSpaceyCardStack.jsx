@@ -32,13 +32,14 @@ export default function JustSpaceyCardStack() {
     mm.add("(max-width: 767px)", () => {
       const pin = ScrollTrigger.create({
         trigger: bottomCard.current,
-        start: "bottom+=847px top+=220px",
+        start: "bottom+=1100px top+=220px",
         end: "+=500px",
         pin: true,
         pinSpacing: false,
         anticipatePin: true,
         pinType: "fixed",
         pinReparent: true,
+        markers: true,
       });
 
       gsap
@@ -46,7 +47,7 @@ export default function JustSpaceyCardStack() {
           scrollTrigger: {
             trigger: container.current,
             start: "top top",
-            end: "+=1000px",
+            end: "+=1100px",
             scrub: 1,
             pin: true,
             pinSpacing: true,
@@ -56,8 +57,8 @@ export default function JustSpaceyCardStack() {
         })
         .from(topCardSplit.words, {
           yPercent: 100,
-          stagger: 0.05,
-          duration: 0.5,
+          stagger: 0.15,
+          duration: 2,
           ease: "power2.inOut",
         })
         .to(
@@ -82,8 +83,8 @@ export default function JustSpaceyCardStack() {
           bottomCardSplit.words,
           {
             yPercent: 100,
-            stagger: 0.05,
-            duration: 0.5,
+            stagger: 0.15,
+            duration: 2,
             ease: "power2.out",
           },
           "+=0.1",
