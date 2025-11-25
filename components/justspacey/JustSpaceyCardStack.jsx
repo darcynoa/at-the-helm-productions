@@ -46,8 +46,10 @@ export default function JustSpaceyCardStack() {
           scrollTrigger: {
             trigger: container.current,
             start: "top top",
+            end: "+=1000px",
             scrub: 1,
             pin: true,
+            pinSpacing: true,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
@@ -63,7 +65,7 @@ export default function JustSpaceyCardStack() {
           {
             yPercent: -100,
             ease: "linear",
-            duration: 1,
+            duration: 10,
           },
           ">",
         )
@@ -72,7 +74,7 @@ export default function JustSpaceyCardStack() {
           {
             autoAlpha: 0,
             ease: "linear",
-            duration: 1,
+            duration: 6,
           },
           "<",
         )
