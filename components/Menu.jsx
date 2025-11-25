@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import gsap from "gsap";
+import { useRouter } from "next/navigation";
 
 const menuItems = [
   {
@@ -30,9 +31,39 @@ const menuItems = [
 export default function Menu({ toggleMenu, tl }) {
   const overlays = useRef([]);
   const headings = useRef([]);
-
   overlays.current = [];
   headings.current = [];
+
+  const router = useRouter();
+
+  const handleOnClick = (e, item) => {
+    e.preventDefault();
+    const href = item.href;
+
+    toggleMenu();
+    tl.current.timeScale(1).reverse();
+
+    const isAnchor = href.startsWith("/#");
+
+    if (isAnchor) {
+      const targetId = href.replace("/#", "");
+
+      // Store target section so the home page knows where to scroll
+      sessionStorage.setItem("scrollToSection", targetId);
+
+      tl.current.eventCallback("onReverseComplete", () => {
+        router.push("/");
+      });
+
+      return;
+    }
+
+    // Normal navigation
+    tl.current.eventCallback("onReverseComplete", () => {
+      router.push(href);
+    });
+  };
+
   const openOverlay = (overlay) => {
     gsap.set(overlay, { transformOrigin: "bottom center" });
     gsap.to(overlay, {
@@ -78,21 +109,13 @@ export default function Menu({ toggleMenu, tl }) {
               onTouchEnd={() =>
                 closeOverlay(overlays.current[index], headings.current[index])
               }
-              onClick={() => {
-                e.preventDefault();
-
-                toggleMenu();
-                tl.current.timeScale(1).reverse();
-
-                // navigate after animation ends
-                tl.current.eventCallback("onReverseComplete", () => {
-                  router.push(item.href);
-                });
+              onClick={(e) => {
+                handleOnClick(e, item);
               }}
             >
               <span
                 ref={(el) => (overlays.current[index] = el)}
-                className="-px-[2rem absolute inset-0 opacity-0 will-change-transform"
+                className="-px-[2rem pointer-events-none absolute inset-0 opacity-0 will-change-transform"
                 style={{
                   transform: "scaleY(0)",
                   transformOrigin: "bottom center",
