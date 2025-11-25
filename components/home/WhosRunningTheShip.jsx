@@ -261,7 +261,7 @@ export default function WhosRunningTheShip() {
       </h1>
       <div
         ref={circleRef}
-        className="clip-path-circle flex h-screen w-full flex-col items-center justify-end gap-[2rem] bg-[url(/helmer-at-the-helm.jpg)] bg-size-[260%] bg-position-[45%] bg-no-repeat pb-[17.6rem] lg:justify-center lg:gap-[8rem] lg:bg-cover lg:bg-center lg:pb-0"
+        className="clip-path-circle flex h-screen w-full flex-col items-center justify-end gap-[2rem] bg-[url(/helmer-at-the-helm.jpg)] bg-size-[260%] bg-position-[45%] bg-no-repeat pb-[17.6rem] lg:gap-[8rem] lg:bg-cover lg:bg-center"
       >
         <h2
           ref={helmer}
