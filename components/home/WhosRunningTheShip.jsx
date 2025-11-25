@@ -44,16 +44,17 @@ export default function WhosRunningTheShip() {
             scrub: 1,
           },
         })
+        // fromTo is enforced to ensure that linear gradient doesn't go through any other hues besides black
         .fromTo(
-          circleRef.current,
+          overlay.current,
           {
             // same structure as the target gradient, but start fully transparent (or whatever start you want)
             backgroundImage:
-              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 100%), url(/helmer-at-the-helm.jpg)",
+              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 100%)",
           },
           {
             backgroundImage:
-              "linear-gradient(to bottom, rgba(7,6,6,1) 0%, rgba(7,6,6,0.5) 50%, rgba(7,6,6,1) 100%), url(/helmer-at-the-helm.jpg)",
+              "linear-gradient(to bottom, rgba(7,6,6,1) 0%, rgba(7,6,6,0.5) 50%, rgba(7,6,6,1) 100%)",
             ease: "linear",
             immediateRender: false,
             scrollTrigger: {
@@ -160,15 +161,15 @@ export default function WhosRunningTheShip() {
           },
         })
         .fromTo(
-          circleRef.current,
+          overlay.current,
           {
             // same structure as the target gradient, but start fully transparent (or whatever start you want)
             backgroundImage:
-              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 100%), url(/helmer-at-the-helm.jpg)",
+              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 100%)",
           },
           {
             backgroundImage:
-              "linear-gradient(to bottom, rgba(7,6,6,1) 0%, rgba(7,6,6,0.5) 50%, rgba(7,6,6,1) 100%), url(/helmer-at-the-helm.jpg)",
+              "linear-gradient(to bottom, rgba(7,6,6,1) 0%, rgba(7,6,6,0.1) 50%, rgba(7,6,6,1) 100%)",
             ease: "linear",
             immediateRender: false,
             scrollTrigger: {
@@ -251,6 +252,7 @@ export default function WhosRunningTheShip() {
 
   const circleRef = useRef(null);
   const container = useRef(null);
+  const overlay = useRef(null);
   const helmer = useRef(null);
   const roles = useRef(null);
   const emerging = useRef(null);
@@ -261,8 +263,18 @@ export default function WhosRunningTheShip() {
       </h1>
       <div
         ref={circleRef}
-        className="clip-path-circle flex h-screen w-full flex-col items-center justify-end gap-[2rem] bg-[url(/helmer-at-the-helm.jpg)] bg-size-[260%] bg-position-[45%] bg-no-repeat pb-[16rem] lg:gap-[8rem] lg:bg-cover lg:bg-center"
+        className="clip-path-circle relative flex h-screen w-full flex-col items-center justify-end gap-[2rem] pb-[16rem] lg:gap-[8rem] lg:pb-[6rem]"
       >
+        <Image
+          src="/helmer-at-the-helm.jpg"
+          alt="It's the Helmer who is always at the helm"
+          fill
+          className="-z-10 w-full object-cover object-[45%]"
+        />
+        <div
+          ref={overlay}
+          className="absolute top-0 left-0 h-screen w-full bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_0%,rgba(7,6,6,0)_92%)]"
+        ></div>
         <h2
           ref={helmer}
           className="font-display px-[1rem] text-center text-[3rem] leading-[1.2] font-black text-white uppercase lg:px-0 lg:text-[7rem] lg:leading-normal"

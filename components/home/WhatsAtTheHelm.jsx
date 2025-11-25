@@ -65,6 +65,7 @@ export default function WhatIsAtTheHelm() {
             end: "+=1000px",
             scrub: true,
             pin: true,
+            anticipatePin: true,
           },
         })
         .from(split.words, {
