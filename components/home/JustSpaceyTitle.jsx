@@ -124,7 +124,7 @@ export default function JustSpaceyTitle() {
           />
           <div className="block h-screen w-full object-cover lg:hidden">
             <Image
-              className="w-full origin-center scale-120 object-cover object-[0%]"
+              className="-z-10 w-full origin-center scale-120 object-cover object-[0%]"
               src="/just-spacey-title-mobile.JPG"
               alt="Rotated light from set"
               fill
