@@ -34,7 +34,7 @@ export default function Loading() {
         opacity: 0,
         duration: 0.3,
         delay: 1,
-        onComplete: () => (cover.style.display = "none"),
+        onComplete: () => (cover.style.display = "hidden"),
       });
     }
   }, []);
@@ -179,7 +179,7 @@ export default function Loading() {
     <div
       ref={loader}
       style={{ display: shouldRenderLoader ? "flex" : "none" }}
-      className="fixed top-0 left-0 z-[9997] flex h-screen w-screen flex-col items-center justify-end gap-[8rem] bg-black pb-[4rem]"
+      className="pointer-events-auto fixed top-0 left-0 z-[9997] flex h-screen w-screen flex-col items-center justify-end gap-[8rem] bg-black pb-[4rem]"
     >
       <LoadingSVGGroup
         ref={loaderLogoRef}

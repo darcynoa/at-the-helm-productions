@@ -29,10 +29,6 @@ export default function Home() {
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 20);
-
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 50);
   }, []);
 
   return (
