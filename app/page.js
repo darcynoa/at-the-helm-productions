@@ -23,13 +23,13 @@ export default function Home() {
   }, []);
 
   // Ensure scroll position is at 0 and scrolltriggers adjust accordingly
-  useEffect(() => {
-    window.scrollTo(0, 0);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
 
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 20);
-  }, []);
+  //   setTimeout(() => {
+  //     window.scrollTo(0, 0);
+  //   }, 20);
+  // }, []);
 
   return (
     <>

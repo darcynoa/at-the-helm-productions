@@ -35,13 +35,14 @@ export default function Navigation() {
     const open = document.getElementById("menuOpen");
     const close = document.getElementById("menuClose");
     gsap.set(menuItems, { opacity: 0 });
+    gsap.set(menuElement, { yPercent: -100 });
 
     tl.current = gsap
       .timeline({
         paused: true,
       })
       .to(menuElement, {
-        yPercent: 100,
+        yPercent: 0,
         duration: 1,
         ease: "power2.out",
       })
