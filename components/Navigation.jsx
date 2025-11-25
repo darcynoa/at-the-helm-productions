@@ -92,7 +92,7 @@ export default function Navigation() {
           className="cursor-pointer"
         />
       </nav>
-      <Menu toggleMenu={toggleMenu} />
+      <Menu toggleMenu={toggleMenu} tl={tl} />
     </>
   );
 }

@@ -27,27 +27,30 @@ const menuItems = [
   },
 ];
 
-export default function Menu({ toggleMenu }) {
-  const openOverlay = (overlay, heading) => {
-    gsap.killTweensOf([overlay.current, heading.current]);
-    gsap.set(overlay.current, { transformOrigin: "bottom center" });
-    gsap.to(overlay.current, {
+export default function Menu({ toggleMenu, tl }) {
+  const overlays = useRef([]);
+  const headings = useRef([]);
+
+  overlays.current = [];
+  headings.current = [];
+  const openOverlay = (overlay) => {
+    gsap.set(overlay, { transformOrigin: "bottom center" });
+    gsap.to(overlay, {
       scaleY: 1,
       opacity: 1,
       duration: 0.28,
       ease: "power2.out",
-      overwrite: true,
+      overwrite: "auto",
     });
   };
 
-  const closeOverlay = (overlay, heading) => {
-    gsap.killTweensOf([overlay.current, heading.current]);
-    gsap.to(overlay.current, {
+  const closeOverlay = (overlay) => {
+    gsap.to(overlay, {
       scaleY: 0,
       opacity: 0,
       duration: 0.22,
       ease: "power2.in",
-      overwrite: true,
+      overwrite: "auto",
     });
   };
 
@@ -58,22 +61,37 @@ export default function Menu({ toggleMenu }) {
     >
       <div className="flex w-full flex-col items-center justify-center gap-4 lg:items-start lg:justify-start lg:gap-0">
         {menuItems.map((item, index) => {
-          const overlay = useRef(null);
-          const heading = useRef(null);
-
           return (
             <Link
               key={index} // Add a unique key for each item
               className="relative w-full"
               href={item.href}
-              onMouseEnter={() => openOverlay(overlay, heading)}
-              onMouseLeave={() => closeOverlay(overlay, heading)}
-              onTouchStart={() => openOverlay(overlay, heading)}
-              onTouchEnd={() => closeOverlay(overlay, heading)}
-              onClick={toggleMenu}
+              onMouseEnter={() =>
+                openOverlay(overlays.current[index], headings.current[index])
+              }
+              onMouseLeave={() =>
+                closeOverlay(overlays.current[index], headings.current[index])
+              }
+              onTouchStart={() =>
+                openOverlay(overlays.current[index], headings.current[index])
+              }
+              onTouchEnd={() =>
+                closeOverlay(overlays.current[index], headings.current[index])
+              }
+              onClick={() => {
+                e.preventDefault();
+
+                toggleMenu();
+                tl.current.timeScale(1).reverse();
+
+                // navigate after animation ends
+                tl.current.eventCallback("onReverseComplete", () => {
+                  router.push(item.href);
+                });
+              }}
             >
               <span
-                ref={overlay}
+                ref={(el) => (overlays.current[index] = el)}
                 className="-px-[2rem absolute inset-0 opacity-0 will-change-transform"
                 style={{
                   transform: "scaleY(0)",
@@ -82,7 +100,7 @@ export default function Menu({ toggleMenu }) {
                 }}
               ></span>
               <h1
-                ref={heading}
+                ref={(el) => (headings.current[index] = el)}
                 className="menu-item font-display px-[2rem] text-center text-[4rem] leading-[1] font-black text-white uppercase mix-blend-difference lg:text-left lg:text-[7rem] 2xl:text-[9.5rem]"
               >
                 {item.title}
