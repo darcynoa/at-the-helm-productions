@@ -32,7 +32,7 @@ export default function JustSpaceyCardStack() {
     mm.add("(max-width: 767px)", () => {
       const pin = ScrollTrigger.create({
         trigger: bottomCard.current,
-        start: "bottom+=1000px top+=220px",
+        start: "bottom+=847px top+=220px",
         end: "+=500px",
         pin: true,
         pinSpacing: false,
@@ -46,7 +46,6 @@ export default function JustSpaceyCardStack() {
           scrollTrigger: {
             trigger: container.current,
             start: "top top",
-            end: "+=1000px",
             scrub: 1,
             pin: true,
             anticipatePin: 1,
@@ -99,7 +98,6 @@ export default function JustSpaceyCardStack() {
           scrollTrigger: {
             trigger: container.current,
             start: "top top",
-            end: "+=1000px",
             scrub: 1,
             pin: true,
             anticipatePin: 1,
