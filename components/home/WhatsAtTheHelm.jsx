@@ -32,6 +32,7 @@ export default function WhatIsAtTheHelm() {
             scrub: true,
             pin: true,
             pinSpacing: true,
+            // markers: true,
           },
         })
         .from(split.words, {
@@ -49,11 +50,6 @@ export default function WhatIsAtTheHelm() {
           },
           "<",
         );
-
-      return () => {
-        ScrollTrigger.getAll().forEach((st) => st.kill());
-        gsap.globalTimeline.clear();
-      };
     });
 
     mm.add("(max-width: 767px)", () => {
@@ -65,7 +61,7 @@ export default function WhatIsAtTheHelm() {
             end: "+=1000px",
             scrub: true,
             pin: true,
-            anticipatePin: true,
+            // markers: true,
           },
         })
         .from(split.words, {
@@ -83,12 +79,8 @@ export default function WhatIsAtTheHelm() {
           },
           "<",
         );
-
-      return () => {
-        ScrollTrigger.getAll().forEach((st) => st.kill());
-        gsap.globalTimeline.clear();
-      };
     });
+    return () => mm.revert();
   });
   const container = useRef(null);
   const bracelet = useRef(null);
