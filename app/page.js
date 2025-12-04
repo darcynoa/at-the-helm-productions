@@ -23,92 +23,15 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const target = sessionStorage.getItem("scrollToSection");
-
-    if (target) {
-      // Double RAF ensures layout + ScrollTrigger + images settle
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const el = document.getElementById(target);
-          if (el) {
-            const y = el.getBoundingClientRect().top + window.scrollY - 80;
-            window.scrollTo({ top: y, behavior: "instant" });
-          }
-
-          ScrollTrigger.refresh();
-          sessionStorage.removeItem("scrollToSection");
-        });
-      });
-
-      return;
-    }
-
-    // NORMAL load (no anchor navigation)
     window.scrollTo(0, 0);
-    ScrollTrigger.refresh();
-  }, []);
 
-  useEffect(() => {
-    function snapshot(label = "") {
-      const hero =
-        document.querySelector("section[ref='hero']") ||
-        document.querySelector("section"); // fallback
-      const jsBg = document.querySelector(".marker-2"); // JustSpaceyTitle background wrapper
-      const whats =
-        document.querySelector(".marker-3") ||
-        document.querySelector("#about-us"); // your WhatsAtTheHelm container selector
-      console.log(`\n---- SNAPSHOT ${label} ----`);
-      console.log("window.scrollY", window.scrollY);
-      console.log("document.body.offsetHeight", document.body.offsetHeight);
-      [
-        { n: "hero", el: hero },
-        { n: "jsBg", el: jsBg },
-        { n: "whats", el: whats },
-      ].forEach((o) => {
-        if (!o.el) return console.log(o.n, "MISSING");
-        const r = o.el.getBoundingClientRect();
-        console.log(
-          o.n,
-          "offsetTop:",
-          o.el.offsetTop,
-          "bcr.top:",
-          r.top,
-          "absY:",
-          r.top + window.scrollY,
-          "height:",
-          r.height,
-        );
-      });
-      console.log("----------------------------\n");
-    }
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 20);
 
-    // snapshots
-    snapshot("initial");
-
-    // after small delay
-    setTimeout(() => snapshot("after 250ms"), 250);
-    setTimeout(() => snapshot("after 800ms"), 800);
-
-    // when page becomes visible again (coming back from other page)
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible") {
-        snapshot("visibility:visible");
-        // also refresh
-        ScrollTrigger.refresh();
-        setTimeout(() => snapshot("visibility:visible + 200ms"), 200);
-      }
-    });
-
-    window.addEventListener("focus", () => {
-      snapshot("window focus");
+    setTimeout(() => {
       ScrollTrigger.refresh();
-      setTimeout(() => snapshot("window focus + 200ms"), 200);
-    });
-
-    return () => {
-      window.removeEventListener("focus", () => {});
-      document.removeEventListener("visibilitychange", () => {});
-    };
+    }, 50);
   }, []);
 
   return (

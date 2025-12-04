@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -11,53 +11,9 @@ import LightBall from "../LightBall";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 export default function WhatIsAtTheHelm() {
-  const container = useRef(null);
-  const bracelet = useRef(null);
   const text = useRef(null);
   const light = useRef(null);
-  //* DEBUG *?/
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    setReady(true);
-  }, []);
-
-  // === DEBUG: Print transform chain ===
-  console.log("========== TRANSFORM TRACE ==========");
-  let el = container.current;
-  while (el) {
-    const style = window.getComputedStyle(el);
-    console.log(el.tagName, el.className, "transform =", style.transform);
-    el = el.parentElement;
-  }
-  console.log("======================================");
-
-  function debugWhatsAtTheHelm(label, triggerEl) {
-    if (!triggerEl) return;
-
-    const rect = triggerEl.getBoundingClientRect();
-    console.log(`\n======= ${label} =======`);
-    console.log("Viewport scrollY:", window.scrollY);
-    console.log("Trigger getBoundingClientRect().top:", rect.top);
-    console.log("Trigger absolute Y:", rect.top + window.scrollY);
-    console.log("offsetTop:", triggerEl.offsetTop);
-    console.log("===========================\n");
-  }
-  useEffect(() => {
-    const onFocus = () => {
-      debugWhatsAtTheHelm("On page re-entry (window focus)", container.current);
-    };
-
-    window.addEventListener("focus", onFocus);
-
-    return () => window.removeEventListener("focus", onFocus);
-  }, []);
-
-  //* DEBUG end *?/
-
   useGSAP(() => {
-    if (!ready || !container.current) return;
-    debugWhatsAtTheHelm("Before creating ScrollTrigger", container.current);
     ScrollTrigger.normalizeScroll(true);
     const split = new SplitText(text.current, {
       type: "words",
@@ -76,7 +32,6 @@ export default function WhatIsAtTheHelm() {
             scrub: true,
             pin: true,
             pinSpacing: true,
-            // markers: true,
           },
         })
         .from(split.words, {
@@ -94,6 +49,11 @@ export default function WhatIsAtTheHelm() {
           },
           "<",
         );
+
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+        gsap.globalTimeline.clear();
+      };
     });
 
     mm.add("(max-width: 767px)", () => {
@@ -105,7 +65,7 @@ export default function WhatIsAtTheHelm() {
             end: "+=1000px",
             scrub: true,
             pin: true,
-            markers: true,
+            anticipatePin: true,
           },
         })
         .from(split.words, {
@@ -123,17 +83,15 @@ export default function WhatIsAtTheHelm() {
           },
           "<",
         );
-    });
-    //* DEBUG *?/
-    ScrollTrigger.addEventListener("refresh", () => {
-      debugWhatsAtTheHelm("AFTER ScrollTrigger.refresh()", container.current);
-    });
 
-    ScrollTrigger.refresh();
-    //* DEBUG END *?/
-    return () => mm.revert();
-  }, [ready]);
-
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+        gsap.globalTimeline.clear();
+      };
+    });
+  });
+  const container = useRef(null);
+  const bracelet = useRef(null);
   return (
     <section
       ref={container}
