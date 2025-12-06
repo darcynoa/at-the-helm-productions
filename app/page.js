@@ -23,15 +23,29 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const target = sessionStorage.getItem("scrollToSection");
+
+    if (target) {
+      // Double RAF ensures layout + ScrollTrigger + images settle
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const el = document.getElementById(target);
+          if (el) {
+            const y = el.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top: y, behavior: "instant" });
+          }
+
+          ScrollTrigger.refresh();
+          sessionStorage.removeItem("scrollToSection");
+        });
+      });
+
+      return;
+    }
+
+    // NORMAL load (no anchor navigation)
     window.scrollTo(0, 0);
-
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 20);
-
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 50);
+    ScrollTrigger.refresh();
   }, []);
   /** DEBUG */
   useEffect(() => {
