@@ -32,6 +32,7 @@ export default function WhatIsAtTheHelm() {
             scrub: true,
             pin: true,
             pinSpacing: true,
+            anticipatePin: 1,
           },
         })
         .from(split.words, {
@@ -65,7 +66,7 @@ export default function WhatIsAtTheHelm() {
             end: "+=1000px",
             scrub: true,
             pin: true,
-            anticipatePin: true,
+            anticipatePin: 1,
           },
         })
         .from(split.words, {

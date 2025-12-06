@@ -1,19 +1,13 @@
 // app/globals.js
 "use client";
 
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register GSAP plugins globally
+// Register plugins globally ONCE
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Normalize scroll ONCE globally
-  ScrollTrigger.normalizeScroll(true);
-
-  // Optional but recommended:
-  ScrollTrigger.config({
-    ignoreMobileResize: true,
-    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
-  });
+  // NO normalizeScroll
+  // NO ScrollTrigger.config()
 }
