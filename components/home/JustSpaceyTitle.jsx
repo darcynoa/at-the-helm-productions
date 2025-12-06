@@ -28,78 +28,63 @@ export default function JustSpaceyTitle() {
   const handleTouchCancel = () => setIsPressed(false);
 
   // Waits for all images to load and then do Scrolltrigger.refresh()
+  // Ensure images are loaded before ScrollTrigger measures
   useEffect(() => {
-    const carouselEl = carousel.current;
-    if (!carouselEl) return;
+    const el = carousel.current;
+    if (!el) return;
 
-    const imgs = Array.from(carouselEl.querySelectorAll("img"));
+    const imgs = Array.from(el.querySelectorAll("img"));
     if (imgs.length === 0) {
-      // no images — likely not the cause
       ScrollTrigger.refresh();
       return;
     }
 
-    // Wait for all images to be complete (or timeout after 1500ms)
-    const waitForImages = Promise.allSettled(
+    const wait = Promise.allSettled(
       imgs.map((img) =>
         img.complete
-          ? Promise.resolve(true)
-          : new Promise((res) => {
-              img.addEventListener("load", () => res(true), { once: true });
-              img.addEventListener("error", () => res(false), { once: true });
-            }),
+          ? Promise.resolve()
+          : new Promise((res) =>
+              img.addEventListener("load", res, { once: true }),
+            ),
       ),
     );
 
-    let didRefresh = false;
-    waitForImages.then(() => {
-      // small rAF + refresh to be safe
+    let refreshed = false;
+
+    wait.then(() => {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          if (!didRefresh) {
+          if (!refreshed) {
+            refreshed = true;
             ScrollTrigger.refresh();
-            didRefresh = true;
-            console.log(
-              "[JustSpacey] images loaded -> ScrollTrigger.refresh()",
-            );
           }
         });
       });
     });
 
-    // safety timeout if images hang
-    const t = setTimeout(() => {
-      if (!didRefresh) {
+    const timeout = setTimeout(() => {
+      if (!refreshed) {
+        refreshed = true;
         ScrollTrigger.refresh();
-        didRefresh = true;
-        console.log("[JustSpacey] image wait timeout -> forced refresh");
       }
     }, 1500);
 
-    return () => clearTimeout(t);
+    return () => clearTimeout(timeout);
   }, []);
 
   // DEBUG: ResizeObserver used to see any changes in the size of the carousel
   useEffect(() => {
     const el = carousel.current;
     if (!el) return;
+
     let raf = null;
 
     const ro = new ResizeObserver(() => {
-      // debounce via rAF
       if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
-        // console for debugging
-        console.log("[JustSpacey] carousel resized -> ScrollTrigger.refresh()");
-      });
+      raf = requestAnimationFrame(() => ScrollTrigger.refresh());
     });
 
-    try {
-      ro.observe(el);
-    } catch (err) {
-      console.warn("ResizeObserver observe failed", err);
-    }
+    ro.observe(el);
 
     return () => {
       ro.disconnect();
@@ -108,14 +93,6 @@ export default function JustSpaceyTitle() {
   }, []);
 
   useGSAP(() => {
-    console.log("JustSpaceyTitle heights:", {
-      section: sectionRef.current?.offsetHeight,
-      carousel: carousel.current?.offsetHeight,
-      bg: jsBackground.current?.offsetHeight,
-      imagesLoaded: [...document.querySelectorAll("img")].filter(
-        (img) => img.complete,
-      ).length,
-    });
     const mm = gsap.matchMedia();
 
     // pin the whole section while the next scroll animation runs
@@ -125,21 +102,7 @@ export default function JustSpaceyTitle() {
       let spacer = null;
       let ro = null;
 
-      function logDebug(msg) {
-        // consistent and easy to grep in console
-        console.log(`[JUSTSPACEY PIN] ${msg}`);
-      }
-
       function createSpacer() {
-        if (!el) {
-          logDebug("createSpacer: el missing");
-          return;
-        }
-        if (spacer) {
-          logDebug("createSpacer: spacer already exists");
-          return;
-        }
-
         spacer = document.createElement("div");
         spacer.setAttribute("aria-hidden", "true");
         spacer.style.width = "100%";
@@ -148,24 +111,15 @@ export default function JustSpaceyTitle() {
         spacer.style.height = `${el.offsetHeight}px`;
         el.parentNode.insertBefore(spacer, el);
 
-        logDebug(
-          "createSpacer: inserted spacer; height=" + spacer.style.height,
-        );
-
         // create ResizeObserver to keep spacer in sync (activate only when spacer exists)
         if (!ro) {
           ro = new ResizeObserver(() => {
             if (spacer && el) {
               spacer.style.height = `${el.offsetHeight}px`;
-              logDebug(
-                "ResizeObserver: updated spacer height -> " +
-                  spacer.style.height,
-              );
             }
           });
           try {
             ro.observe(el);
-            logDebug("ResizeObserver: observing pinned element");
           } catch (err) {
             console.warn("[JUSTSPACEY PIN] ResizeObserver failed:", err);
           }
@@ -174,27 +128,20 @@ export default function JustSpaceyTitle() {
 
       function updateSpacerHeight() {
         if (!spacer || !el) {
-          logDebug("updateSpacerHeight: nothing to update");
           return;
         }
         spacer.style.height = `${el.offsetHeight}px`;
-        logDebug(
-          "updateSpacerHeight: spacer height set to " + spacer.style.height,
-        );
       }
 
       function removeSpacer() {
         if (!spacer) {
-          logDebug("removeSpacer: none to remove");
           return;
         }
         spacer.remove();
         spacer = null;
-        logDebug("removeSpacer: spacer removed");
         if (ro) {
           ro.disconnect();
           ro = null;
-          logDebug("removeSpacer: resize observer disconnected");
         }
       }
 
@@ -208,37 +155,23 @@ export default function JustSpaceyTitle() {
         pinType: "fixed",
 
         onEnter: () => {
-          logDebug("onEnter");
           createSpacer();
         },
         onLeave: () => {
-          logDebug("onLeave");
           removeSpacer();
         },
         onEnterBack: () => {
-          logDebug("onEnterBack");
           createSpacer();
         },
-        onLeaveBack: () => {
-          logDebug("onLeaveBack");
-          removeSpacer();
-        },
+        onLeaveBack: removeSpacer,
 
-        onRefreshInit: () => {
-          logDebug("onRefreshInit (remove spacer before refresh)");
-          // remove spacer before GSAP recalculates, avoid stale spacer
-          removeSpacer();
-        },
+        onRefreshInit: removeSpacer,
 
-        onRefresh: () => {
-          logDebug("onRefresh (update spacer after refresh)");
-          updateSpacerHeight();
-        },
+        onRefresh: updateSpacerHeight,
       });
 
       // ensure layout is correct if pin is active immediately after creation
       requestAnimationFrame(() => {
-        logDebug("rAF check: pin.isActive -> " + !!pin.isActive);
         if (pin.isActive) {
           createSpacer();
         }
@@ -247,7 +180,6 @@ export default function JustSpaceyTitle() {
       // Also log when pin is killed (for debugging)
       const originalKill = pin.kill.bind(pin);
       pin.kill = function () {
-        logDebug("pin.kill() called");
         removeSpacer();
         originalKill();
       };
@@ -306,7 +238,8 @@ export default function JustSpaceyTitle() {
   return (
     <section
       ref={sectionRef}
-      className="marker-1 flex flex-col items-center justify-center overflow-hidden lg:mb-0"
+      id="justspaceytitle"
+      className="flex flex-col items-center justify-center overflow-hidden lg:mb-0"
     >
       <div
         ref={carousel}

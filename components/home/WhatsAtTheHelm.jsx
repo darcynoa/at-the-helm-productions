@@ -97,7 +97,7 @@ export default function WhatIsAtTheHelm() {
     <section
       ref={container}
       id="about-us"
-      className="relative flex flex-col items-center justify-between gap-[4.5rem] lg:gap-[6rem]"
+      className="whatsatthehelm relative flex flex-col items-center justify-between gap-[4.5rem] lg:gap-[6rem]"
     >
       <LightBall
         ref={light}
