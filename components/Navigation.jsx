@@ -31,7 +31,6 @@ export default function Navigation() {
   useGSAP(() => {
     const menuElement = document.getElementById("menu");
     const menuItems = gsap.utils.toArray("#menu a");
-    // console.log(menuItems);
     const open = document.getElementById("menuOpen");
     const close = document.getElementById("menuClose");
     gsap.set(menuItems, { opacity: 0 });

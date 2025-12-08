@@ -15,7 +15,6 @@ export default function Hero() {
   const merryTime = useRef(null);
 
   useGSAP(() => {
-    console.log("Hero height:", hero.current?.offsetHeight);
     gsap.set(merryTime.current, { autoAlpha: 0, y: 50 });
 
     const splitFinalText = new SplitText(finalText.current, {

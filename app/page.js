@@ -15,7 +15,7 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 export default function Home() {
   useEffect(() => {
     function activate() {
-      console.log("Page activated, and..... action!");
+      console.log("and..... action!");
     }
 
     window.addEventListener("pointermove", activate, { once: true });
@@ -47,40 +47,7 @@ export default function Home() {
     window.scrollTo(0, 0);
     ScrollTrigger.refresh();
   }, []);
-  /** DEBUG */
-  useEffect(() => {
-    console.log("whatthefuck");
-    function dumpLayout(tag) {
-      const helm = document.querySelector(".whatsatthehelm");
-      const js = document.getElementById("justspaceytitle");
-      const hero = document.getElementById("hero");
 
-      if (!helm || !js || !hero) return;
-
-      console.log(`---- SNAPSHOT: ${tag} ----`);
-      console.log("scrollY:", window.scrollY);
-      console.log(
-        "hero top:",
-        hero.getBoundingClientRect().top + window.scrollY,
-      );
-      console.log("js top:", js.getBoundingClientRect().top + window.scrollY);
-      console.log(
-        "helm top:",
-        helm.getBoundingClientRect().top + window.scrollY,
-      );
-      console.log("--------------------------");
-    }
-
-    dumpLayout("initial");
-
-    setTimeout(() => dumpLayout("after 200ms"), 200);
-
-    window.addEventListener("focus", () => dumpLayout("window focus"));
-
-    return () => window.removeEventListener("focus", dumpLayout);
-  }, []);
-
-  /** DEBUG END */
   return (
     <>
       <Hero />

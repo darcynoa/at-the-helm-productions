@@ -43,13 +43,9 @@ export default function Menu({ toggleMenu, tl }) {
     const targetId = isAnchor ? href.replace("/#", "") : null;
 
     const isHome = pathname === "/";
-    console.log(router.pathname);
-
-    console.log("At home: ", isHome);
 
     // CASE 1 — already on home AND it's an anchor (#about-us or #contact)
     if (isHome && isAnchor) {
-      console.log("is home and anchor");
       // Let the browser do normal anchor scroll
       toggleMenu();
       tl.current.timeScale(1).reverse();
@@ -69,7 +65,6 @@ export default function Menu({ toggleMenu, tl }) {
     // CASE 2 — coming FROM another page (e.g., Just Spacey)
     if (isAnchor) {
       e.preventDefault();
-      console.log("is not home and anchor");
 
       // set flag so home page scrolls properly
       sessionStorage.setItem("scrollToSection", targetId);
@@ -85,7 +80,6 @@ export default function Menu({ toggleMenu, tl }) {
     }
 
     // CASE 3 — normal internal link
-    console.log("is normal");
     e.preventDefault();
     toggleMenu();
     tl.current.timeScale(1).reverse();
