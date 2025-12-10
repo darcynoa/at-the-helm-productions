@@ -16,7 +16,7 @@ export default function JustSpacey() {
     window.scrollTo(0, 0);
 
     setTimeout(() => {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 250);
     }, 20);
 
     setTimeout(() => {
