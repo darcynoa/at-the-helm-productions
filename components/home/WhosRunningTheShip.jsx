@@ -258,7 +258,7 @@ export default function WhosRunningTheShip() {
   const roles = useRef(null);
   const emerging = useRef(null);
   return (
-    <section ref={container} className="mt-[3rem] w-full lg:mt-[8rem]">
+    <section ref={container} className="mt-[3rem] w-full">
       <h1 className="font-display pb-[2rem] text-center text-[3.5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:pb-0 lg:text-[9.5rem] lg:leading-normal">
         Who's running the ship?
       </h1>
@@ -270,6 +270,7 @@ export default function WhosRunningTheShip() {
           src="/helmer-at-the-helm.jpg"
           alt="It's the Helmer who is always at the helm"
           fill
+          quality={100}
           className="-z-10 w-full object-cover object-[45%]"
         />
         <div
