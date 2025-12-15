@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import SplitText from "gsap/SplitText";
+import LightBall from "../LightBall";
 
 gsap.registerPlugin(DrawSVGPlugin, SplitText);
 
@@ -13,6 +14,8 @@ export default function Hero() {
   const finalText = useRef(null);
   const line = useRef(null);
   const merryTime = useRef(null);
+  const scrollCTA = useRef(null);
+  const scrollCTAText = useRef(null);
 
   useGSAP(() => {
     gsap.set(merryTime.current, { autoAlpha: 0, y: 50 });
@@ -26,6 +29,13 @@ export default function Hero() {
     const displayWidth = window.innerWidth;
     const overallDuration = displayWidth < 768 ? "+=2000" : "+=4000";
     const scribbleDuration = displayWidth < 768 ? 1 : 3;
+
+    gsap.to(scrollCTAText.current, {
+      rotate: -360,
+      ease: "linear",
+      repeat: -1,
+      duration: 10,
+    });
 
     const tl = gsap
       .timeline({
@@ -57,6 +67,7 @@ export default function Hero() {
         },
         "+=0.5",
       )
+
       .to(
         splitFinalText.lines,
         {
@@ -73,7 +84,17 @@ export default function Hero() {
         y: 0,
         duration: 1.5,
         ease: "expo.inOut",
-      });
+      })
+      .to(
+        scrollCTA.current,
+        {
+          autoAlpha: 0,
+          display: "none",
+          duration: 1.5,
+          ease: "expo.inOut",
+        },
+        "-=1",
+      );
   });
   return (
     <section
@@ -109,6 +130,15 @@ export default function Hero() {
       >
         and have a merry time doing it!
       </p>
+      <div ref={scrollCTA} className="absolute -bottom-[4rem] origin-center">
+        <img
+          src="/scroll-cta.png"
+          alt="Scroll Now!"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          ref={scrollCTAText}
+        />
+        <LightBall className="origin-center scale-150" />
+      </div>
     </section>
   );
 }
