@@ -1,6 +1,7 @@
 import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import "./globals.js";
+import SmoothScroll from "@/components/utils/SmoothScroller";
 import Loading from "@/components/Loading";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -29,15 +30,17 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${caveat.variable} bg-black antialiased`}
       >
-        <Loading />
-        <div
-          id="initialCover"
-          className="pointer-events-none fixed inset-0 z-[9996] h-[500vh] w-screen bg-black"
-        ></div>
-        <Navigation />
-        <Cursor />
-        {children}
-        <Footer />
+        <SmoothScroll>
+          <Loading />
+          <div
+            id="initialCover"
+            className="pointer-events-none fixed inset-0 z-[9996] h-[500vh] w-screen bg-black"
+          ></div>
+          <Navigation />
+          <Cursor />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

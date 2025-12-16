@@ -72,26 +72,6 @@ export default function JustSpaceyTitle() {
     return () => clearTimeout(timeout);
   }, []);
 
-  // DEBUG: ResizeObserver used to see any changes in the size of the carousel
-  useEffect(() => {
-    const el = carousel.current;
-    if (!el) return;
-
-    let raf = null;
-
-    const ro = new ResizeObserver(() => {
-      if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => ScrollTrigger.refresh());
-    });
-
-    ro.observe(el);
-
-    return () => {
-      ro.disconnect();
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
-
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
@@ -192,7 +172,7 @@ export default function JustSpaceyTitle() {
           trigger: carousel.current,
           start: "bottom+=10px bottom",
           end: "+=800px",
-          scrub: 1.3,
+          scrub: 0.2,
         },
       });
 
@@ -212,7 +192,7 @@ export default function JustSpaceyTitle() {
           trigger: carousel.current,
           start: "bottom+=50px bottom",
           end: "+=1000px",
-          scrub: 1.3,
+          scrub: 1.9,
         },
       });
     });
@@ -243,7 +223,7 @@ export default function JustSpaceyTitle() {
     >
       <div
         ref={carousel}
-        className="relative flex h-[200px] gap-[1rem] px-[4rem] lg:h-full"
+        className="relative flex h-[200px] gap-[1rem] px-[4rem] will-change-transform lg:h-full"
       >
         {Array.from({ length: 6 }).map((_, i) => (
           <Image
