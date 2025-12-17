@@ -30,16 +30,16 @@ export default function JustSpaceyCardStack() {
     const mm = gsap.matchMedia();
 
     mm.add("(max-width: 767px)", () => {
-      const pin = ScrollTrigger.create({
-        trigger: bottomCard.current,
-        start: "bottom+=1100px top+=220px",
-        end: "+=500px",
-        pin: true,
-        pinSpacing: false,
-        anticipatePin: true,
-        pinType: "fixed",
-        pinReparent: true,
-      });
+      // const pin = ScrollTrigger.create({
+      //   trigger: bottomCard.current,
+      //   start: "bottom+=1100px top+=220px",
+      //   end: "+=500px",
+      //   pin: true,
+      //   pinSpacing: false,
+      //   anticipatePin: true,
+      //   pinType: "fixed",
+      //   pinReparent: true,
+      // });
 
       gsap
         .timeline({

@@ -27,18 +27,18 @@ export default function SneakPeek() {
         const tl = gsap
           .timeline({
             scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top-=64px top+=220px",
-              end: "+=500px",
+              trigger: trailerImageRef.current,
+              start: "bottom bottom",
+              end: "center center",
               scrub: true,
-              pin: true,
-              anticipatePin: 1.5,
-              pinSpacing: true,
+              // pin: true,
+              // anticipatePin: 1.5,
+              // pinSpacing: true,
             },
           })
           .to(trailerImageRef.current, {
             scale: 1,
-            ease: "power2.inOut",
+            ease: "linear",
           })
           .to(
             playButtonRef.current,
@@ -56,16 +56,15 @@ export default function SneakPeek() {
       const tl = gsap
         .timeline({
           scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top top",
-            end: "+=500px",
+            trigger: trailerImageRef.current,
+            start: "bottom bottom",
+            end: "center center",
             scrub: true,
-            pin: true,
           },
         })
         .to(trailerImageRef.current, {
           scale: 1,
-          ease: "power2.inOut",
+          ease: "linear",
         })
         .to(
           playButtonRef.current,
