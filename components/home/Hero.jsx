@@ -130,7 +130,10 @@ export default function Hero() {
       >
         and have a merry time doing it!
       </p>
-      <div ref={scrollCTA} className="absolute -bottom-[4rem] origin-center">
+      <div
+        ref={scrollCTA}
+        className="absolute -bottom-[4rem] origin-center scale-75 lg:scale-100"
+      >
         <img
           src="/scroll-cta.png"
           alt="Scroll Now!"
