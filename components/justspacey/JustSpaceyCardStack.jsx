@@ -88,10 +88,6 @@ export default function JustSpaceyCardStack() {
           },
           "+=0.1",
         );
-
-      return () => {
-        pin.kill();
-      };
     });
 
     mm.add("(min-width: 768px)", () => {

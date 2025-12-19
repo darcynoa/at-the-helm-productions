@@ -30,17 +30,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${caveat.variable} bg-black antialiased`}
       >
-        <SmoothScroll>
-          <Loading />
-          <div
-            id="initialCover"
-            className="pointer-events-none fixed inset-0 z-[9996] h-[500vh] w-screen bg-black"
-          ></div>
-          <Navigation />
-          <Cursor />
-          {children}
-          <Footer />
-        </SmoothScroll>
+        <Loading />
+        <div
+          id="initialCover"
+          className="pointer-events-none fixed inset-0 z-[9996] h-[500vh] w-screen bg-black"
+        ></div>
+        <Navigation />
+        <Cursor />
+        {children}
+        <Footer />
       </body>
     </html>
   );
