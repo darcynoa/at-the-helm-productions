@@ -100,7 +100,7 @@ export default function SneakPeek() {
   return (
     <section
       ref={containerRef}
-      className="mt-[4rem] flex h-[60vh] w-full items-start justify-center lg:mt-0 lg:h-screen"
+      className="mt-[4rem] flex h-[60vh] w-full items-start justify-center overflow-hidden lg:mt-0 lg:h-screen"
     >
       {!isPlaying ? (
         <div className="flex flex-col items-center justify-center">
