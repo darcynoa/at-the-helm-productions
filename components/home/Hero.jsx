@@ -79,12 +79,16 @@ export default function Hero() {
         },
         "-=0.4",
       )
-      .to(merryTime.current, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 1.5,
-        ease: "expo.inOut",
-      })
+      .to(
+        merryTime.current,
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1.5,
+          ease: "expo.inOut",
+        },
+        "-=1.3",
+      )
       .to(
         scrollCTA.current,
         {
@@ -93,7 +97,7 @@ export default function Hero() {
           duration: 1.5,
           ease: "expo.inOut",
         },
-        "-=1",
+        "-=1.2",
       );
   });
   return (
