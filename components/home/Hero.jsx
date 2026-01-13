@@ -88,23 +88,13 @@ export default function Hero() {
           ease: "expo.inOut",
         },
         "-=1.3",
-      )
-      .to(
-        scrollCTA.current,
-        {
-          autoAlpha: 0,
-          display: "none",
-          duration: 1.5,
-          ease: "expo.inOut",
-        },
-        "-=1.2",
       );
   });
   return (
     <section
       ref={hero}
       id="hero"
-      className="relative -z-20 -mt-[1%] -mb-[2rem] flex h-svh w-full flex-col items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_25%,rgba(7,6,6,0)_50%,rgba(7,6,6,1)_75%),url(/home-hero.png)] bg-size-[200%] bg-position-[center_right_10%] bg-no-repeat leading-[1] lg:bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] lg:bg-cover lg:bg-top"
+      className="relative -z-20 -mt-[1%] flex h-svh w-full flex-col items-center justify-center overflow-y-hidden bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_25%,rgba(7,6,6,0)_50%,rgba(7,6,6,1)_75%),url(/home-hero.png)] bg-size-[200%] bg-position-[center_right_10%] bg-no-repeat leading-[1] lg:bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] lg:bg-cover lg:bg-top"
     >
       <h1 className="font-display px-[2rem] pt-[10rem] pb-[2rem] text-center text-[4rem] leading-[1] font-black text-white uppercase drop-shadow-[0px_0px_34px_rgba(7,6,6,1)] lg:px-0 lg:pt-0 lg:text-[9.5rem]">
         When We&apos;re <br /> At The Helm

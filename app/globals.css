@@ -91,3 +91,13 @@ body {
   /* prevent interaction */
   pointer-events: none;
 }
+
+.footer__height {
+  height: auto;
+}
+
+@media (min-width: 64rem) {
+  .footer__height {
+    height: calc(100vh - 116px);
+  }
+}
