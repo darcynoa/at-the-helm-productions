@@ -259,7 +259,7 @@ export default function WhosRunningTheShip() {
   const emerging = useRef(null);
   return (
     <section ref={container} className="mt-[3rem] w-full">
-      <h1 className="font-display pb-[2rem] text-center text-[3.5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:pb-0 lg:text-[9.5rem] lg:leading-normal">
+      <h1 className="font-display pb-[2rem] text-center text-[3.5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:pb-0 lg:text-[8.75vw] lg:leading-normal">
         Who's running the ship?
       </h1>
       <div
