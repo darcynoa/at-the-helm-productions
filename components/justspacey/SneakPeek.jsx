@@ -28,7 +28,7 @@ export default function SneakPeek() {
           .timeline({
             scrollTrigger: {
               trigger: trailerImageRef.current,
-              start: "bottom bottom",
+              start: "top bottom",
               end: "center center",
               scrub: true,
               // pin: true,
@@ -57,7 +57,7 @@ export default function SneakPeek() {
         .timeline({
           scrollTrigger: {
             trigger: trailerImageRef.current,
-            start: "bottom bottom",
+            start: "top bottom",
             end: "center center",
             scrub: true,
           },
