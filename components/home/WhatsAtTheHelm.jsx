@@ -14,7 +14,6 @@ export default function WhatIsAtTheHelm() {
   const text = useRef(null);
   const light = useRef(null);
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll(true);
     const split = new SplitText(text.current, {
       type: "words",
       wordsClass: "mix-blend-difference",
@@ -29,7 +28,7 @@ export default function WhatIsAtTheHelm() {
           opacity: 0.25,
           stagger: 0.25,
           duration: 1,
-          ease: "power2.out",
+          ease: "linear",
         })
         .to(
           light.current,
@@ -51,7 +50,7 @@ export default function WhatIsAtTheHelm() {
           scrollTrigger: {
             trigger: container.current,
             start: "top top",
-            end: "+=1640px",
+            end: "+=1500px",
             scrub: true,
             pin: true,
             pinSpacing: true,

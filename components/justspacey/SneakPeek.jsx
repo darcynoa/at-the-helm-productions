@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SneakPeek() {
   const containerRef = useRef(null);
@@ -14,8 +13,6 @@ export default function SneakPeek() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll(true);
-
     const mm = gsap.matchMedia();
     gsap.set(trailerImageRef.current, { scale: 0.3 });
     gsap.set(playButtonRef.current, { opacity: 0 });

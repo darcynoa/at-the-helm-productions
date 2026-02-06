@@ -167,12 +167,13 @@ export default function JustSpaceyTitle() {
       // existing carousel scroll animation
       gsap.to(carousel.current, {
         x: -1200,
-        ease: "linear",
+        ease: "none",
         scrollTrigger: {
           trigger: carousel.current,
           start: "bottom+=10px bottom",
           end: "+=800px",
-          scrub: 0.2,
+          scrub: 0.5,
+          fastScrollEnd: true,
         },
       });
 
@@ -187,12 +188,13 @@ export default function JustSpaceyTitle() {
     mm.add("(min-width: 768px)", () => {
       gsap.to(carousel.current, {
         x: -1600,
-        ease: "linear",
+        ease: "none",
         scrollTrigger: {
           trigger: carousel.current,
           start: "bottom+=50px bottom",
           end: "+=1000px",
-          scrub: 1.9,
+          scrub: true,
+          fastScrollEnd: true,
         },
       });
     });
@@ -224,6 +226,7 @@ export default function JustSpaceyTitle() {
       <div
         ref={carousel}
         className="relative flex h-[200px] gap-[1rem] px-[4rem] will-change-transform lg:h-full"
+        style={{ transform: "translateZ(0)" }} // Force GPU acceleration
       >
         {Array.from({ length: 6 }).map((_, i) => (
           <Image
