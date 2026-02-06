@@ -60,18 +60,20 @@ export default function JustSpaceyHero() {
   return (
     <section
       ref={container}
-      className="relative mb-0 flex h-lvh w-full flex-col items-center justify-center overflow-hidden lg:mb-[8rem]"
+      className="relative mb-0 flex h-lvh w-full flex-col items-center justify-center overflow-hidden"
     >
-      <Image
-        ref={overlay}
-        src="/just-spacey-logline.JPG"
-        alt="The main picture of the logline"
-        width={2048}
-        height={1365}
-        className="absolute inset-0 h-full w-[100%] origin-center scale-185 object-contain object-[45%] opacity-0 lg:w-full lg:scale-none lg:object-cover lg:object-center"
-      />
-      {/* top dark overlay (initially solid, then fades out) */}
-      <div className="absolute inset-0 bg-[rgba(7,6,6,1)] opacity-25"></div>
+      <div className="relative w-full">
+        <Image
+          ref={overlay}
+          src="/just-spacey-logline.JPG"
+          alt="The main picture of the logline"
+          width={2048}
+          height={1365}
+          className="h-full w-full origin-center scale-185 object-contain object-[45%] opacity-0 lg:w-full lg:scale-none lg:object-cover lg:object-center"
+        />
+        {/* top dark overlay (initially solid, then fades out) */}
+        <div className="absolute top-1/2 left-1/2 h-full w-full origin-center -translate-x-1/2 -translate-y-1/2 scale-186 bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_0%,rgba(7,6,6,0.5)_10%,rgba(7,6,6,0)_20%,rgba(7,6,6,0)_70%,rgba(7,6,6,0.25)_75%,rgba(7,6,6,0.65)_82%,rgba(7,6,6,1)_92%)] lg:scale-none"></div>
+      </div>
       <h1
         ref={header}
         className="font-spacey absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-[5rem] font-black tracking-[0.04em] text-white uppercase mix-blend-exclusion hover:cursor-pointer lg:text-[9.5rem]"
@@ -79,7 +81,7 @@ export default function JustSpaceyHero() {
         Just spacey
       </h1>
       <h3
-        className="z-50 w-[70%] text-center font-sans text-[1rem] leading-[1.2] text-white uppercase opacity-0 lg:text-center lg:text-[3rem]"
+        className="absolute top-1/2 left-1/2 z-50 w-[70%] -translate-x-1/2 -translate-y-1/2 text-center font-sans text-[1rem] leading-[1.2] text-white uppercase opacity-0 lg:text-center lg:text-[3rem]"
         ref={text}
       >
         When an orderly mortician is forced to bring his recently suspended
