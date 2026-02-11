@@ -10,7 +10,7 @@ import LightBall from "../LightBall";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-export default function WhatIsAtTheHelm() {
+export default function WhatIsAtTheHelm({ whatsAtTheHelmData }) {
   const text = useRef(null);
   const light = useRef(null);
   useGSAP(() => {
@@ -105,15 +105,13 @@ export default function WhatIsAtTheHelm() {
       />
       <div className="flex h-auto w-full flex-col items-center justify-center gap-[4.5rem] py-[0rem] lg:h-screen lg:gap-[5rem] lg:py-[5rem]">
         <h1 className="font-display max-w-[375px] text-center text-[5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:max-w-full lg:text-[7rem] lg:leading-normal 2xl:text-[9.5rem]">
-          What's at the helm
+          {whatsAtTheHelmData.heading}
         </h1>
         <h3
           className="z-50 w-[70%] text-center font-sans text-[1rem] leading-[1.2] text-white uppercase mix-blend-difference lg:text-[3.5rem]"
           ref={text}
         >
-          At The Helm Productions is an emerging indie production company
-          focused on using kooky, comedic narratives to enhance meaningful
-          subject matters.
+          {whatsAtTheHelmData.description}
         </h3>
       </div>
       <Image

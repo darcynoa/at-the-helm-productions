@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function JustSpaceyTitle() {
+export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
   const carousel = useRef(null);
   const jsText = useRef(null);
   const jsHeader = useRef(null);
@@ -289,13 +289,13 @@ export default function JustSpaceyTitle() {
             ref={jsText}
             className="font-sans text-[15px] uppercase mix-blend-exclusion lg:text-[1.5rem]"
           >
-            Everyone had fun on this one
+            {justSpaceyData.subheading}
           </p>
           <h1
             ref={jsHeader}
             className="font-spacey text-center text-[5rem] font-black tracking-[0.04em] uppercase mix-blend-difference lg:text-[9.5rem]"
           >
-            Just spacey
+            {justSpaceyData.heading}
           </h1>
           <div
             className={

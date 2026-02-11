@@ -11,7 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(DrawSVGPlugin, SplitText, ScrollTrigger);
 
-export default function WhosRunningTheShip() {
+export default function WhosRunningTheShip({ whosRunningTheShip }) {
   useGSAP(() => {
     const mm = gsap.matchMedia();
     const roleItems = gsap.utils.toArray(roles.current.children);
@@ -258,9 +258,9 @@ export default function WhosRunningTheShip() {
   const roles = useRef(null);
   const emerging = useRef(null);
   return (
-    <section ref={container} className="mt-[3rem] w-full lg:mt-[15rem]">
-      <h1 className="font-display pb-[2rem] text-center text-[3.5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:pb-0 lg:text-[9.5rem] lg:leading-normal">
-        Who's running the ship?
+    <section ref={container} className="mt-[3rem] w-full">
+      <h1 className="font-display pb-[2rem] text-center text-[3.5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:pb-0 lg:text-[8.75vw] lg:leading-normal">
+        {whosRunningTheShip.heading}
       </h1>
       <div
         ref={circleRef}
@@ -280,9 +280,33 @@ export default function WhosRunningTheShip() {
           ref={helmer}
           className="font-display px-[1rem] text-center text-[3rem] leading-[1.2] font-black text-white uppercase lg:px-0 lg:text-[7rem] lg:leading-normal"
         >
-          Anna Helmer At The Helm
+          {whosRunningTheShip.subheading}
         </h2>
         <div
+          ref={roles}
+          className="relative grid grid-cols-3 place-items-center gap-[2rem]"
+        >
+          {whosRunningTheShip.listOfAttributes.map((attributeObj, index) => (
+            <h4
+              key={index}
+              className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]"
+            >
+              {attributeObj.attribute}
+              {attributeObj.actualAttribute && (
+                <>
+                  <span
+                    ref={emerging}
+                    className="font-handwriting text-cyan absolute bottom-[40px] left-0 -rotate-6 text-[1rem] opacity-0 lg:-bottom-[40px] lg:w-fit lg:text-[2rem] [@media(519px_<_width_<_64rem)]:bottom-[24px]"
+                  >
+                    {attributeObj.actualAttribute}
+                  </span>
+                  <HelmerLine className="absolute -top-[14px] left-[10px] w-[80%] lg:top-0 lg:-left-[37px] lg:w-auto" />
+                </>
+              )}
+            </h4>
+          ))}
+        </div>
+        {/* <div
           ref={roles}
           className="relative grid grid-cols-3 place-items-center gap-[2rem]"
         >
@@ -312,7 +336,7 @@ export default function WhosRunningTheShip() {
             Filmmaker
             <HelmerLine className="absolute -top-[14px] left-[10px] w-[80%] lg:top-0 lg:-left-[37px] lg:w-auto" />
           </h4>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -1,13 +1,13 @@
 import HeroLine from "../HeroLine";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import SplitText from "gsap/SplitText";
 
 gsap.registerPlugin(DrawSVGPlugin, SplitText);
 
-export default function Hero() {
+export default function Hero({ heroData }) {
   const hero = useRef(null);
   const wrapParty = useRef(null);
   const finalText = useRef(null);
@@ -68,13 +68,34 @@ export default function Hero() {
         },
         "-=0.4",
       )
-      .to(merryTime.current, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 1.5,
-        ease: "expo.inOut",
-      });
+      .to(
+        merryTime.current,
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1.5,
+          ease: "expo.inOut",
+        },
+        "-=1.3",
+      );
+
+    return () => {
+      // Kill the rotation animation on cleanup
+      gsap.killTweensOf(scrollCTAText.current);
+    };
   });
+
+  useEffect(() => {
+    // Force image reload with cache busting
+    if (scrollCTAText.current) {
+      const img = scrollCTAText.current;
+      // Reset the src to trigger a fresh load
+      const src = img.src;
+      img.src = "";
+      img.src = src;
+    }
+  }, []);
+
   return (
     <section
       ref={hero}
@@ -82,33 +103,48 @@ export default function Hero() {
       className="relative -z-20 -mt-[1%] -mb-[2rem] flex h-svh w-full flex-col items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_25%,rgba(7,6,6,0)_50%,rgba(7,6,6,1)_75%),url(/home-hero.png)] bg-size-[200%] bg-position-[center_right_10%] bg-no-repeat leading-[1] lg:bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] lg:bg-cover lg:bg-top"
     >
       <h1 className="font-display px-[2rem] pt-[10rem] pb-[2rem] text-center text-[4rem] leading-[1] font-black text-white uppercase drop-shadow-[0px_0px_34px_rgba(7,6,6,1)] lg:px-0 lg:pt-0 lg:text-[9.5rem]">
-        When We&apos;re <br /> At The Helm
+        {heroData.heading_line_1} <br /> {heroData.heading_line_2}
       </h1>
       <div className="relative flex flex-col">
-        <p
-          ref={finalText}
-          className="w-[30ch] text-center font-sans text-[15px] leading-[1.2] font-normal text-white uppercase drop-shadow-[0px_0px_24px_rgba(7,6,6,1)] lg:text-[1.8rem]"
-        >
-          You know it&apos;s going to be <br /> a safe &amp; collaborative space
-          to make bold films
-        </p>
         <p
           ref={wrapParty}
           className="absolute w-[30ch] text-center font-sans text-[15px] leading-[1.2] font-normal text-white uppercase drop-shadow-[0px_0px_24px_rgba(7,6,6,1)] lg:text-[1.8rem]"
         >
-          You know there&apos;s gonna be a great wrap party
+          {heroData.scribbledOutText}
         </p>
         <HeroLine
           ref={line}
           className="absolute -top-[3rem] left-0 w-[100%] lg:-top-[2rem]"
         />
+        <p
+          ref={finalText}
+          className="w-[30ch] text-center font-sans text-[15px] leading-[1.2] font-normal text-white uppercase drop-shadow-[0px_0px_24px_rgba(7,6,6,1)] lg:text-[1.8rem]"
+        >
+          {heroData.swappedInText}
+        </p>
       </div>
       <p
         ref={merryTime}
         className="font-handwriting rotate-12 pl-[45%] text-[15px] text-white drop-shadow-[0px_0px_24px_rgba(7,6,6,1)] lg:text-[1.8rem]"
       >
-        and have a merry time doing it!
+        {heroData.cursiveText}
       </p>
+      <div
+        ref={scrollCTA}
+        className="absolute -bottom-[4rem] origin-center scale-75 lg:scale-100"
+      >
+        <img
+          src="/scroll-cta.png?v=1"
+          alt="Scroll Now!"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          ref={scrollCTAText}
+          onError={(e) => {
+            // Fallback if image fails to load
+            console.error("Image failed to load:", e);
+          }}
+        />
+        <LightBall className="origin-center scale-150" />
+      </div>
     </section>
   );
 }

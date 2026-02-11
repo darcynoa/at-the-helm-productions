@@ -1,35 +1,12 @@
-"use client";
-// Libraries
-import { useEffect } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import JustSpaceyClient from "@/components/justspacey/JustSpaceyClient";
+import { client } from "../sanity/client";
 
-// Components
-import Contact from "@/components/Contact";
-import AuthenticLocations from "@/components/justspacey/AuthenticLocations";
-import JustSpaceyCardStack from "@/components/justspacey/JustSpaceyCardStack";
-import JustSpaceyHero from "@/components/justspacey/JustSpaceyHero";
-import SneakPeek from "@/components/justspacey/SneakPeek";
+const CONTACT_QUERY = `*[_type == "contact"][0]`;
 
-export default function JustSpacey() {
-  // Ensure scroll position is at 0 and scrolltriggers adjust accordingly
-  useEffect(() => {
-    window.scrollTo(0, 0);
+const options = { next: { revalidate: 30 } };
 
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 20);
+export default async function JustSpacey() {
+  const contactData = await client.fetch(CONTACT_QUERY, {}, options);
 
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 50);
-  }, []);
-  return (
-    <>
-      <JustSpaceyHero />
-      <JustSpaceyCardStack />
-      <SneakPeek />
-      <AuthenticLocations />
-      <Contact />
-    </>
-  );
+  return <JustSpaceyClient contactData={contactData} />;
 }
