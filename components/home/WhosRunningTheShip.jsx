@@ -307,37 +307,6 @@ export default function WhosRunningTheShip({ whosRunningTheShip }) {
             </h4>
           ))}
         </div>
-        {/* <div
-          ref={roles}
-          className="relative grid grid-cols-3 place-items-center gap-[2rem]"
-        >
-          <h4 className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
-            Producer
-          </h4>
-          <h4 className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
-            Writer
-          </h4>
-          <h4 className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
-            Director
-          </h4>
-          <h4 className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
-            2nd AD
-          </h4>
-          <h4 className="w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
-            Production Assistant
-          </h4>
-          <h4 className="relative w-fit text-center font-sans text-[1rem] leading-[1.2] text-white uppercase lg:text-[2.5rem]">
-            Broke{" "}
-            <span
-              ref={emerging}
-              className="font-handwriting text-cyan absolute bottom-[40px] left-0 -rotate-6 text-[1rem] opacity-0 lg:-bottom-[40px] lg:w-fit lg:text-[2rem] [@media(519px_<_width_<_64rem)]:bottom-[24px]"
-            >
-              Emerging
-            </span>{" "}
-            Filmmaker
-            <HelmerLine className="absolute -top-[14px] left-[10px] w-[80%] lg:top-0 lg:-left-[37px] lg:w-auto" />
-          </h4>
-        </div> */}
       </div>
     </section>
   );
