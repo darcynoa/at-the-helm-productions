@@ -1,0 +1,10 @@
+[build]
+  base = "studio/"
+  command = "sanity build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/studio/*"
+  to = "/studio"
+  status = 200
+  # Ensure the status is 200 to serve the studio's index file for client-side routing
