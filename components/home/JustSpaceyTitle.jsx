@@ -72,26 +72,6 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
     return () => clearTimeout(timeout);
   }, []);
 
-  // DEBUG: ResizeObserver used to see any changes in the size of the carousel
-  useEffect(() => {
-    const el = carousel.current;
-    if (!el) return;
-
-    let raf = null;
-
-    const ro = new ResizeObserver(() => {
-      if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => ScrollTrigger.refresh());
-    });
-
-    ro.observe(el);
-
-    return () => {
-      ro.disconnect();
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
-
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
@@ -187,12 +167,13 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
       // existing carousel scroll animation
       gsap.to(carousel.current, {
         x: -1200,
-        ease: "linear",
+        ease: "none",
         scrollTrigger: {
           trigger: carousel.current,
           start: "bottom+=10px bottom",
           end: "+=800px",
-          scrub: 1.3,
+          scrub: 0.5,
+          fastScrollEnd: true,
         },
       });
 
@@ -207,12 +188,13 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
     mm.add("(min-width: 768px)", () => {
       gsap.to(carousel.current, {
         x: -1600,
-        ease: "linear",
+        ease: "none",
         scrollTrigger: {
           trigger: carousel.current,
           start: "bottom+=50px bottom",
           end: "+=1000px",
-          scrub: 1.3,
+          scrub: true,
+          fastScrollEnd: true,
         },
       });
     });
@@ -243,7 +225,8 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
     >
       <div
         ref={carousel}
-        className="relative flex h-[200px] gap-[1rem] px-[4rem] lg:h-full"
+        className="relative flex h-[200px] gap-[1rem] px-[4rem] will-change-transform lg:h-full"
+        style={{ transform: "translateZ(0)" }} // Force GPU acceleration
       >
         {Array.from({ length: 6 }).map((_, i) => (
           <Image

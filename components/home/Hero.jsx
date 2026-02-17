@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef, useEffect } from "react";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import SplitText from "gsap/SplitText";
+import LightBall from "../LightBall";
 
 gsap.registerPlugin(DrawSVGPlugin, SplitText);
 
@@ -13,6 +14,8 @@ export default function Hero({ heroData }) {
   const finalText = useRef(null);
   const line = useRef(null);
   const merryTime = useRef(null);
+  const scrollCTA = useRef(null);
+  const scrollCTAText = useRef(null);
 
   useGSAP(() => {
     gsap.set(merryTime.current, { autoAlpha: 0, y: 50 });
@@ -26,6 +29,13 @@ export default function Hero({ heroData }) {
     const displayWidth = window.innerWidth;
     const overallDuration = displayWidth < 768 ? "+=2000" : "+=4000";
     const scribbleDuration = displayWidth < 768 ? 1 : 3;
+
+    gsap.to(scrollCTAText.current, {
+      rotate: -360,
+      ease: "linear",
+      repeat: -1,
+      duration: 10,
+    });
 
     const tl = gsap
       .timeline({
@@ -57,6 +67,7 @@ export default function Hero({ heroData }) {
         },
         "+=0.5",
       )
+
       .to(
         splitFinalText.lines,
         {
@@ -100,7 +111,7 @@ export default function Hero({ heroData }) {
     <section
       ref={hero}
       id="hero"
-      className="relative -z-20 -mt-[1%] -mb-[2rem] flex h-svh w-full flex-col items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_25%,rgba(7,6,6,0)_50%,rgba(7,6,6,1)_75%),url(/home-hero.png)] bg-size-[200%] bg-position-[center_right_10%] bg-no-repeat leading-[1] lg:bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] lg:bg-cover lg:bg-top"
+      className="relative -z-20 -mt-[1%] flex h-svh w-full flex-col items-center justify-center overflow-y-hidden bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_25%,rgba(7,6,6,0)_50%,rgba(7,6,6,1)_75%),url(/home-hero.png)] bg-size-[200%] bg-position-[center_right_10%] bg-no-repeat leading-[1] lg:bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] lg:bg-cover lg:bg-top"
     >
       <h1 className="font-display px-[2rem] pt-[10rem] pb-[2rem] text-center text-[4rem] leading-[1] font-black text-white uppercase drop-shadow-[0px_0px_34px_rgba(7,6,6,1)] lg:px-0 lg:pt-0 lg:text-[9.5rem]">
         {heroData.heading_line_1} <br /> {heroData.heading_line_2}
@@ -127,21 +138,17 @@ export default function Hero({ heroData }) {
         ref={merryTime}
         className="font-handwriting rotate-12 pl-[45%] text-[15px] text-white drop-shadow-[0px_0px_24px_rgba(7,6,6,1)] lg:text-[1.8rem]"
       >
-        {heroData.cursiveText}
+        and have a merry time doing it!
       </p>
       <div
         ref={scrollCTA}
         className="absolute -bottom-[4rem] origin-center scale-75 lg:scale-100"
       >
         <img
-          src="/scroll-cta.png?v=1"
+          src="/scroll-cta.png"
           alt="Scroll Now!"
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           ref={scrollCTAText}
-          onError={(e) => {
-            // Fallback if image fails to load
-            console.error("Image failed to load:", e);
-          }}
         />
         <LightBall className="origin-center scale-150" />
       </div>

@@ -1,6 +1,7 @@
 import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import "./globals.js";
+import SmoothScroll from "@/components/utils/SmoothScroller";
 import Loading from "@/components/Loading";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";

@@ -269,8 +269,9 @@ export default function WhosRunningTheShip({ whosRunningTheShip }) {
         <Image
           src="/helmer-at-the-helm.jpg"
           alt="It's the Helmer who is always at the helm"
-          fill
-          className="-z-10 w-full object-cover object-[45%]"
+          width={5328}
+          height={4000}
+          className="absolute top-0 left-0 -z-10 h-screen w-full object-cover"
         />
         <div
           ref={overlay}

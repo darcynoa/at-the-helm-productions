@@ -34,7 +34,7 @@ export default function Contact({ contactData }) {
     <section
       id="contact"
       ref={container}
-      className="relative mt-[4rem] mb-[6rem] flex h-auto flex-col items-center justify-center gap-[4rem] lg:h-screen"
+      className={`footer__height relative mt-[4rem] mb-[6rem] flex h-auto flex-col items-center justify-center gap-[4rem] lg:my-0`}
     >
       <LightBall
         ref={light}

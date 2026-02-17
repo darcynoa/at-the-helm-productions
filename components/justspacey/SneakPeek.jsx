@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SneakPeek() {
   const containerRef = useRef(null);
@@ -14,8 +13,6 @@ export default function SneakPeek() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll(true);
-
     const mm = gsap.matchMedia();
     gsap.set(trailerImageRef.current, { scale: 0.3 });
     gsap.set(playButtonRef.current, { opacity: 0 });
@@ -27,18 +24,18 @@ export default function SneakPeek() {
         const tl = gsap
           .timeline({
             scrollTrigger: {
-              trigger: containerRef.current,
-              start: "top-=64px top+=220px",
-              end: "+=500px",
+              trigger: trailerImageRef.current,
+              start: "top bottom",
+              end: "center center",
               scrub: true,
-              pin: true,
-              anticipatePin: 1.5,
-              pinSpacing: true,
+              // pin: true,
+              // anticipatePin: 1.5,
+              // pinSpacing: true,
             },
           })
           .to(trailerImageRef.current, {
             scale: 1,
-            ease: "power2.inOut",
+            ease: "linear",
           })
           .to(
             playButtonRef.current,
@@ -56,16 +53,15 @@ export default function SneakPeek() {
       const tl = gsap
         .timeline({
           scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top top",
-            end: "+=500px",
+            trigger: trailerImageRef.current,
+            start: "top bottom",
+            end: "center center",
             scrub: true,
-            pin: true,
           },
         })
         .to(trailerImageRef.current, {
           scale: 1,
-          ease: "power2.inOut",
+          ease: "linear",
         })
         .to(
           playButtonRef.current,
@@ -101,7 +97,7 @@ export default function SneakPeek() {
   return (
     <section
       ref={containerRef}
-      className="mt-[4rem] flex h-[60vh] w-full items-start justify-center lg:mt-0 lg:h-screen"
+      className="mt-[4rem] flex h-[60vh] w-full items-start justify-center overflow-hidden lg:mt-0 lg:h-screen"
     >
       {!isPlaying ? (
         <div className="flex flex-col items-center justify-center">

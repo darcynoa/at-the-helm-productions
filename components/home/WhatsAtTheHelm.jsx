@@ -14,7 +14,6 @@ export default function WhatIsAtTheHelm({ whatsAtTheHelmData }) {
   const text = useRef(null);
   const light = useRef(null);
   useGSAP(() => {
-    ScrollTrigger.normalizeScroll(true);
     const split = new SplitText(text.current, {
       type: "words",
       wordsClass: "mix-blend-difference",
@@ -23,23 +22,13 @@ export default function WhatIsAtTheHelm({ whatsAtTheHelmData }) {
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: container.current,
-            start: "top top",
-            end: "+=2000px",
-            scrub: true,
-            pin: true,
-            pinSpacing: true,
-            anticipatePin: 1,
-          },
-        })
+      const tl = gsap
+        .timeline({ paused: true })
         .from(split.words, {
           opacity: 0.25,
           stagger: 0.25,
           duration: 1,
-          ease: "power2.out",
+          ease: "linear",
         })
         .to(
           light.current,
@@ -51,6 +40,25 @@ export default function WhatIsAtTheHelm({ whatsAtTheHelmData }) {
           "<",
         );
 
+      gsap.fromTo(
+        tl,
+        {
+          progress: 0.15,
+        },
+        {
+          progress: 1,
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top top",
+            end: "+=1500px",
+            scrub: true,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+          },
+        },
+      );
+
       return () => {
         ScrollTrigger.getAll().forEach((st) => st.kill());
         gsap.globalTimeline.clear();
@@ -58,17 +66,8 @@ export default function WhatIsAtTheHelm({ whatsAtTheHelmData }) {
     });
 
     mm.add("(max-width: 767px)", () => {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: container.current,
-            start: "top center-=180px",
-            end: "+=1000px",
-            scrub: true,
-            pin: true,
-            anticipatePin: 1,
-          },
-        })
+      const tl = gsap
+        .timeline({ paused: true })
         .from(split.words, {
           opacity: 0.25,
           stagger: 0.25,
@@ -84,6 +83,24 @@ export default function WhatIsAtTheHelm({ whatsAtTheHelmData }) {
           },
           "<",
         );
+
+      gsap.fromTo(
+        tl,
+        {
+          progress: 0.15,
+        },
+        {
+          progress: 1,
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top center-=180px",
+            end: "+=820px",
+            scrub: true,
+            pin: true,
+            anticipatePin: 1,
+          },
+        },
+      );
 
       return () => {
         ScrollTrigger.getAll().forEach((st) => st.kill());
