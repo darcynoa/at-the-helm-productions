@@ -13,6 +13,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(SplitText, MorphSVGPlugin);
 
 export default function Navigation() {
+  const isStudio =
+    typeof window !== "undefined" &&
+    window.location.pathname.startsWith("/studio");
+  console.log(isStudio);
+
   useEffect(() => {
     const handle = () => ScrollTrigger.refresh();
     window.addEventListener("load", handle);
@@ -67,31 +72,33 @@ export default function Navigation() {
   }, [menuOpen]);
 
   return (
-    <>
-      <nav className="fixed top-0 left-0 z-[9998] flex h-[5.5rem] w-full items-center justify-between bg-black px-[2rem] lg:px-[4rem]">
-        <Link href="/">
-          <div
-            id="navBarWrapper"
-            className="relative flex h-[49px] w-[78px] items-center justify-center"
-          >
-            <img
-              id="navLogo"
-              src="/logo.svg"
-              alt="At The Helm Company Logo"
-              className="h-auto w-full opacity-0"
-              width={78}
-              height={49}
-            />
-          </div>
-        </Link>
-        <MenuSVG
-          id="menuSvg"
-          onClick={toggleMenu}
-          ref={menuButton}
-          className="cursor-pointer"
-        />
-      </nav>
-      <Menu toggleMenu={toggleMenu} tl={tl} />
-    </>
+    !isStudio && (
+      <>
+        <nav className="fixed top-0 left-0 z-[9998] flex h-[5.5rem] w-full items-center justify-between bg-black px-[2rem] lg:px-[4rem]">
+          <Link href="/">
+            <div
+              id="navBarWrapper"
+              className="relative flex h-[49px] w-[78px] items-center justify-center"
+            >
+              <img
+                id="navLogo"
+                src="/logo.svg"
+                alt="At The Helm Company Logo"
+                className="h-auto w-full opacity-0"
+                width={78}
+                height={49}
+              />
+            </div>
+          </Link>
+          <MenuSVG
+            id="menuSvg"
+            onClick={toggleMenu}
+            ref={menuButton}
+            className="cursor-pointer"
+          />
+        </nav>
+        <Menu toggleMenu={toggleMenu} tl={tl} />
+      </>
+    )
   );
 }
