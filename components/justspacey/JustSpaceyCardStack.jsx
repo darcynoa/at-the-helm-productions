@@ -150,7 +150,7 @@ export default function JustSpaceyCardStack() {
       <div ref={container} className="relative">
         <div
           ref={topCard}
-          className="absolute top-0 left-0 z-5 flex h-[110vh] w-full items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_0%,rgba(7,6,6,0)_40%),url('/body-drawers.jpg')] bg-cover bg-center lg:h-screen"
+          className="absolute top-0 left-0 z-5 flex h-[110vh] w-full items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_0%,rgba(7,6,6,0)_40%),url('/body-drawers-resized.jpg')] bg-cover bg-center lg:h-screen"
         >
           <h3
             ref={topCardText}
@@ -163,7 +163,7 @@ export default function JustSpaceyCardStack() {
         </div>
         <div
           ref={bottomCard}
-          className="relative z-3 flex h-[110vh] w-full items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,0.3)_0%,rgba(7,6,6,0.3)_40%),url('/just-spacey-bottom-card.jpg')] bg-cover bg-center lg:h-screen"
+          className="relative z-3 flex h-[110vh] w-full items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,0.3)_0%,rgba(7,6,6,0.3)_40%),url('/just-spacey-bottom-card-resized.jpg')] bg-cover bg-center lg:h-screen"
         >
           <div
             ref={middleOverlay}

@@ -20,11 +20,11 @@ export default function AuthenticLocations() {
       petBg.current,
       {
         backgroundImage:
-          "linear-gradient(to bottom, rgba(7,6,6,0) 0%, rgba(7,6,6,0) 100%), url(/pet-passages.jpg)",
+          "linear-gradient(to bottom, rgba(7,6,6,0) 0%, rgba(7,6,6,0) 100%), url(/pet-passages-resized.jpg)",
       },
       {
         backgroundImage:
-          "linear-gradient(to bottom, rgba(7,6,6,0.5) 0%, rgba(7,6,6,0.5) 100%), url(/pet-passages.jpg)",
+          "linear-gradient(to bottom, rgba(7,6,6,0.5) 0%, rgba(7,6,6,0.5) 100%), url(/pet-passages-resized.jpg)",
         duration: 0.75,
         ease: "power1.inOut",
         scrollTrigger: {
@@ -67,7 +67,7 @@ export default function AuthenticLocations() {
       <div ref={container} className="relative h-screen">
         <div
           ref={petBg}
-          className="absolute z-5 flex h-screen w-full flex-col justify-between gap-[8rem] bg-[url(/pet-passages.jpg)] bg-cover bg-position-[79%] py-[5rem] lg:bg-center"
+          className="absolute z-5 flex h-screen w-full flex-col justify-between gap-[8rem] bg-[url(/pet-passages-resized.jpg)] bg-cover bg-position-[79%] py-[5rem] lg:bg-center"
         >
           <h2
             ref={locationName}
