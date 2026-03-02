@@ -264,14 +264,14 @@ export default function WhosRunningTheShip({ whosRunningTheShip }) {
       </h1>
       <div
         ref={circleRef}
-        className="clip-path-circle relative flex h-screen w-full flex-col items-center justify-end gap-[2rem] pb-[16rem] lg:gap-[8rem] lg:pb-[6rem]"
+        className="clip-path-circle relative flex h-screen w-full flex-col items-center justify-end gap-[2rem] pb-[16rem] lg:gap-[8rem] lg:pb-[7.8rem]"
       >
         <Image
           src="/helmer-at-the-helm.jpg"
           alt="It's the Helmer who is always at the helm"
           width={5328}
           height={4000}
-          className="absolute top-0 left-0 -z-10 h-screen w-full object-cover"
+          className="absolute top-0 left-0 -z-10 h-screen w-full object-cover object-[center_20%]"
         />
         <div
           ref={overlay}
