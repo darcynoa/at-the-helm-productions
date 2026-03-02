@@ -142,12 +142,12 @@ export default function Hero({ heroData }) {
       </p>
       <div
         ref={scrollCTA}
-        className="absolute -bottom-[4rem] origin-center scale-75 lg:scale-100"
+        className="absolute -bottom-[4rem] flex origin-center scale-75 items-center justify-center lg:scale-100"
       >
         <img
           src="/scroll-cta.png"
           alt="Scroll Now!"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          className="absolute"
           ref={scrollCTAText}
         />
         <LightBall className="origin-center scale-150" />
