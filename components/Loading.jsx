@@ -183,7 +183,7 @@ export default function Loading() {
     >
       <LoadingSVGGroup
         ref={loaderLogoRef}
-        className="absolute top-1/2 left-1/2 h-auto max-w-[946px] -translate-x-[45%] -translate-y-1/2 lg:-translate-x-1/2"
+        className="absolute top-1/2 left-1/2 h-auto max-w-[946px] -translate-x-[45%] -translate-y-[60%] lg:-translate-x-1/2 lg:-translate-y-1/2"
       />
 
       <div className="flex w-screen flex-col items-center gap-[1.5rem]">
