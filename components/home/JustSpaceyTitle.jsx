@@ -257,7 +257,7 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
           <div className="block h-screen w-full object-cover lg:hidden">
             <Image
               className="-z-10 w-full origin-center scale-120 object-cover object-[0%]"
-              src="/just-spacey-title-mobile.JPG"
+              src="/just-spacey-title-mobile.jpg"
               alt="Rotated light from set"
               fill
             />
