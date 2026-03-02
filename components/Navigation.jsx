@@ -74,11 +74,11 @@ export default function Navigation() {
   return (
     !isStudio && (
       <>
-        <nav className="fixed top-0 left-0 z-[9998] flex h-[5.5rem] w-full items-center justify-between bg-black px-[2rem] lg:px-[4rem]">
+        <nav className="fixed top-0 left-0 z-[9998] flex h-[6rem] w-full items-center justify-between bg-black px-[2rem] lg:px-[4rem]">
           <Link href="/">
             <div
               id="navBarWrapper"
-              className="relative flex h-[49px] w-[78px] items-center justify-center"
+              className="relative flex w-[150%] items-center justify-center"
             >
               <img
                 id="navLogo"
