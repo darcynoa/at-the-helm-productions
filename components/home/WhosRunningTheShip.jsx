@@ -264,7 +264,7 @@ export default function WhosRunningTheShip({ whosRunningTheShip }) {
       </h1>
       <div
         ref={circleRef}
-        className="clip-path-circle relative flex h-screen w-full flex-col items-center justify-end gap-[2rem] pb-[16rem] lg:gap-[7rem] lg:pb-[1rem]"
+        className="clip-path-circle relative flex h-screen w-full flex-col items-center justify-end gap-[2rem] pb-[16rem] lg:gap-[7rem] lg:pb-[2rem]"
       >
         <Image
           src="/helmer-at-the-helm.jpg"
