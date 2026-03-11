@@ -1,99 +1,99 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from "sanity";
 
 export const homeType = defineType({
-  name: 'home',
-  title: 'Home',
-  type: 'document',
+  name: "home",
+  title: "Home",
+  type: "document",
   fields: [
     defineField({
-      name: 'title',
-      type: 'string',
+      name: "title",
+      type: "string",
       validation: (rule) => rule.required(),
     }),
     // Hero Section
     defineField({
-      name: 'hero',
-      title: 'Hero Section',
-      type: 'object',
+      name: "hero",
+      title: "Hero Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'heading_line_1',
-          type: 'string',
+          name: "heading_line_1",
+          type: "string",
           validation: (rule) => rule.required(),
         }),
         defineField({
-          name: 'heading_line_2',
-          type: 'string',
+          name: "heading_line_2",
+          type: "string",
           validation: (rule) => rule.required(),
         }),
         defineField({
-          name: 'backgroundImage',
-          type: 'image',
+          name: "backgroundImage",
+          type: "image",
           options: {
             hotspot: true,
           },
         }),
         defineField({
-          name: 'scribbledOutText',
-          title: 'Scribbled Out Text',
-          type: 'string',
+          name: "scribbledOutText",
+          title: "Scribbled Out Text",
+          type: "string",
         }),
         defineField({
-          name: 'swappedInText',
-          title: 'Swapped In Text',
-          type: 'string',
+          name: "swappedInText",
+          title: "Swapped In Text",
+          type: "string",
         }),
         defineField({
-          name: 'cursiveText',
-          title: 'Cursive Text',
-          type: 'string',
+          name: "cursiveText",
+          title: "Cursive Text",
+          type: "string",
         }),
       ],
     }),
     // Carousel Section
     defineField({
-      name: 'carousel',
-      title: 'Carousel Section',
-      type: 'object',
+      name: "carousel",
+      title: "Carousel Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'imageOne',
-          type: 'image',
+          name: "image1",
+          type: "image",
           options: {
             hotspot: true,
           },
         }),
         defineField({
-          name: 'imageTwo',
-          type: 'image',
+          name: "image2",
+          type: "image",
           options: {
             hotspot: true,
           },
         }),
         defineField({
-          name: 'imageThree',
-          type: 'image',
+          name: "image3",
+          type: "image",
           options: {
             hotspot: true,
           },
         }),
         defineField({
-          name: 'imageFour',
-          type: 'image',
+          name: "image4",
+          type: "image",
           options: {
             hotspot: true,
           },
         }),
         defineField({
-          name: 'imageFive',
-          type: 'image',
+          name: "image5",
+          type: "image",
           options: {
             hotspot: true,
           },
         }),
         defineField({
-          name: 'imageSix',
-          type: 'image',
+          name: "image6",
+          type: "image",
           options: {
             hotspot: true,
           },
@@ -102,63 +102,103 @@ export const homeType = defineType({
     }),
     // Just Spacey section
     defineField({
-      name: 'justSpacey',
-      title: 'Just Spacey Section',
-      type: 'object',
+      name: "justSpacey",
+      title: "Just Spacey Section",
+      type: "object",
       fields: [
         defineField({
-          name: 'subheading',
-          type: 'string',
+          name: "subheading",
+          type: "string",
         }),
         defineField({
-          name: 'heading',
-          type: 'string',
+          name: "heading",
+          type: "string",
+        }),
+        defineField({
+          name: "backgroundImageForMobile",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineField({
+          name: "backgroundImageForDesktop",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineField({
+          name: "backgroundImageAltText",
+          type: "string",
         }),
       ],
     }),
     defineField({
-      name: 'whatsAtTheHelm',
+      name: "whatsAtTheHelm",
       title: "What's At The Helm",
-      type: 'object',
+      type: "object",
       fields: [
         defineField({
-          name: 'heading',
-          type: 'string',
+          name: "heading",
+          type: "string",
         }),
         defineField({
-          name: 'description',
-          type: 'text',
+          name: "description",
+          type: "text",
+        }),
+        defineField({
+          name: "image",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineField({
+          name: "imageAltText",
+          type: "string",
         }),
       ],
     }),
     defineField({
-      name: 'whosRunningTheShip',
+      name: "whosRunningTheShip",
       title: "Who's Running The Ship",
-      type: 'object',
+      type: "object",
       fields: [
         defineField({
-          name: 'heading',
-          type: 'string',
+          name: "heading",
+          type: "string",
         }),
         defineField({
-          name: 'subheading',
-          type: 'string',
+          name: "subheading",
+          type: "string",
         }),
         defineField({
-          name: 'listOfAttributes',
-          type: 'array',
+          name: "backgroundImage",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineField({
+          name: "backgroundImageAltText",
+          type: "string",
+        }),
+        defineField({
+          name: "listOfAttributes",
+          type: "array",
           of: [
             {
-              type: 'object',
+              type: "object",
               fields: [
                 defineField({
-                  name: 'attribute',
-                  type: 'string',
+                  name: "attribute",
+                  type: "string",
                   required: true,
                 }),
                 defineField({
-                  name: 'actualAttribute',
-                  type: 'string',
+                  name: "actualAttribute",
+                  type: "string",
                 }),
               ],
             },
@@ -167,4 +207,4 @@ export const homeType = defineType({
       ],
     }),
   ],
-})
+});

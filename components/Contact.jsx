@@ -28,8 +28,6 @@ export default function Contact({ contactData }) {
     });
   });
 
-  console.log(contactData);
-
   return (
     <section
       id="contact"

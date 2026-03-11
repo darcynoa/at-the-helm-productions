@@ -5,6 +5,7 @@ import CustomLink from "@/components/CustomLink";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { urlFor } from "../utils/SanityImageUrl";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -217,6 +218,7 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
       };
     });
   });
+
   return (
     <section
       ref={sectionRef}
@@ -225,16 +227,17 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
     >
       <div
         ref={carousel}
-        className="relative flex h-[200px] gap-[1rem] px-[4rem] will-change-transform lg:h-full"
+        className="relative flex h-[200px] gap-[1rem] px-[4rem] will-change-transform lg:h-[480px]"
         style={{ transform: "translateZ(0)" }} // Force GPU acceleration
       >
-        {Array.from({ length: 6 }).map((_, i) => (
+        {Object.values(carouselData).map((item, index) => (
           <Image
-            key={i}
-            src={`/carousel/${i + 1}.png`}
-            alt={`Image ${i + 1}`}
+            key={index}
+            src={urlFor(item).url()}
+            alt={`Image ${index + 1}`}
             width={600}
             height={200}
+            className="h-auto w-auto"
           />
         ))}
       </div>
@@ -249,16 +252,16 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
           className="pointer-events-none block h-full w-full md:pointer-events-auto"
         >
           <Image
-            src="/justspacey-hero.png"
-            alt="Just Spacey Hero Background"
+            src={urlFor(justSpaceyData.backgroundImageForDesktop).url()}
+            alt={justSpaceyData.backgroundImageAltText}
             fill
             className="pointer-events-auto hidden object-cover lg:block"
           />
           <div className="block h-screen w-full object-cover lg:hidden">
             <Image
               className="-z-10 w-full origin-center scale-120 object-cover object-[0%]"
-              src="/just-spacey-title-mobile.jpg"
-              alt="Rotated light from set"
+              src={urlFor(justSpaceyData.backgroundImageForMobile).url()}
+              alt={justSpaceyData.backgroundImageAltText}
               fill
             />
             <div className="z-10 h-screen w-full bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_-1%,rgba(7,6,6,0.5)_10%,rgba(7,6,6,0)_20%,rgba(7,6,6,0)_70%,rgba(7,6,6,0.25)_75%,rgba(7,6,6,0.65)_82%,rgba(7,6,6,1)_92%)]"></div>

@@ -8,6 +8,7 @@ import HelmerLine from "../HelmerLine";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import SplitText from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { urlFor } from "../utils/SanityImageUrl";
 
 gsap.registerPlugin(DrawSVGPlugin, SplitText, ScrollTrigger);
 
@@ -257,6 +258,8 @@ export default function WhosRunningTheShip({ whosRunningTheShip }) {
   const helmer = useRef(null);
   const roles = useRef(null);
   const emerging = useRef(null);
+
+  const backgroundImageUrl = urlFor(whosRunningTheShip.backgroundImage).url();
   return (
     <section ref={container} className="mt-[3rem] w-full">
       <h1 className="font-display pb-[2rem] text-center text-[3.5rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:pb-0 lg:text-[8.75vw] lg:leading-normal">
@@ -267,8 +270,8 @@ export default function WhosRunningTheShip({ whosRunningTheShip }) {
         className="clip-path-circle relative flex h-screen w-full flex-col items-center justify-end gap-[2rem] pb-[16rem] lg:gap-[7rem] lg:pb-[2rem]"
       >
         <Image
-          src="/helmer-at-the-helm.jpg"
-          alt="It's the Helmer who is always at the helm"
+          src={backgroundImageUrl}
+          alt={whosRunningTheShip.backgroundImageAltText}
           width={5328}
           height={4000}
           className="absolute top-0 left-0 -z-10 h-screen w-full object-cover object-[center_20%]"

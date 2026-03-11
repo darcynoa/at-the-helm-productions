@@ -7,12 +7,16 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LightBall from "../LightBall";
+import { urlFor } from "../utils/SanityImageUrl";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 export default function WhatIsAtTheHelm({ whatsAtTheHelmData }) {
   const text = useRef(null);
   const light = useRef(null);
+  const container = useRef(null);
+  const bracelet = useRef(null);
+
   useGSAP(() => {
     const split = new SplitText(text.current, {
       type: "words",
@@ -108,8 +112,9 @@ export default function WhatIsAtTheHelm({ whatsAtTheHelmData }) {
       };
     });
   });
-  const container = useRef(null);
-  const bracelet = useRef(null);
+
+  const imageUrl = urlFor(whatsAtTheHelmData.image).url();
+
   return (
     <section
       ref={container}
@@ -133,8 +138,8 @@ export default function WhatIsAtTheHelm({ whatsAtTheHelmData }) {
       </div>
       <Image
         ref={bracelet}
-        src="/at-the-helm-bracelet.png"
-        alt="The At The Helm Bracelet"
+        src={imageUrl}
+        alt={whatsAtTheHelmData.imageAltText}
         width={3539}
         height={1247}
         className="marker-3 w-full object-cover"

@@ -16,7 +16,6 @@ export default function Navigation() {
   const isStudio =
     typeof window !== "undefined" &&
     window.location.pathname.startsWith("/studio");
-  console.log(isStudio);
 
   useEffect(() => {
     const handle = () => ScrollTrigger.refresh();

@@ -5,6 +5,8 @@ import { useRef, useEffect } from "react";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import SplitText from "gsap/SplitText";
 import LightBall from "../LightBall";
+import { urlFor } from "../utils/SanityImageUrl";
+import Image from "next/image";
 
 gsap.registerPlugin(DrawSVGPlugin, SplitText);
 
@@ -107,11 +109,28 @@ export default function Hero({ heroData }) {
     }
   }, []);
 
+  const backgroundImageUrl = urlFor(heroData.backgroundImage).url();
+  const heroClasses =
+    "relative -z-20 -mt-[1%] flex h-svh w-full flex-col items-center justify-center bg-cover bg-no-repeat leading-[1] lg:overflow-y-hidden";
+
+  const heroStyle = {
+    backgroundImage: `linear-gradient(to bottom, rgba(7,6,6,1) 25%, rgba(7,6,6,0) 50%, rgba(7,6,6,1) 75%), url('${backgroundImageUrl}')`,
+    backgroundPosition: "center right 10%",
+    backgroundSize: "200%",
+  };
+
+  const heroStyleLg = {
+    backgroundImage: `linear-gradient(to bottom, rgba(7,6,6,0) 61%, rgba(7,6,6,1) 100%), url('${backgroundImageUrl}')`,
+    backgroundSize: "cover",
+    backgroundPosition: "top",
+  };
+
   return (
     <section
       ref={hero}
       id="hero"
-      className="relative -z-20 -mt-[1%] flex h-svh w-full flex-col items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_25%,rgba(7,6,6,0)_50%,rgba(7,6,6,1)_75%),url(/home-hero.png)] bg-size-[200%] bg-position-[center_right_10%] bg-no-repeat leading-[1] lg:overflow-y-hidden lg:bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%),url(/home-hero.png)] lg:bg-cover lg:bg-top"
+      className={heroClasses}
+      style={window.innerWidth >= 1024 ? heroStyleLg : heroStyle}
     >
       <h1 className="font-display px-[2rem] pt-[10rem] pb-[2rem] text-center text-[4rem] leading-[1] font-black text-white uppercase drop-shadow-[0px_0px_34px_rgba(7,6,6,1)] lg:px-0 lg:pt-0 lg:text-[9.5rem]">
         {heroData.heading_line_1} <br /> {heroData.heading_line_2}
