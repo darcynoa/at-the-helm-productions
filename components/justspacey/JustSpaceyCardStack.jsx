@@ -5,10 +5,11 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { urlFor } from "../utils/SanityImageUrl";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-export default function JustSpaceyCardStack() {
+export default function JustSpaceyCardStack({ data }) {
   const topCard = useRef(null);
   const topCardText = useRef(null);
   const middleOverlay = useRef(null);
@@ -138,32 +139,49 @@ export default function JustSpaceyCardStack() {
     return () => mm.revert();
   });
 
+  const topCardImageUrl = urlFor(data.topCardImage).url();
+  const bottomCardImageUrl = urlFor(data.bottomCardImage).url();
+
+  const topCardStyles = {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundImage: `linear-gradient(to bottom,rgba(7,6,6,1) 0%, rgba(7,6,6,0) 40%), url('${topCardImageUrl}')`,
+  };
+
+  const bottomCardStyles = {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundImage: `linear-gradient(to bottom,rgba(7,6,6,0.3) 0%, rgba(7,6,6,0.3) 40%), url('${bottomCardImageUrl}')`,
+  };
+
   return (
     <section ref={sectionRef}>
       <h1 className="font-display text-center text-[5rem] leading-[1.2] font-black text-white uppercase mix-blend-exclusion lg:text-[9.5rem] lg:leading-normal">
-        What is{" "}
+        {data.headerInHeaderFont}
         <span className="lg:hidden">
           <br />
         </span>
-        <span className="font-spacey tracking-[0.04em]">Just Spacey?</span>
+        <span className="font-spacey tracking-[0.04em]">
+          &nbsp;{data.headerInSpaceyFont}
+        </span>
       </h1>
       <div ref={container} className="relative">
         <div
           ref={topCard}
-          className="absolute top-0 left-0 z-5 flex h-[110vh] w-full items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_0%,rgba(7,6,6,0)_40%),url('/body-drawers-resized.jpg')] bg-cover bg-center lg:h-screen"
+          className="absolute top-0 left-0 z-5 flex h-[110vh] w-full items-center justify-center lg:h-screen"
+          style={topCardStyles}
         >
           <h3
             ref={topCardText}
             className="w-[70%] text-center font-sans text-[1.5rem] leading-[1.2] text-white uppercase lg:text-[3.5rem]"
           >
-            ADHD characters are rarely seen on screen – let alone is there any
-            mention of the symptoms that can be an advantage rather than a
-            constant pain.
+            {data.topCardText}
           </h3>
         </div>
         <div
           ref={bottomCard}
-          className="relative z-3 flex h-[110vh] w-full items-center justify-center bg-[linear-gradient(to_bottom,rgba(7,6,6,0.3)_0%,rgba(7,6,6,0.3)_40%),url('/just-spacey-bottom-card-resized.jpg')] bg-cover bg-center lg:h-screen"
+          className="relative z-3 flex h-[110vh] w-full items-center justify-center lg:h-screen"
+          style={bottomCardStyles}
         >
           <div
             ref={middleOverlay}
@@ -173,8 +191,7 @@ export default function JustSpaceyCardStack() {
             ref={bottomCardText}
             className="w-[70%] text-center font-sans text-[1.5rem] leading-[1.2] text-white uppercase lg:text-[3.5rem]"
           >
-            Just Spacey is a morgue-comedy short film that touches on the
-            unexpected humor, chaos, and brilliance of thinking differently.
+            {data.bottomCardText}
           </h3>
         </div>
       </div>

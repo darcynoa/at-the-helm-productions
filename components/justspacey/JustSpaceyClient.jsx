@@ -10,7 +10,7 @@ import JustSpaceyCardStack from "@/components/justspacey/JustSpaceyCardStack";
 import JustSpaceyHero from "@/components/justspacey/JustSpaceyHero";
 import SneakPeek from "@/components/justspacey/SneakPeek";
 
-export default function JustSpaceyClient({ contactData }) {
+export default function JustSpaceyClient({ justSpaceyData, contactData }) {
   // Ensure scroll position is at 0 and scrolltriggers adjust accordingly
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,10 +25,10 @@ export default function JustSpaceyClient({ contactData }) {
   }, []);
   return (
     <>
-      <JustSpaceyHero />
-      <JustSpaceyCardStack />
-      <SneakPeek />
-      <AuthenticLocations />
+      <JustSpaceyHero data={justSpaceyData.hero} />
+      <JustSpaceyCardStack data={justSpaceyData.whatIsJustSpacey} />
+      <SneakPeek data={justSpaceyData.sneakPeek} />
+      <AuthenticLocations data={justSpaceyData.authenticLocations} />
       <Contact contactData={contactData} />
     </>
   );

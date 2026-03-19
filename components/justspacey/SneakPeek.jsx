@@ -4,8 +4,9 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { urlFor } from "../utils/SanityImageUrl";
 
-export default function SneakPeek() {
+export default function SneakPeek({ data }) {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const trailerImageRef = useRef(null);
@@ -94,6 +95,9 @@ export default function SneakPeek() {
       }
     }, 100);
   };
+
+  const trailerThumbnailUrl = urlFor(data.trailerThumbnail).url();
+
   return (
     <section
       ref={containerRef}
@@ -102,15 +106,15 @@ export default function SneakPeek() {
       {!isPlaying ? (
         <div className="flex flex-col items-center justify-center">
           <p className="font-handwriting text-cyan pt-[2rem] text-[1.3rem] uppercase mix-blend-difference lg:pt-[6rem] lg:text-[3rem]">
-            Here's a sneak peek!
+            {data.header}
           </p>
           <div
             ref={trailerImageRef}
             className="relative flex w-screen items-center justify-center py-[4rem] lg:py-[5rem]"
           >
             <Image
-              src="/trailer-thumbnail.png"
-              alt="Trailer Thumbnail"
+              src={trailerThumbnailUrl}
+              alt={data.trailerThumbnailAltText}
               width={2940}
               height={1232}
               className="h-auto max-w-full object-contain lg:max-w-3/4"
@@ -141,7 +145,7 @@ export default function SneakPeek() {
           </p>
           <iframe
             ref={videoRef}
-            src="https://player.vimeo.com/video/1140147918?h=d53108dfd6&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            src={data.trailerVimeoUrl}
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share;"
             referrerPolicy="strict-origin-when-cross-origin"
             style={{
