@@ -5,30 +5,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useRouter, usePathname } from "next/navigation";
 
-const menuItems = [
-  {
-    title: "home",
-    href: "/",
-    color: "white",
-  },
-  {
-    title: "about us",
-    href: "/#about-us",
-    color: "blue",
-  },
-  {
-    title: "just spacey",
-    href: "/justspacey",
-    color: "cyan",
-  },
-  {
-    title: "contact",
-    href: "/#contact",
-    color: "pink",
-  },
-];
-
-export default function Menu({ toggleMenu, tl }) {
+export default function Menu({ menuItems, toggleMenu, tl }) {
   const overlays = useRef([]);
   const headings = useRef([]);
   overlays.current = [];
@@ -120,7 +97,7 @@ export default function Menu({ toggleMenu, tl }) {
             <Link
               key={index} // Add a unique key for each item
               className="relative w-full"
-              href={item.href}
+              href={item.slug}
               onMouseEnter={() =>
                 openOverlay(overlays.current[index], headings.current[index])
               }
@@ -150,7 +127,7 @@ export default function Menu({ toggleMenu, tl }) {
                 ref={(el) => (headings.current[index] = el)}
                 className="menu-item font-display px-[2rem] text-center text-[4rem] leading-[1] font-black text-white uppercase mix-blend-difference lg:text-left lg:text-[7rem] 2xl:text-[9.5rem]"
               >
-                {item.title}
+                {item.label}
               </h1>
             </Link>
           );

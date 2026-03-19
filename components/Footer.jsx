@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Footer() {
+export default function Footer({ footerData }) {
   const pathname = usePathname();
   const isJustSpacey = pathname === "/justspacey";
   const isStudio =
@@ -20,9 +20,9 @@ export default function Footer() {
           href="/"
           className={`${isJustSpacey ? "opacity-100" : "opacity-0"} font-handwriting text-cyan text-[1.5rem] transition-shadow duration-300 ease-in-out hover:drop-shadow-[4px_4px_14px_rgba(5,255,192,1)] lg:text-[3.5rem]`}
         >
-          Back to Home
+          {footerData.backToHomeText}
         </Link>
-        © copyright 2025 All Rights Reserved.
+        {footerData.copyrightText}
       </footer>
     )
   );

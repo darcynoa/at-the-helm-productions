@@ -27,7 +27,6 @@ const customComponents = {
 };
 
 export default function AuthenticLocations({ data }) {
-  console.log("Authentic Locations Data:", data);
   const container = useRef(null);
   const petBg = useRef(null);
   const middleOverlay = useRef(null);

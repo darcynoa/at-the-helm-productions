@@ -9,10 +9,11 @@ import { SplitText } from "gsap/SplitText";
 import MenuSVG from "./MenuSVG.jsx";
 import { MorphSVGPlugin } from "gsap/all";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { urlFor } from "./utils/SanityImageUrl.js";
 
 gsap.registerPlugin(SplitText, MorphSVGPlugin);
 
-export default function Navigation() {
+export default function Navigation({ navigationData }) {
   const isStudio =
     typeof window !== "undefined" &&
     window.location.pathname.startsWith("/studio");
@@ -70,6 +71,8 @@ export default function Navigation() {
     }
   }, [menuOpen]);
 
+  const logoImageUrl = urlFor(navigationData.logo).url();
+
   return (
     !isStudio && (
       <>
@@ -81,7 +84,7 @@ export default function Navigation() {
             >
               <img
                 id="navLogo"
-                src="/logo.svg"
+                src={logoImageUrl}
                 alt="At The Helm Company Logo"
                 className="h-auto w-full opacity-0"
                 width={78}
@@ -96,7 +99,11 @@ export default function Navigation() {
             className="cursor-pointer"
           />
         </nav>
-        <Menu toggleMenu={toggleMenu} tl={tl} />
+        <Menu
+          menuItems={navigationData.links}
+          toggleMenu={toggleMenu}
+          tl={tl}
+        />
       </>
     )
   );
