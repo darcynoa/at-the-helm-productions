@@ -10,9 +10,11 @@ import JustSpaceyTitle from "@/components/home/JustSpaceyTitle";
 import Contact from "@/components/Contact";
 import WhosRunningTheShip from "@/components/home/WhosRunningTheShip";
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
-
 export default function HomeClient({ homeData, contactData }) {
+  useEffect(() => {
+    gsap.registerPlugin(SplitText, ScrollTrigger);
+  }, []);
+
   useEffect(() => {
     function activate() {
       console.log("and..... action!");
