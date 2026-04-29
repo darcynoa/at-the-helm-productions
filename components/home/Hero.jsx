@@ -110,28 +110,21 @@ export default function Hero({ heroData }) {
   }, []);
 
   const backgroundImageUrl = urlFor(heroData.backgroundImage).url();
-  const heroClasses =
-    "relative -z-20 -mt-[1%] flex h-svh w-full flex-col items-center justify-center bg-cover bg-no-repeat leading-[1] lg:overflow-y-hidden";
-
-  const heroStyle = {
-    backgroundImage: `linear-gradient(to bottom, rgba(7,6,6,1) 25%, rgba(7,6,6,0) 50%, rgba(7,6,6,1) 75%), url('${backgroundImageUrl}')`,
-    backgroundPosition: "center right 10%",
-    backgroundSize: "200%",
-  };
-
-  const heroStyleLg = {
-    backgroundImage: `linear-gradient(to bottom, rgba(7,6,6,0) 61%, rgba(7,6,6,1) 100%), url('${backgroundImageUrl}')`,
-    backgroundSize: "cover",
-    backgroundPosition: "top",
-  };
 
   return (
     <section
       ref={hero}
       id="hero"
-      className={heroClasses}
-      style={window.innerWidth >= 1024 ? heroStyleLg : heroStyle}
+      className="relative -z-20 -mt-[1%] flex h-svh w-full flex-col items-center justify-center bg-cover bg-no-repeat leading-[1] lg:overflow-y-hidden"
     >
+      <Image
+        src={backgroundImageUrl}
+        alt="Change this to something in Sanity"
+        width={1920}
+        height={1080}
+        className="absolute top-1/2 h-[50vh] w-full -translate-y-1/2 object-cover object-[80%] lg:top-0 lg:h-screen lg:-translate-y-0 lg:object-center"
+      />
+      <div className="absolute top-0 left-0 h-screen w-full bg-[linear-gradient(to_bottom,rgba(7,6,6,1)_25%,rgba(7,6,6,0)_50%,rgba(7,6,6,1)_70%)] lg:bg-[linear-gradient(to_bottom,rgba(7,6,6,0)_61%,rgba(7,6,6,1)_100%)]"></div>
       <h1 className="font-display px-[2rem] pt-[10rem] pb-[2rem] text-center text-[4rem] leading-[1] font-black text-white uppercase drop-shadow-[0px_0px_34px_rgba(7,6,6,1)] lg:px-0 lg:pt-0 lg:text-[9.5rem]">
         {heroData.heading_line_1} <br /> {heroData.heading_line_2}
       </h1>
