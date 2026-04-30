@@ -235,9 +235,9 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
             key={index}
             src={urlFor(item).url()}
             alt={`Image ${index + 1}`}
-            width={600}
-            height={200}
-            className="h-auto w-auto"
+            width={960}
+            height={480}
+            className="h-auto w-auto object-cover"
           />
         ))}
       </div>
