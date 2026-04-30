@@ -60,7 +60,7 @@ export default function Cursor() {
   return (
     <div
       ref={cursorRef}
-      className="font-display pointer-events-none fixed z-[100] flex h-[3rem] w-[6rem] items-center justify-center rounded-[5rem] bg-white text-[1rem] text-black uppercase mix-blend-difference"
+      className="font-display pointer-events-none fixed z-[100] flex h-[4rem] w-[8rem] items-center justify-center rounded-[5rem] bg-white text-[1.75rem] text-black uppercase mix-blend-difference drop-shadow-[0px_0px_20px_rgba(5,255,192,1)]"
     >
       view
     </div>
