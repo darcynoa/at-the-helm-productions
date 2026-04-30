@@ -29,8 +29,8 @@ export default function Hero({ heroData }) {
     gsap.set(splitFinalText.lines, { autoAlpha: 0, y: 20 });
 
     const displayWidth = window.innerWidth;
-    const overallDuration = displayWidth < 768 ? "+=2000" : "+=4000";
-    const scribbleDuration = displayWidth < 768 ? 1 : 3;
+    const overallDuration = displayWidth < 768 ? "+=1000" : "+=2000";
+    const scribbleDuration = 0.475;
 
     gsap.to(scrollCTAText.current, {
       rotate: -360,
