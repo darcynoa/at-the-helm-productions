@@ -38,6 +38,8 @@ export default function AuthenticLocations({ data }) {
     data.petPassages.backgroundImage,
   ).url();
 
+  console.log(data);
+
   useGSAP(() => {
     gsap.fromTo(
       petBg.current,
@@ -138,7 +140,7 @@ export default function AuthenticLocations({ data }) {
               ref={locationName}
               className="font-display text-center text-[3rem] leading-[1.2] font-black text-white uppercase lg:text-[7rem] lg:leading-normal"
             >
-              Anatomy of Death Museum
+              Anatomy of Death Museum //TODO: Change this to something in Sanity
             </h2>
             <div className="flex flex-col items-start justify-between gap-[1rem] px-[0.5rem] lg:flex-row lg:items-center lg:gap-0 lg:px-[5rem]">
               <PortableText

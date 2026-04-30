@@ -72,7 +72,7 @@ export default function Loading() {
       .to(fullWheel, {
         rotate: 360,
         transformOrigin: "50% 50%",
-        duration: 1,
+        duration: 0.5,
         ease: "sine.out",
       })
       .to(threeQuarterWheel, {
@@ -87,7 +87,7 @@ export default function Loading() {
       })
       .to(threeQuarterWheel, {
         x: 0,
-        duration: 1,
+        duration: 0.5,
         ease: "sine.inOut",
       })
       .to(
