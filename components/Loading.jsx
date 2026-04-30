@@ -72,7 +72,7 @@ export default function Loading() {
       .to(fullWheel, {
         rotate: 360,
         transformOrigin: "50% 50%",
-        duration: 0.5,
+        duration: 0.75,
         ease: "sine.out",
       })
       .to(threeQuarterWheel, {
@@ -83,7 +83,6 @@ export default function Loading() {
       .to(fullWheel, {
         opacity: 0,
         duration: 0.5,
-        delay: 0.5,
       })
       .to(threeQuarterWheel, {
         x: 0,
@@ -95,18 +94,18 @@ export default function Loading() {
         {
           y: -140,
           x: 650,
-          duration: 1.4,
+          duration: 0.75,
           ease: "linear",
         },
-        "<0.5",
+        "-=0.25",
       )
       .to(
         bigWave,
         {
           x: 10,
           y: 0,
-          duration: 1.4,
-          ease: "linear",
+          duration: 1,
+          ease: "sine.inOut",
         },
         "-=0.1",
       )
@@ -117,12 +116,12 @@ export default function Loading() {
       })
       .to(bigWave, {
         y: 200,
-        duration: 1.4,
+        duration: 0.85,
         ease: "power4.in",
       })
       .to(productionsWaveMask, {
         y: 70,
-        duration: 1.4,
+        duration: 0.85,
         ease: "power4.out",
         onComplete: () => {
           const loaderLogo = loaderLogoRef.current;
@@ -158,12 +157,12 @@ export default function Loading() {
           duration: 1,
           ease: "power2.in",
         },
-        "+=1.5",
+        "+=0.5",
       );
 
     gsap.from(loadingBar.current, {
       scaleX: 0,
-      duration: tl.duration() - 1,
+      duration: tl.duration() - 1.5,
       ease: "expo.inOut",
       onUpdate: () => {
         const scaleX = gsap.getProperty(loadingBar.current, "scaleX");
