@@ -6,6 +6,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
 import { client } from "../app/sanity/client";
+import { urlFor } from "@/components/utils/SanityImageUrl";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,22 +20,32 @@ const caveat = Caveat({
   weight: ["400"],
 });
 
-export const metadata = {
-  title: "At The Helm Productions",
-  description: "Creative Indie Film Production Company started by Anna Helmer",
-};
-
 const NAVIGATION_QUERY = `*[_type == "navigation"][0]`;
 const FOOTER_QUERY = `*[_type == "footer"][0]`;
+const METADATA_QUERY = `*[_type == "siteSettings"][0]`;
 
 const options = { next: { revalidate: 30 } };
 
 export default async function RootLayout({ children }) {
   const navigationData = await client.fetch(NAVIGATION_QUERY, {}, options);
   const footerData = await client.fetch(FOOTER_QUERY, {}, options);
+  const metadata = await client.fetch(METADATA_QUERY, {}, options);
+
+  console.log(metadata);
 
   return (
     <html lang="en">
+      <head>
+        <title>{metadata.siteTitle}</title>
+        <meta name="description" content={metadata.siteDescription} />
+        {metadata.favicon && (
+          <link
+            rel="icon"
+            type="image/png"
+            href={urlFor(metadata.favicon).url()}
+          />
+        )}
+      </head>
       <body
         className={`${inter.variable} ${caveat.variable} bg-black antialiased`}
       >
