@@ -31,8 +31,6 @@ export default async function RootLayout({ children }) {
   const footerData = await client.fetch(FOOTER_QUERY, {}, options);
   const metadata = await client.fetch(METADATA_QUERY, {}, options);
 
-  console.log(metadata);
-
   return (
     <html lang="en">
       <head>

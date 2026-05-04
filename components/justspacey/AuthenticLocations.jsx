@@ -38,8 +38,6 @@ export default function AuthenticLocations({ data }) {
     data.petPassages.backgroundImage,
   ).url();
 
-  console.log(data);
-
   useGSAP(() => {
     gsap.fromTo(
       petBg.current,
