@@ -44,6 +44,8 @@ export default function JustSpaceyHero({ data }) {
       type: "words",
       wordsClass: "mix-blend-exclusion",
     });
+    let firstUpdate = true;
+
     gsap.from(split.words, {
       scrollTrigger: {
         trigger: container.current,
@@ -51,6 +53,12 @@ export default function JustSpaceyHero({ data }) {
         end: "+=2000px",
         scrub: true,
         pin: true,
+        onUpdate() {
+          if (firstUpdate) {
+            window.scrollTo(0, 250);
+            firstUpdate = false;
+          }
+        },
       },
       opacity: 0.25,
       stagger: 0.25,
