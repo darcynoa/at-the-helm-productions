@@ -15,7 +15,7 @@ export default function Menu({ menuItems, toggleMenu, tl }) {
   const pathname = usePathname();
 
   const handleOnClick = (e, item) => {
-    const href = item.href;
+    const href = item.slug;
     const isAnchor = href.startsWith("/#");
     const targetId = isAnchor ? href.replace("/#", "") : null;
 
