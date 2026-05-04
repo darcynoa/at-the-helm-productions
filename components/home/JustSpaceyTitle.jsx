@@ -304,11 +304,7 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
             onTouchCancel={handleTouchCancel}
             onMouseDown={() => setIsPressed(true)}
             onMouseUp={() => setIsPressed(false)}
-          >
-            {/* <span className="font-display font-black text-white uppercase mix-blend-normal">
-              view
-            </span> */}
-          </Link>
+          ></Link>
         </div>
       </div>
     </section>
