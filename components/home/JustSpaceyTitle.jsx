@@ -285,8 +285,8 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
           </h1>
           <div
             className={
-              "font-display absolute bottom-[calc(30%_+_11px)] text-[1rem] text-black transition-all duration-300 lg:hidden " +
-              (isPressed ? "tracking-[0.16em]" : "tracking-[0.04em]")
+              "font-display absolute bottom-[calc(30%_+_15px)] text-[1.55rem] text-black drop-shadow-[0px_0px_20px_rgba(5,255,192,1)] transition-all duration-300 lg:hidden" +
+              (isPressed ? "tracking-[0.2em]" : "tracking-[0.04em]")
             }
           >
             View
@@ -295,7 +295,7 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
           <Link
             href="/justspacey"
             className={
-              "font-display pointer-events-auto absolute bottom-[30%] isolate z-[10] flex h-[3rem] w-[6rem] items-center justify-center rounded-[5rem] bg-white text-[1rem] uppercase mix-blend-difference transition-all lg:hidden " +
+              "font-display pointer-events-auto absolute bottom-[30%] isolate z-[10] flex h-[4rem] w-[8rem] items-center justify-center rounded-[5rem] bg-white uppercase mix-blend-difference drop-shadow-[0px_0px_20px_rgba(255,255,255,1)] transition-all lg:hidden" +
               (isPressed ? "scale-[1.15]" : "scale-[1]")
             }
             ref={viewButton}
