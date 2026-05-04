@@ -135,14 +135,14 @@ export default function AuthenticLocations({ data }) {
             ></iframe>
             <script src="https://player.vimeo.com/api/player.js"></script>
           </div>
-          <div className="absolute top-0 left-0 z-[2] flex h-full w-full flex-col justify-between gap-[8rem] pt-[10rem] pb-[5rem]">
+          <div className="absolute top-0 left-0 z-[2] flex h-full w-full flex-col justify-between gap-[8rem] py-[8rem]">
             <h2
               ref={locationName}
-              className="font-display text-center text-[3rem] leading-[1.2] font-black text-white uppercase lg:text-[7rem] lg:leading-normal"
+              className="font-display text-center text-[3rem] leading-[1.2] font-black text-white uppercase lg:text-[7rem] xl:leading-normal"
             >
               {data.anatomyOfDeathMuseum.heading}
             </h2>
-            <div className="flex flex-col items-start justify-between gap-[1rem] px-[0.5rem] lg:flex-row lg:items-center lg:gap-0 lg:px-[5rem]">
+            <div className="flex flex-col items-start justify-between gap-[1rem] px-[0.5rem] lg:flex-row lg:items-center lg:gap-0 lg:px-[2.5rem] xl:px-[5rem]">
               <PortableText
                 value={data.anatomyOfDeathMuseum.description}
                 components={customComponents}
