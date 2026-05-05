@@ -295,7 +295,7 @@ export default function JustSpaceyTitle({ justSpaceyData, carouselData }) {
           <Link
             href="/justspacey"
             className={
-              "font-display pointer-events-auto absolute bottom-[30%] z-[10] flex h-[4rem] w-[8rem] items-center justify-center rounded-[5rem] bg-white uppercase mix-blend-difference drop-shadow-[0px_0px_20px_rgba(255,255,255,1)] transition-all will-change-[mix-blend-mode] lg:hidden " +
+              "font-display pointer-events-auto absolute bottom-[30%] z-[10] flex h-[4rem] w-[8rem] items-center justify-center rounded-[5rem] bg-black uppercase mix-blend-difference drop-shadow-[0px_0px_20px_rgba(255,255,255,1)] transition-all will-change-[mix-blend-mode] lg:hidden " +
               (isPressed ? "scale-[1.15]" : "scale-[1]")
             }
             ref={viewButton}
