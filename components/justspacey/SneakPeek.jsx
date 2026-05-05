@@ -57,17 +57,19 @@ export default function SneakPeek({ data }) {
             trigger: trailerImageRef.current,
             start: "top bottom",
             end: "center center",
-            scrub: true,
+            scrub: 0.6,
+            fastScrollEnd: true,
           },
         })
         .to(trailerImageRef.current, {
           scale: 1,
           ease: "linear",
+          force3D: true,
         })
         .to(
           playButtonRef.current,
           {
-            opacity: 1,
+            autoAlpha: 1,
             ease: "linear",
           },
           "-=0.5",
@@ -111,6 +113,10 @@ export default function SneakPeek({ data }) {
           <div
             ref={trailerImageRef}
             className="relative flex w-screen items-center justify-center py-[4rem] lg:py-[5rem]"
+            style={{
+              WebkitTransform: "translate3d(0, 0, 0)",
+              willChange: "transform",
+            }}
           >
             <Image
               src={trailerThumbnailUrl}

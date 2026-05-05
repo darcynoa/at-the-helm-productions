@@ -63,14 +63,16 @@ export default function AuthenticLocations({ data }) {
         scrollTrigger: {
           trigger: container.current,
           start: "top top",
-          scrub: 1,
+          scrub: 0.6,
           pin: true,
           pinSpacing: true,
+          fastScrollEnd: true,
         },
       })
       .to(petBg.current, {
-        yPercent: -100,
+        y: -window.innerHeight,
         ease: "linear",
+        force3D: true,
       })
       .to(
         middleOverlay.current,
@@ -87,12 +89,18 @@ export default function AuthenticLocations({ data }) {
       <h1 className="font-display pb-[4rem] text-center text-[4rem] leading-[1] font-black text-white uppercase mix-blend-exclusion lg:text-[9.5rem]">
         {data.headingLine1} <br /> {data.headingLine2}
       </h1>
-      <div ref={container} className="relative h-screen">
+      <div
+        ref={container}
+        className="relative h-screen"
+        style={{ perspective: "1000px" }}
+      >
         <div
           ref={petBg}
           className="absolute z-5 flex h-screen w-full flex-col justify-between gap-[8rem] bg-cover bg-position-[79%] py-[5rem] lg:bg-center"
           style={{
             backgroundImage: `url(${petPassagesBackgroundImage})`,
+            WebkitTransform: "translate3d(0, 0, 0)",
+            willChange: "transform",
           }}
         >
           <h2
@@ -123,13 +131,20 @@ export default function AuthenticLocations({ data }) {
           ref={videoContainerRef}
           className="relative z-3 h-screen w-full overflow-hidden"
         >
-          <div className="object-fit-video absolute inset-0 h-full w-full overflow-hidden lg:origin-top lg:scale-140">
+          <div
+            className="object-fit-video absolute inset-0 h-full w-full overflow-hidden lg:origin-top lg:scale-140"
+            style={{
+              WebkitAcceleratedCompositing: "true",
+              willChange: "transform",
+            }}
+          >
             <iframe
               src={data.anatomyOfDeathMuseum.backgroundVideoUrl}
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               className="pointer-events-none"
               title="B-roll1_trimmed"
+              style={{ WebkitAcceleratedCompositing: "true" }}
             ></iframe>
             <script src="https://player.vimeo.com/api/player.js"></script>
           </div>
