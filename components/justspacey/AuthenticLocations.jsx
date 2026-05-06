@@ -148,7 +148,7 @@ export default function AuthenticLocations({ data }) {
             ></iframe>
             <script src="https://player.vimeo.com/api/player.js"></script>
           </div>
-          <div className="absolute top-0 left-0 z-[2] flex h-full w-full flex-col justify-between gap-[8rem] py-[8rem]">
+          <div className="absolute top-0 left-0 z-[2] flex h-full w-full flex-col justify-between gap-[8rem] pt-[10rem] pb-[8rem]">
             <h2
               ref={locationName}
               className="font-display text-center text-[3rem] leading-[1.2] font-black text-white uppercase lg:text-[7rem] xl:leading-normal"
